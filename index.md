@@ -12,9 +12,9 @@ layout: home
 
 I am undergraduate student in KAIST, School of Computing. I am interested in how the deep learning models work, especially with learning algorithms and optimizations.
 
-- 🌍 I’m based in [Seoul & Daejeon, Republic of Korea]
-- 👨‍💻 Currently working on Multi-Task Learning and Multimodal Learning.
-- 🧠 Research interests: Neural Tangent Kernel (NTK), Deep Learning, ML Systems
+- I’m based in [Seoul & Daejeon, Republic of Korea]
+- Currently working on Multi-Task Learning and Multimodal Learning.
+- Research interests: Neural Tangent Kernel (NTK), Deep Learning, ML Systems
 
 ---
 
@@ -29,23 +29,27 @@ I am undergraduate student in KAIST, School of Computing. I am interested in how
 
 ### Undergraduate Research Intern, Vision and Learning (VL) Lab, KAIST  
 *06/2024 – Present*  
-- Supervisor: Prof. [Supervisor's Name]  
+- Supervisor: Prof. Seunghoon Hong
 - Worked on Multi-Task Learning and understanding model efficiency in various tasks.
 - Fine-tuning deep learning models for complex vision tasks using multimodal approaches.
 
 ### Undergraduate Research Intern, Computer Vision and Machine Learning (CVML) Lab, KAIST  
 *12/2023 – 05/2024*  
-- Supervisor: Prof. [Supervisor's Name]  
-- Conducted research on neural network architectures for computer vision.
-- Explored optimization techniques and training methodologies to improve model performance.
+- Supervisor: Prof. Hyunjung Shim  
+- Researched on performance fairness within model compression.
 
 ---
 
 ## **Education**
 
 ### Korea Advanced Institute of Science and Technology (KAIST)  
+
+**M.S. in Computer Science**  
+*03/2025 – 02/2027(Expected)*
+
 **B.S. in Computer Science**  
-*03/2019 – 02/2025 (Expected)*
+*03/2019 – 02/2025*
+
 
 ---
 

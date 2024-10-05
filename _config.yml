@@ -3,13 +3,16 @@ remote_theme: samarsault/plainwhite-jekyll
 title: "My Portfolio"
 #author: Chanhyuk David Lee
 #description: "This is my personal portfolio website"
-email: chan3684@kaist.ac.kr
-
-url: "https://david3684.github.io"
-baseurl: ""
 
 github_username: david3684
 
-social:
-  github: "https://github.com/david3684"
+plainwhite:
+  #name: Chanhyuk Lee
+  tagline: Developer. Researcher. Student.
+  date_format: "%b %-d, %Y"
+
+  social_links:
+    github: david3684
+    instagram: "@treblocami"
+    #linkedIn: in/samarsault # format: locale/username
 
