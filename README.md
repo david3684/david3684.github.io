@@ -1,3 +1,7 @@
+---
+layout: default
+title: "My Portfolio"
+---
 
 # **Chanhyuk Lee**
 
