@@ -11,27 +11,24 @@ title: "My Portfolio"
 
 ## **About Me**
 
-I am a passionate Computer Science major with expertise in machine learning, computer vision, and natural language processing. I enjoy working on real-world problems with modern technologies and am constantly learning and improving my skills.
+I am undergraduate student in KAIST, School of Computing. I am interested in how the deep learning models work, especially with learning algorithms and optimizations.
 
-- 🌍 I’m based in [Your Location]
+- 🌍 I’m based in [Seoul & Daejeon, Repulblic of Korea]
 - 👨‍💻 Currently working on fine-tuning models like CLIP-ViT for various tasks.
 - 🧠 Research interests: Neural Tangent Kernel (NTK), Deep Learning, ML Systems
-- 📫 Reach me at: [your-email@example.com](mailto:your-email@example.com)
 
 ---
 
 ## **Skills**
 
 - **Programming Languages**: Python, C, Scala, Java
-- **Machine Learning**: PyTorch, TensorFlow, Scikit-learn, Keras
-- **Computer Vision**: OpenCV, CLIP, ViT, YOLO
-- **Tools**: Git, Docker, Jupyter, Linux, GitHub Actions
+- **Machine Learning**: PyTorch, TensorFlow, Scikit-learn, Keras 
 
 ---
 
 ## **Experience**
 
-### Research Assistant - [Your University]  
+### Research Assistant - [KAIST]  
 *MM/YYYY – Present*  
 Working on advanced machine learning projects, particularly focusing on CLIP-ViT fine-tuning for classification tasks and understanding NTK in deep learning.
 
@@ -49,33 +46,9 @@ Developed machine learning models to optimize business processes and worked on d
 
 ## **Education**
 
-### [Your University]  
+### [Korea Advanced Institute of Science and Technology ]  
 **B.S. in Computer Science**  
-*MM/YYYY – MM/YYYY*
-
-Relevant coursework:  
-- Machine Learning, Computer Vision, Natural Language Processing, Deep Learning, Systems Programming
-
----
-
-## **Projects**
-
-### [Project Name]  
-*A brief description of your project (e.g., tools used, datasets, or key results)*
-
-- Link to project repository: [GitHub](https://github.com/your-username/project-repo)
-
-### [Another Project]  
-*Another short description*
-
-- Link to project repository: [GitHub](https://github.com/your-username/project-repo)
-
----
-
-## **Publications**
-
-- **"Title of Paper"** – Conference Name, Year  
-  *A brief description of the publication or key insights.*
+*03/2019 – 02/2025 (Expected)*
 
 ---
 
