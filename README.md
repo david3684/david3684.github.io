@@ -3,7 +3,7 @@ layout: default
 title: "My Portfolio"
 ---
 
-# **Chanhyuk David Lee**
+# **Chanhyuk Lee**
 
 [GitHub](https://github.com/david3684) | [Email](mailto:chan3684@kaist.ac.kr)
 
@@ -22,7 +22,8 @@ I am undergraduate student in KAIST, School of Computing. I am interested in how
 ## **Skills**
 
 - **Programming Languages**: Python, C, Scala, Java
-- **Machine Learning**: PyTorch, TensorFlow, Scikit-learn, Keras 
+- **Machine Learning**: PyTorch, TensorFlow, Scikit-learn, Keras
+- **Language**: Korean(Native), English(Fluent, IBT TOFEL 108)
 
 ---
 
@@ -33,7 +34,7 @@ I am undergraduate student in KAIST, School of Computing. I am interested in how
 - Supervisor: Prof. [Seunghoon Hong] 
 
 ### Undergraduate Research Intern, CVML Lab. KAIST
-*12/2023 –05/2024*  
+*12/2023 – 05/2024*  
 - Supervisor: Prof. [Hyunjung Shim]
 - Worked on model fairness benchmark within model quantization.
 ---
