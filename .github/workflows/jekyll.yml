@@ -18,6 +18,9 @@ jobs:
       with:
         ruby-version: 3.2
 
+    - name: Clear Gem cache
+      run: gem cleanup
+      
     - name: Install dependencies
       run: |
         gem install bundler
