@@ -14,8 +14,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Hi, I'm Chanhyuk Lee
+I'm M.S Student at KAIST [Vision & Learning Lab](https://vllab.kaist.ac.kr), advised by Prof. Seunghoon Hong.
+Before starting my M.S course, I completed my BS in School of Computing, double major in Chemistry, at KAIST.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
-
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+My research interest widely covers computer vision tasks and learning algorithm, especially building a generalist model that could seamlessly interact with real world. I'm also interested in interpreting how the neural network works.
