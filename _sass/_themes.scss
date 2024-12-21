@@ -5,37 +5,44 @@
 @use "sass:color";
 
 :root {
-  --global-bg-color: #f9f9f9; // 기본 배경 (밝은 회백색)
-  --global-code-bg-color: #f3f4f6; // 코드 블록 배경 (살짝 더 어두운 회색)
-  --global-text-color: #2c3e50; // 기본 텍스트 색상 (짙은 네이비/회색)
-  --global-text-color-light: #6c7a89; // 보조 텍스트 색상 (중간 톤 회색)
-  --global-theme-color: #5cb85c; // 테마 강조 색상 (부드러운 그린 계열)
-  --global-hover-color: #3d8b3d; // 호버 강조 색상 (짙은 그린)
-  --global-hover-text-color: #ffffff; // 호버 시 텍스트 색상 (밝은 흰색)
-  --global-footer-bg-color: #f1f3f5; // 푸터 배경 (아주 밝은 회색)
-  --global-footer-text-color: #495057; // 푸터 텍스트 (중간 톤 회색)
-  --global-footer-link-color: #2c7f2c; // 푸터 링크 색상 (녹색 계열)
-  --global-distill-app-color: #eceff4; // 앱 기본 색상 (밝은 톤)
-  --global-divider-color: rgba(44, 62, 80, 0.1); // 구분선 색상 (투명한 네이비)
-  --global-card-bg-color: #ffffff; // 카드 배경 색상 (밝은 흰색)
-  --global-highlight-color: #ff6b6b; // 하이라이트 색상 (부드러운 레드)
-  --global-back-to-top-bg-color: rgba(44, 62, 80, 0.4); // 투명한 네이비 배경
-  --global-back-to-top-text-color: #ffffff; // "Back to Top" 텍스트 색상
-  --global-newsletter-bg-color: #f9f9f9; // 뉴스레터 배경 색상
-  --global-newsletter-text-color: #2c3e50; // 뉴스레터 텍스트 색상
+  --global-bg-color: #{$white-color}; // 기본 배경
+  --global-code-bg-color: #{$code-bg-color-light}; // 코드 블록 배경
+  --global-text-color: #{$black-color}; // 기본 텍스트
+  --global-text-color-light: #{$grey-color}; // 보조 텍스트
+  --global-theme-color: #{$green-color}; // 테마 강조 (부드러운 그린)
+  --global-hover-color: #{$green-color-dark}; // 호버 강조 (짙은 그린)
+  --global-hover-text-color: #{$white-color}; // 호버 텍스트
+  --global-footer-bg-color: #{$grey-color-light}; // 푸터 배경
+  --global-footer-text-color: #{$grey-color}; // 푸터 텍스트
+  --global-footer-link-color: #{$green-color}; // 푸터 링크
+  --global-distill-app-color: #{$grey-color}; // 앱 배경
+  --global-divider-color: rgba(0, 0, 0, 0.1); // 구분선
+  --global-card-bg-color: #{$white-color}; // 카드 배경
+  --global-highlight-color: #{$red-color-dark}; // 하이라이트 (짙은 레드)
+  --global-back-to-top-bg-color: rgba(
+    #{color.channel($black-color, "red", $space: rgb)},
+    #{color.channel($black-color, "green", $space: rgb)},
+    #{color.channel($black-color, "blue", $space: rgb)},
+    0.4
+  ); // "Back to Top" 배경
+  --global-back-to-top-text-color: #{$white-color}; // "Back to Top" 텍스트
+  --global-newsletter-bg-color: #{$white-color}; // 뉴스레터 배경
+  --global-newsletter-text-color: #{$black-color}; // 뉴스레터 텍스트
 
-  --global-tip-block: #42a5f5; // 팁 블록 강조 색상 (블루 계열)
-  --global-tip-block-bg: #e3f2fd; // 팁 블록 배경 (밝은 블루)
-  --global-tip-block-text: #1e88e5; // 팁 블록 텍스트 (짙은 블루)
-  --global-tip-block-title: #1565c0; // 팁 블록 제목 (더 짙은 블루)
-  --global-warning-block: #f9a825; // 경고 블록 강조 색상 (부드러운 옐로우)
-  --global-warning-block-bg: #fff3e0; // 경고 블록 배경 (밝은 베이지)
-  --global-warning-block-text: #bf360c; // 경고 블록 텍스트 (짙은 오렌지)
-  --global-warning-block-title: #ef6c00; // 경고 블록 제목 (밝은 오렌지)
-  --global-danger-block: #e53935; // 위험 블록 강조 색상 (레드 계열)
-  --global-danger-block-bg: #ffebee; // 위험 블록 배경 (밝은 핑크/레드)
-  --global-danger-block-text: #b71c1c; // 위험 블록 텍스트 (짙은 레드)
-  --global-danger-block-title: #c62828; // 위험 블록 제목 (어두운 레드)
+  --global-tip-block: #{$green-color-bright}; // 팁 블록 강조
+  --global-tip-block-bg: #{$green-color-light}; // 팁 블록 배경
+  --global-tip-block-text: #{$green-color-dark}; // 팁 블록 텍스트
+  --global-tip-block-title: #{$green-color}; // 팁 블록 제목
+
+  --global-warning-block: #{$yellow-color}; // 경고 블록 강조
+  --global-warning-block-bg: #{$yellow-color}; // 경고 블록 배경
+  --global-warning-block-text: #{$orange-color}; // 경고 블록 텍스트
+  --global-warning-block-title: #{$orange-color}; // 경고 블록 제목
+
+  --global-danger-block: #{$red-color}; // 위험 블록 강조
+  --global-danger-block-bg: #{$pink-color-light}; // 위험 블록 배경
+  --global-danger-block-text: #{$red-color-dark}; // 위험 블록 텍스트
+  --global-danger-block-title: #{$red-color-dark}; // 위험 블록 제목
 
   #light-toggle-system {
     padding-left: 10px;
@@ -71,59 +78,45 @@
 }
 
 html[data-theme="dark"] {
-  // --global-bg-color: #{$grey-color-dark};
-  // --global-code-bg-color: #{$code-bg-color-dark};
-  // --global-text-color: #{$grey-color-light};
-  // --global-text-color-light: #{$grey-color};
-  // --global-theme-color: #{$cyan-color};
-  // --global-hover-color: #{$cyan-color};
-  // --global-hover-text-color: #{$white-color};
-  // --global-footer-bg-color: #{$grey-color-light};
-  // --global-footer-text-color: #{$grey-color-dark};
-  // --global-footer-link-color: #{$black-color};
-  // --global-distill-app-color: #{$grey-color-light};
-  // --global-divider-color: #424246;
-  // --global-card-bg-color: #{$grey-900};
-  // --global-back-to-top-bg-color: rgba(
-  //   #{color.channel($white-color, "red", $space: rgb)},
-  //   #{color.channel($white-color, "green", $space: rgb)},
-  //   #{color.channel($white-color, "blue", $space: rgb)},
-  //   0.5
-  // );
-  --global-bg-color: #1e1e2e; // 메인 배경 (짙은 네이비/보라 계열)
-  --global-code-bg-color: #2b2b3b; // 코드 블록 배경 (배경보다 살짝 밝음)
-  --global-text-color: #d8dee9; // 기본 텍스트 (밝은 회색)
-  --global-text-color-light: #e5e9f0; // 강조 텍스트 (더 밝은 회색)
-  --global-theme-color: #8fbcbb; // 테마 강조 색상 (부드러운 민트/틸)
-  --global-hover-color: #5e81ac; // 호버 강조 색상 (차분한 블루)
-  --global-hover-text-color: #eceff4; // 호버 텍스트 색상 (밝은 회색)
-  --global-footer-bg-color: #2e3440; // 푸터 배경 (짙은 회색)
-  --global-footer-text-color: #d8dee9; // 푸터 텍스트 (밝은 회색)
-  --global-footer-link-color: #88c0d0; // 푸터 링크 색상 (밝은 민트)
-  --global-distill-app-color: #434c5e; // 앱 색상 (중간 톤 네이비/회색)
-  --global-divider-color: #4c566a; // 구분선 색상 (중간 회색)
-  --global-card-bg-color: #3b4252; // 카드 배경 색상 (짙은 회색)
-  --global-back-to-top-bg-color: rgba(236, 239, 244, 0.5); // 투명한 밝은 톤 배경
-  --global-back-to-top-text-color: #ffffff; // "Back to Top" 텍스트 색상
-  --global-newsletter-bg-color: #2e3440; // 뉴스레터 배경 색상 (짙은 회색)
-  --global-newsletter-text-color: #d8dee9; // 뉴스레터 텍스트 색상 (밝은 회색)
+  --global-bg-color: #{$grey-color-dark}; // 다크 모드 배경
+  --global-code-bg-color: #{$code-bg-color-dark}; // 코드 블록 배경
+  --global-text-color: #{$grey-color-light}; // 기본 텍스트
+  --global-text-color-light: #{$grey-color}; // 보조 텍스트
+  --global-theme-color: #{$cyan-color}; // 테마 강조 (시안 계열)
+  --global-hover-color: #{$blue-color-dark}; // 호버 강조 (짙은 블루)
+  --global-hover-text-color: #{$white-color}; // 호버 텍스트
+  --global-footer-bg-color: #{$grey-color}; // 푸터 배경
+  --global-footer-text-color: #{$grey-color-light}; // 푸터 텍스트
+  --global-footer-link-color: #{$cyan-color}; // 푸터 링크
+  --global-distill-app-color: #{$grey-color-light}; // 앱 배경
+  --global-divider-color: rgba(255, 255, 255, 0.1); // 구분선
+  --global-card-bg-color: #{$grey-900}; // 카드 배경
+  --global-highlight-color: #{$red-color-dark}; // 하이라이트 (짙은 레드)
+  --global-back-to-top-bg-color: rgba(
+    #{color.channel($white-color, "red", $space: rgb)},
+    #{color.channel($white-color, "green", $space: rgb)},
+    #{color.channel($white-color, "blue", $space: rgb)},
+    0.5
+  ); // "Back to Top" 배경
+  --global-back-to-top-text-color: #{$black-color}; // "Back to Top" 텍스트
+  --global-newsletter-bg-color: #{$grey-color-light}; // 뉴스레터 배경
+  --global-newsletter-text-color: #{$grey-color-dark}; // 뉴스레터 텍스트
 
-  --global-tip-block: #a3be8c; // 팁 블록 강조 색상 (부드러운 올리브 그린)
-  --global-tip-block-bg: #3b4252; // 팁 블록 배경 (짙은 회색)
-  --global-tip-block-text: #e5e9f0; // 팁 블록 텍스트 (밝은 회색)
-  --global-tip-block-title: #a3be8c; // 팁 블록 제목 (강조된 그린)
-  
-  --global-warning-block: #ebcb8b; // 경고 블록 강조 색상 (밝은 오렌지 계열)
-  --global-warning-block-bg: #3b3a35; // 경고 블록 배경 (어두운 브라운/그레이)
-  --global-warning-block-text: #eceff4; // 경고 블록 텍스트 (밝은 톤)
-  --global-warning-block-title: #d08770; // 경고 블록 제목 (부드러운 오렌지)
+  --global-tip-block: #{$cyan-color}; // 팁 블록 강조
+  --global-tip-block-bg: #{$light-cyan-color}; // 팁 블록 배경
+  --global-tip-block-text: #{$blue-color-dark}; // 팁 블록 텍스트
+  --global-tip-block-title: #{$cyan-color}; // 팁 블록 제목
 
-  --global-danger-block: #bf616a; // 위험 블록 강조 색상 (짙은 핑크/레드 계열)
-  --global-danger-block-bg: #3c4049; // 위험 블록 배경 (짙은 회색)
-  --global-danger-block-text: #eceff4; // 위험 블록 텍스트 (밝은 회색)
-  --global-danger-block-title: #bf616a; // 위험 블록 제목 (레드 강조)
+  --global-warning-block: #{$yellow-color}; // 경고 블록 강조
+  --global-warning-block-bg: #{$orange-color}; // 경고 블록 배경
+  --global-warning-block-text: #{$orange-color}; // 경고 블록 텍스트
+  --global-warning-block-title: #{$orange-color}; // 경고 블록 제목
 
-  --global-highlight-color: #ebcb8b; // 하이라이트 색상 (밝은 오렌지)
+  --global-danger-block: #{$red-color}; // 위험 블록 강조
+  --global-danger-block-bg: #{$pink-color-light}; // 위험 블록 배경
+  --global-danger-block-text: #{$red-color-dark}; // 위험 블록 텍스트
+  --global-danger-block-title: #{$red-color-dark}; // 위험 블록 제목
+
 
   .only-light {
     display: none;
