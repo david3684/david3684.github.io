@@ -1,40 +1,41 @@
 /*******************************************************************************
  * Variables used throughout the theme.
- * Updated stock colors for a more comfortable palette.
+ * To adjust anything, simply edit the variables below and rebuild the theme.
  ******************************************************************************/
 
 @use "sass:color";
 
 // Colors
-$red-color: #e57373 !default; // 부드러운 레드
-$red-color-dark: #b71c1c !default; // 어두운 레드 (기존 유지)
-$orange-color: #ffb74d !default; // 부드러운 오렌지
-$blue-color: #64b5f6 !default; // 밝고 부드러운 블루
-$blue-color-dark: #1e88e5 !default; // 약간 짙은 블루
-$cyan-color: #4dd0e1 !default; // 밝은 시안
-$light-cyan-color: color.adjust($cyan-color, $lightness: 20%);
-$green-color: #81c784 !default; // 부드러운 그린
-$green-color-lime: #cddc39 !default; // 라임 계열의 밝은 그린
-$green-color-dark: #388e3c !default; // 짙은 그린
-$green-color-light: #dcedc8 !default; // 라이트 그린
-$green-color-bright: #66bb6a !default; // 생기있는 밝은 그린
-$purple-color: #9575cd !default; // 부드러운 퍼플
+$red-color: #ff3636 !default;
+$red-color-dark: #b71c1c !default;
+$orange-color: #f29105 !default;
+$blue-color: #0076df !default;
+$blue-color-dark: #00369f !default;
+$cyan-color: #2698ba !default;
+$light-cyan-color: color.adjust($cyan-color, $lightness: 25%);
+$green-color: #00ab37 !default;
+$green-color-lime: #b7d12a !default;
+$green-color-dark: #009f06 !default;
+$green-color-light: #ddffdd !default;
+$green-color-bright: #11d68b !default;
+$purple-color: #b509ac !default;
 $light-purple-color: color.adjust($purple-color, $lightness: 25%);
-$pink-color: #f48fb1 !default; // 부드러운 핑크
-$pink-color-light: #fde4ec !default; // 밝고 은은한 핑크
-$yellow-color: #ffd54f !default; // 부드러운 옐로우
+$pink-color: #f92080 !default;
+$pink-color-light: #ffdddd !default;
+$yellow-color: #efcc00 !default;
 
-$grey-color: #9e9e9e !default; // 중간 톤의 회색
+$grey-color: #828282 !default;
 $grey-color-light: color.adjust($grey-color, $lightness: 40%);
-$grey-color-dark: #424242 !default; // 짙은 회색
-$grey-900: #212121 !default; // 아주 짙은 회색
+$grey-color-dark: #1c1c1d;
+$grey-900: #212529;
 
-$white-color: #ffffff !default; // 밝은 흰색 (기본 유지)
-$black-color: #121212 !default; // 부드러운 블랙 (완전한 블랙에서 약간 완화)
+$white-color: #ffffff !default;
+$black-color: #000000 !default;
 
 // Theme colors
-$code-bg-color-light: rgba($purple-color, 0.05); // 코드 블록 배경 (퍼플 강조)
-$code-bg-color-dark: #2e3440 !default; // 어두운 코드 블록 배경
+
+$code-bg-color-light: rgba($purple-color, 0.05);
+$code-bg-color-dark: #2c3237 !default;
 
 // Font awesome location
 $fa-font-path: "../webfonts";
