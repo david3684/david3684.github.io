@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Based on Dajeon and Seoul, South Korea. KAIST.
+subtitle: Based on Daejeon & Seoul, Republic of Korea, KAIST.
 
 profile:
   align: right
@@ -17,4 +17,4 @@ social: true # includes social icons at the bottom of the page
 
 I am M.S. student at KAIST, School of Computing and [VL Lab](http://vllab.kaist.ac.kr), advised by [Prof. Seunghoon Hong](https://maga33.github.io/). Before joining the lab, I recieved my Bachleor's degree from KAIST in double major of **Computer Science** and **Chemistry**.
 
-I'm widely intereseted in how complex model can interact with the real world. I'm currently working on model fusion via aligning parameters and representation. Ultimate goal of the work is building large models in bottom-up way in regime of limited resources, including model fusion and knowledge transfer.
+I'm widely interested in how complex model can interact with the real world. I'm currently working on model fusion via aligning parameters and representation. Ultimate goal of the work is building large models in bottom-up way with limited resources. Tasks for this goal includes works such as model fusion, knowledge transfer and multi-task modeling.
