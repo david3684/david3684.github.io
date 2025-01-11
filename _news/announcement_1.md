@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-I’m starting my M.S. course in March 2025 in Vision & Learning lab.
+I’m starting my M.S. course from March 2025 in Vision & Learning lab.
