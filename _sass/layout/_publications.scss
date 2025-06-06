@@ -7,25 +7,28 @@
   padding: 0;
   margin: 20px 0;
 
-  // Mobile - reduce bottom margin
-  @include breakpoint(max-width 768px) {
-    margin-bottom: 10px;
+  // Mobile - reduce bottom margin (apply to smaller screens)
+  margin-bottom: 10px;
+  
+  @include breakpoint($small) {
+    margin-bottom: 20px;
   }
 }
 
 .publication-item {
   display: flex;
-  margin-bottom: 30px;
-  border-bottom: 1px solid var(--global-border-color);
-  padding-bottom: 20px;
+  flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--global-border-color);
+  padding-bottom: 15px;
 
-  // Mobile layout
-  @include breakpoint(max-width 768px) {
-    flex-direction: column;
+  // Desktop layout
+  @include breakpoint($small) {
+    flex-direction: row;
     align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
   }
 }
 
@@ -35,42 +38,44 @@
 
 .pub-thumbnail {
   flex-shrink: 0;
-  width: 230px;
-  margin-right: 20px !important;
-  margin-left: 20px !important;
-  border-radius: 4px;
+  width: calc(100% - 20px);
+  max-width: none;
+  margin: 0 10px 15px 10px !important;
+  border-radius: 8px;
 
-  // Mobile styles - full width with padding
-  @include breakpoint(max-width 768px) {
-    width: calc(100% - 20px);
-    max-width: none;
-    margin: 0 10px 15px 10px !important;
-    border-radius: 8px;
+  // Desktop styles
+  @include breakpoint($small) {
+    width: 230px;
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+    border-radius: 4px;
   }
 }
 
 .pub-thumbnail img {
   width: 100%;
-  height: 100px !important;
-  object-fit: fill;
+  height: auto !important;
+  object-fit: contain;
+  max-height: 200px;
   border-radius: 4px;
 
-  // Mobile image - maintain aspect ratio
-  @include breakpoint(max-width 768px) {
-    height: auto !important;
-    object-fit: contain;
-    max-height: 200px;
+  // Desktop image - fixed size
+  @include breakpoint($small) {
+    height: 100px !important;
+    object-fit: fill;
+    max-height: none;
   }
 }
 
 .pub-content {
   flex: 1;
-  margin-left: 10px;
+  margin-left: 0;
+  width: 100%;
 
-  // Mobile styles
-  @include breakpoint(max-width 768px) {
-    margin-left: 0;
-    width: 100%;
+  // Desktop styles
+  @include breakpoint($small) {
+    margin-left: 10px;
+    width: auto;
   }
 }
 
