@@ -3,7 +3,7 @@ layout: single
 title: "Universal Few-Shot Spatial Control for Diffusion Models"
 collection: publications
 date: 2025-06-06 22:21:59 +00:00
-image: 
+image: images/ufc.png
 categories: research
 author: "Chanhyuk Lee"
 authors: "Kiet Nguyen Tuan, <strong>Chanhyuk Lee</strong>, Donggyun Kim, Donghoon Lee, Seunghoon Hong"

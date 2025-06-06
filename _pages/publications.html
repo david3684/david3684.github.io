@@ -9,87 +9,7 @@ author_profile: true
 <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
 {% endif %}
 
-<style>
-.publication-list {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-}
 
-.publication-item {
-  display: flex;
-  margin-bottom: 30px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 20px;
-  align-items: flex-start;
-}
-
-.publication-item:last-child {
-  border-bottom: none;
-}
-
-.pub-thumbnail {
-  flex-shrink: 0;
-  width: 200px;
-  margin-right: 15px;
-  border-radius: 4px;
-}
-
-.pub-thumbnail img {
-  width: 100%;
-  object-fit: contain;
-  border-radius: 4px;
-}
-
-.pub-content {
-  flex: 1;
-}
-
-.pub-title {
-  font-size: 0.95em;
-  font-weight: 550;
-  margin-bottom: 5px;
-  line-height: 1.3;
-}
-
-.pub-authors {
-  margin-bottom: 5px;
-  font-size: 0.8em;
-}
-
-.pub-venue {
-  margin-bottom: 4px;
-  font-style: italic;
-  color: var(--global-text-color-light);
-  font-size: 0.8em;
-}
-
-.pub-links {
-  margin-bottom: 4px;
-}
-
-.pub-links a {
-  color: #52adc8;
-  text-decoration: none;
-  margin-right: 10px;
-  font-size: 0.9em;
-}
-
-.pub-links a:hover {
-  text-decoration: underline;
-}
-
-.pub-description {
-  font-size: 0.95em;
-  line-height: 1.4;
-  color: #444;
-}
-
-.author-highlight {
-  font-weight: bold;
-  text-decoration: underline;
-}
-</style>
 
 <div class="publication-list">
   {% assign sorted_publications = site.publications | sort: 'date' | reverse %}
@@ -97,7 +17,7 @@ author_profile: true
   <div class="publication-item">
     {% if pub.image %}
     <div class="pub-thumbnail">
-      <img src="{{ pub.image }}" alt="{{ pub.title }}" />
+      <img src="{{ site.baseurl }}/{{ pub.image }}" alt="{{ pub.title }}" />
     </div>
     {% endif %}
     

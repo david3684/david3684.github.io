@@ -3,7 +3,7 @@ layout: single
 title: "AdaRank: Adaptive Rank Pruning for Enhanced Model Merging"
 collection: publications
 date: 2025-03-25 22:21:59 +00:00
-image: 
+image: images/adarank.png
 categories: research
 author: "Chanhyuk Lee"
 authors: "<strong>Chanhyuk Lee</strong>, Jiho Choi, Chanryeol Lee, Donggyun Kim, Seunghoon Hong"

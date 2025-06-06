@@ -1,0 +1,148 @@
+/* ==========================================================================
+   PUBLICATIONS
+   ========================================================================== */
+
+.publication-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.publication-item {
+  display: flex;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--global-border-color);
+  padding-bottom: 20px;
+  align-items: flex-start;
+}
+
+.publication-item:last-child {
+  border-bottom: none;
+}
+
+.pub-thumbnail {
+  flex-shrink: 0;
+  width: 230px;
+  margin-right: 20px !important;
+  margin-left: 20px !important;
+  border-radius: 4px;
+}
+
+.pub-thumbnail img {
+  width: 100%;
+  height: 100px !important;
+  object-fit: fill;
+  border-radius: 4px;
+}
+
+.pub-content {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.pub-title {
+  font-size: 0.95em;
+  font-weight: 550;
+  margin-bottom: 5px;
+  line-height: 1.3;
+  color: var(--global-text-color);
+}
+
+.pub-authors {
+  margin-bottom: 5px;
+  font-size: 0.8em;
+  color: var(--global-text-color);
+}
+
+.pub-venue {
+  margin-bottom: 4px;
+  font-style: italic;
+  color: var(--global-text-color-light);
+  font-size: 0.8em;
+}
+
+.pub-links {
+  margin-bottom: 4px;
+}
+
+.pub-links a {
+  color: var(--global-link-color);
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 0.8em;
+}
+
+.pub-links a:hover {
+  text-decoration: underline;
+  color: var(--global-link-color-hover);
+}
+
+.pub-description {
+  font-size: 0.95em;
+  line-height: 1.4;
+  color: var(--global-text-color);
+}
+
+.author-highlight {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Education section styling */
+.education-section {
+  margin: 30px 0;
+}
+
+.education-item {
+  margin-bottom: 25px;
+  border-radius: 0 5px 5px 0;
+}
+
+.education-institution {
+  font-size: 1.0em;
+  font-weight: 550;
+  margin-bottom: 8px;
+}
+
+.education-degree {
+  font-size: 0.9em;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: var(--global-text-color);
+}
+
+.education-period {
+  font-style: italic;
+  margin-left: 10px;
+}
+
+.education-advisor {
+  font-size: 0.8em;
+  margin-top: 5px;
+}
+
+.education-advisor a {
+  color: var(--global-link-color);
+  text-decoration: none;
+}
+
+.education-advisor a:hover {
+  color: var(--global-link-color-hover);
+  text-decoration: underline;
+}
+
+/* Introduction text styling */
+.page__content > p {
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+.page__content > p a {
+  color: var(--global-link-color);
+  text-decoration: none;
+}
+
+.page__content > p a:hover {
+  color: var(--global-link-color-hover);
+  text-decoration: underline;
+} 
