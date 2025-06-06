@@ -34,6 +34,12 @@ layout: default
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
         {% endif %}
         
+        {% if page.authors %}
+          <p class="page__meta"><strong>Authors:</strong> {{ page.authors }}</p>
+        {% elsif page.author %}
+          <p class="page__meta"><strong>Author:</strong> {{ page.author }}</p>
+        {% endif %}
+        
         {% if page.collection == 'teaching' %}
           <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.venue and page.date %}
@@ -47,30 +53,38 @@ layout: default
       <section class="page__content" itemprop="text">
         {{ content }}
 
-        {% if page.citation and page.paperurl and page.slidesurl and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.paperurl and page.slidesurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a></p>
-        {% elsif page.citation and page.paperurl and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.paperurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a></p>
-        {% elsif page.citation and page.slidesurl and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.slidesurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.slidesurl }}">Download Slides</a></p>
-        {% elsif page.slidesurl and page.bibtexurl %}
-          <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.paperurl and page.bibtexurl %}
-          <p style="font-size: smaller"><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}</p>
-        {% elsif page.slidesurl %}
-          <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a></p>
-        {% elsif page.bibtexurl %}
-          <p style="font-size: smaller"><a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
+        {% comment %}<!-- Publication links section -->{% endcomment %}
+                 {% if page.citation or page.paperurl or page.arxiv or page.code or page.project or page.bibtexurl %}
+          <div style="font-size: smaller; margin-top: 20px; padding: 15px; background-color: #f9f9f9; border-left: 4px solid #ccc;">
+            {% if page.citation %}
+              <p><strong>Citation:</strong> {{ page.citation }}</p>
+            {% endif %}
+            
+                         {% assign links = "" %}
+             {% if page.paperurl %}
+               {% assign links = links | append: '<a href="' | append: page.paperurl | append: '">Paper</a>' %}
+             {% endif %}
+             {% if page.arxiv %}
+               {% if links != "" %}{% assign links = links | append: ' | ' %}{% endif %}
+               {% assign links = links | append: '<a href="' | append: page.arxiv | append: '">arXiv</a>' %}
+             {% endif %}
+             {% if page.code %}
+               {% if links != "" %}{% assign links = links | append: ' | ' %}{% endif %}
+               {% assign links = links | append: '<a href="' | append: page.code | append: '">Code</a>' %}
+             {% endif %}
+             {% if page.project %}
+               {% if links != "" %}{% assign links = links | append: ' | ' %}{% endif %}
+               {% assign links = links | append: '<a href="' | append: page.project | append: '">Project</a>' %}
+             {% endif %}
+             {% if page.bibtexurl %}
+               {% if links != "" %}{% assign links = links | append: ' | ' %}{% endif %}
+               {% assign links = links | append: '<a href="' | append: page.bibtexurl | append: '">BibTeX</a>' %}
+             {% endif %}
+            
+            {% if links != "" %}
+              <p><strong>Links:</strong> {{ links }}</p>
+            {% endif %}
+          </div>
         {% endif %}
 
         {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}

@@ -6,31 +6,143 @@ author_profile: true
 ---
 
 {% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
+<div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
 {% endif %}
 
-{% include base_path %}
+<style>
+.publication-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
+.publication-item {
+  display: flex;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+  align-items: flex-start;
+}
+
+.publication-item:last-child {
+  border-bottom: none;
+}
+
+.pub-thumbnail {
+  flex-shrink: 0;
+  width: 200px;
+  margin-right: 15px;
+  border-radius: 4px;
+}
+
+.pub-thumbnail img {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.pub-content {
+  flex: 1;
+}
+
+.pub-title {
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+
+.pub-authors {
+  margin-bottom: 5px;
+  font-size: 1em;
+}
+
+.pub-venue {
+  margin-bottom: 4px;
+  font-style: italic;
+  color: #666;
+}
+
+.pub-links {
+  margin-bottom: 4px;
+}
+
+.pub-links a {
+  color: #2c5aa0;
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 0.9em;
+}
+
+.pub-links a:hover {
+  text-decoration: underline;
+}
+
+.pub-description {
+  font-size: 0.95em;
+  line-height: 1.4;
+  color: #444;
+}
+</style>
+
+<div class="publication-list">
+  {% assign sorted_publications = site.publications | sort: 'date' | reverse %}
+  {% for pub in sorted_publications %}
+  <div class="publication-item">
+    {% if pub.image %}
+    <div class="pub-thumbnail">
+      <img src="{{ pub.image }}" alt="{{ pub.title }}" />
+    </div>
+    {% endif %}
+    
+    <div class="pub-content">
+      <div class="pub-title">{{ pub.title }}</div>
+      
+      {% if pub.authors %}
+      <div class="pub-authors">{{ pub.authors }}</div>
+      {% elsif pub.author %}
+      <div class="pub-authors">{{ pub.author }}</div>
       {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
+      
+      {% if pub.venue or pub.date %}
+      <div class="pub-venue">
+        {% if pub.venue %}{{ pub.venue }}{% endif %}{% if pub.venue and pub.date %}, {% endif %}{% if pub.date %}{{ pub.date | date: "%Y" }}{% endif %}
+      </div>
+      {% endif %}
+      
+      {% if pub.arxiv or pub.code or pub.project or pub.paperurl or pub.bibtexurl %}
+      <div class="pub-links">
+        {% if pub.arxiv %}<a href="{{ pub.arxiv }}">arXiv</a>{% endif %}
+        {% if pub.code %}<a href="{{ pub.code }}">Code</a>{% endif %}
+        {% if pub.project %}<a href="{{ pub.project }}">Project</a>{% endif %}
+        {% if pub.paperurl %}<a href="{{ pub.paperurl }}">Paper</a>{% endif %}
+        {% if pub.bibtexurl %}<a href="{{ pub.bibtexurl }}">BibTeX</a>{% endif %}
+      </div>
+      {% endif %}
+      
+      {% if pub.content and pub.content != "" %}
+      <div class="pub-description">{{ pub.content }}</div>
+      {% endif %}
+    </div>
+  </div>
   {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const items = document.querySelectorAll('.publication-item');
+  
+  items.forEach(function(item) {
+    const content = item.querySelector('.pub-content');
+    const thumbnail = item.querySelector('.pub-thumbnail img');
+    
+    if (content && thumbnail) {
+      const contentHeight = content.offsetHeight;
+      thumbnail.style.height = contentHeight + 'px';
+    }
+  });
+});
+</script>
 
 
 
