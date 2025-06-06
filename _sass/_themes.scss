@@ -3,6 +3,33 @@
    ========================================================================== */
 
 /* ==========================================================================
+   CUSTOM FONTS
+   ========================================================================== */
+
+/* Add your custom font definitions here */
+/*
+@font-face {
+  font-family: 'YourCustomFont';
+  src: url('/assets/fonts/your-font-file.woff2') format('woff2'),
+       url('/assets/fonts/your-font-file.woff') format('woff'),
+       url('/assets/fonts/your-font-file.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'YourCustomFont';
+  src: url('/assets/fonts/your-font-file-bold.woff2') format('woff2'),
+       url('/assets/fonts/your-font-file-bold.woff') format('woff'),
+       url('/assets/fonts/your-font-file-bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+/* ==========================================================================
    TYPOGRAPHY
    ========================================================================== */
 
@@ -28,6 +55,9 @@ $times                      : Times, serif;
 $bodoni                     : "Bodoni MT", serif;
 $calisto                    : "Calisto MT", serif;
 $garamond                   : Garamond, serif;
+
+/* Custom typefaces */
+$custom-font                : "YourCustomFont", $sans-serif;
 
 /* Type scale */
 $type-size-1                : 2.441em;  // ~39.056px

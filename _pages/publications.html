@@ -46,21 +46,22 @@ author_profile: true
 }
 
 .pub-title {
-  font-size: 1.1em;
-  font-weight: 500;
+  font-size: 0.95em;
+  font-weight: 550;
   margin-bottom: 5px;
   line-height: 1.3;
 }
 
 .pub-authors {
   margin-bottom: 5px;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 .pub-venue {
   margin-bottom: 4px;
   font-style: italic;
-  color: #666;
+  color: var(--global-text-color-light);
+  font-size: 0.8em;
 }
 
 .pub-links {
@@ -68,7 +69,7 @@ author_profile: true
 }
 
 .pub-links a {
-  color: #2c5aa0;
+  color: #52adc8;
   text-decoration: none;
   margin-right: 10px;
   font-size: 0.9em;
@@ -82,6 +83,11 @@ author_profile: true
   font-size: 0.95em;
   line-height: 1.4;
   color: #444;
+}
+
+.author-highlight {
+  font-weight: bold;
+  text-decoration: underline;
 }
 </style>
 
@@ -106,7 +112,7 @@ author_profile: true
       
       {% if pub.venue or pub.date %}
       <div class="pub-venue">
-        {% if pub.venue %}{{ pub.venue }}{% endif %}{% if pub.venue and pub.date %}, {% endif %}{% if pub.date %}{{ pub.date | date: "%Y" }}{% endif %}
+        {% if pub.venue %}{{ pub.venue }}{% endif %}{% assign show_year = true %}{% if pub.venue contains "under review" or pub.venue contains "Under Review" or pub.venue contains "Preprint" %}{% assign show_year = false %}{% endif %}{% if pub.venue and pub.date and show_year %}, {% endif %}{% if pub.date and show_year %}{{ pub.date | date: "%Y" }}{% endif %}
       </div>
       {% endif %}
       
@@ -130,6 +136,7 @@ author_profile: true
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // 이미지 높이 조정
   const items = document.querySelectorAll('.publication-item');
   
   items.forEach(function(item) {
@@ -140,6 +147,35 @@ document.addEventListener('DOMContentLoaded', function() {
       const contentHeight = content.offsetHeight;
       thumbnail.style.height = contentHeight + 'px';
     }
+  });
+  
+  // 저자 이름 자동 하이라이트
+  const myNames = [
+    'Chanhyuk Lee',
+    'Chanhyuk David Lee', 
+    'David Lee',
+    'C. Lee',
+    'C.H. Lee'
+  ];
+  
+  const authorElements = document.querySelectorAll('.pub-authors');
+  
+  authorElements.forEach(function(authorElement) {
+    let authorHtml = authorElement.innerHTML;
+    
+    myNames.forEach(function(name) {
+      // 이미 <strong> 태그가 있는 경우 제거하고 새로운 스타일 적용
+      const strongRegex = new RegExp(`<strong>${name}</strong>`, 'gi');
+      const plainRegex = new RegExp(`\\b${name}\\b`, 'gi');
+      
+      // 기존 strong 태그 제거
+      authorHtml = authorHtml.replace(strongRegex, name);
+      
+      // 새로운 하이라이트 클래스 적용
+      authorHtml = authorHtml.replace(plainRegex, `<span class="author-highlight">${name}</span>`);
+    });
+    
+    authorElement.innerHTML = authorHtml;
   });
 });
 </script>
