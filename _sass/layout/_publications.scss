@@ -6,6 +6,11 @@
   list-style: none;
   padding: 0;
   margin: 20px 0;
+
+  // Mobile - reduce bottom margin
+  @include breakpoint(max-width $small) {
+    margin-bottom: 10px;
+  }
 }
 
 .publication-item {
@@ -13,7 +18,15 @@
   margin-bottom: 30px;
   border-bottom: 1px solid var(--global-border-color);
   padding-bottom: 20px;
-  align-items: flex-start;
+  align-items: center;
+
+  // Mobile layout
+  @include breakpoint(max-width $small) {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
 }
 
 .publication-item:last-child {
@@ -26,6 +39,14 @@
   margin-right: 20px !important;
   margin-left: 20px !important;
   border-radius: 4px;
+
+  // Mobile styles - full width with padding
+  @include breakpoint(max-width $small) {
+    width: calc(100% - 20px);
+    max-width: none;
+    margin: 0 10px 15px 10px !important;
+    border-radius: 8px;
+  }
 }
 
 .pub-thumbnail img {
@@ -33,11 +54,24 @@
   height: 100px !important;
   object-fit: fill;
   border-radius: 4px;
+
+  // Mobile image - maintain aspect ratio
+  @include breakpoint(max-width $small) {
+    height: auto !important;
+    object-fit: contain;
+    max-height: 200px;
+  }
 }
 
 .pub-content {
   flex: 1;
   margin-left: 10px;
+
+  // Mobile styles
+  @include breakpoint(max-width $small) {
+    margin-left: 0;
+    width: 100%;
+  }
 }
 
 .pub-title {
