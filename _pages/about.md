@@ -7,9 +7,10 @@ redirect_from:
   - /about.html
 ---
 
-I am Chanhyuk *David* Lee, a Master's student at KAIST School of Computing. I'm currently working in [VL Lab](http://vllab.kaist.ac.kr), which is led by Prof. [Seunghoon Hong](https://maga33.github.io/). Before joining the lab, I received my Bachelor's degree from KAIST in a double major of Computer Science and Chemistry.
+I am Chanhyuk *David* Lee (이찬혁), a Master's student at KAIST School of Computing. I'm currently working in [VL Lab](http://vllab.kaist.ac.kr), which is led by Prof. [Seunghoon Hong](https://maga33.github.io/). Before joining the lab, I received my Bachelor's degree from KAIST in a double major of Computer Science and Chemistry.
 
-I'm widely interested in how complex model can interact with the real world. I'm currently working on model fusion via aligning parameters and representation. Ultimate goal of the work is building large models in bottom-up way with limited resources. Tasks for this goal includes works such as model fusion, knowledge transfer and multi-task learning.
+I'm interested in neural network scaling, particularly developing efficient approaches to build large models with limited resources. My current work focuses on model fusion and parameter alignment, exploring how different networks can be combined while preserving their capabilities.
+For these practical approaches, I am deeply interested in theoretical developments such as infinite-size network frameworks like Neural Tangent Kernel and loss landscape theories like mode connectivity.
 
 ## Education
 
