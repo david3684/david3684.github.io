@@ -1,27 +1,27 @@
 /* ==========================================================================
-   DARK THEME
+   DARK THEME - Modern Mild & Cozy
    ========================================================================== */
 
 /* Color codes used for the theme */
-$gray                       : #7a8288;
-$dark-gray                  : mix(#000, $gray, 40%);
-$darker-gray                : mix(#000, $gray, 60%);
-$light-gray                 : mix(#fff, $gray, 50%);
+$gray                       : #8B8680;
+$dark-gray                  : #5A5753;
+$darker-gray                : #3C3A37;
+$light-gray                 : #A8A39E;
 
-$background                 : #303030;
-$background-light           : mix(#fff, $background, 15%);
-$background-lighter         : mix(#fff, $background, 25%);
-$text                       : #ffffff;
-$link                       : #0ea1c5;
-$link-dark                  : mix(#000, $link, 25%);
-$link-light                 : mix(#fff, $link, 25%);
+$background                 : #1C1B19;        // Warm dark charcoal
+$background-light           : #252320;        // Slightly lighter warm tone
+$background-lighter         : #2F2D2A;        // Even lighter warm tone
+$text                       : #E8E3DE;        // Warm off-white
+$link                       : #7A9BC2;        // Soft warm blue
+$link-dark                  : #6B8AAF;        // Darker warm blue
+$link-light                 : #8FADCD;        // Lighter warm blue
 
 /* Color codes used for the site */
-$danger-color               : #ee5f5b;
-$info-color                 : #2f7f93;
-$notice-color               : #7a8288;
-$success-color              : #62c462;
-$warning-color              : #f89406;
+$danger-color               : #D4907A;        // Muted terracotta
+$info-color                 : #7A9BC2;        // Soft blue-gray
+$notice-color               : #8B8680;
+$success-color              : #7A9BC2;        // Soft warm blue
+$warning-color              : #C9A96E;        // Warm golden
 
 /* Other basic settings for the template */
 $border-radius              : 4px;
@@ -40,14 +40,14 @@ html[data-theme="dark"] {
     --global-footer-bg-color            : #{$background};
     --global-border-color               : #{$light-gray};
     --global-dark-border-color          : #{$background-light};
-    --global-code-background-color      : #fafafa;
-    --global-code-text-color            : #{$darker-gray};
+    --global-code-background-color      : #{$background-lighter};
+    --global-code-text-color            : #{$light-gray};
     --global-fig-caption-color          : #{$light-gray};
     --global-link-color                 : #{$link};
-    --global-link-color-hover           : #{$link-dark};
-    --global-link-color-visited         : #{$link-light};
+    --global-link-color-hover           : #{$link-light};
+    --global-link-color-visited         : #{$link-dark};
     --global-masthead-link-color        : #{$text};
-    --global-masthead-link-color-hover  : #{$background-light};
+    --global-masthead-link-color-hover  : #{$background-lighter};
     --global-text-color                 : #{$text};
     --global-text-color-light           : #{$light-gray};
     --global-thead-color                : #{$background-lighter};
