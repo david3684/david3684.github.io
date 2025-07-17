@@ -20,7 +20,7 @@ For these practical approaches, I am deeply interested in theoretical developmen
     <div class="education-institution">KAIST</div>
     <div class="education-degree">
       M.S. in Computer Science 
-      <span class="education-period">(2025.03 -)</span>
+      <span class="education-period">(Mar. 2025 -)</span>
     </div>
     <div class="education-advisor">Advisor: Prof. <a href="https://maga33.github.io/">Seunghoon Hong</a></div>
   </div>
@@ -29,7 +29,14 @@ For these practical approaches, I am deeply interested in theoretical developmen
     <div class="education-institution">KAIST</div>
     <div class="education-degree">
       B.S. in Computer Science & Chemistry <em>(Double Major)</em>
-      <span class="education-period">(2019.03 - 2025.02)</span>
+      <span class="education-period">(Mar. 2019 - Feb. 2025)</span>
+    </div>
+  </div>
+
+  <div class="education-item">
+    <div class="education-institution">Gyeonggi Science High School for Gifted</div>
+    <div class="education-degree">
+      <span class="education-period">(Mar. 2016 - Feb. 2019)</span>
     </div>
   </div>
 </div>
