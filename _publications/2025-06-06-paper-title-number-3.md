@@ -8,8 +8,8 @@ categories: research
 author: "Chanhyuk Lee"
 authors: "Kiet T Nguyen, <strong>Chanhyuk Lee</strong>, Donggyun Kim, Donghoon Lee, Seunghoon Hong"
 venue: "Preprint"
-arxiv: 
-code: 
+arxiv: http://arxiv.org/abs/2509.07530
+code: https://github.com/kietngt00/UFC
 project: 
 paperurl: 
 bibtexurl: 
