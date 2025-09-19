@@ -12,34 +12,27 @@ I am Chanhyuk (David) Lee, a Master's student at KAIST School of Computing. I'm 
 I'm interested in neural network scaling, particularly developing efficient approaches to build large models with limited resources. My current work focuses on model fusion and parameter alignment, exploring how different networks can be combined while preserving their capabilities.
 For these practical approaches, I am deeply interested in theoretical developments such as infinite-size network frameworks like Neural Tangent Kernel and loss landscape theories like mode connectivity.
 
-## Education
+## News
 
-
-<div class="education-section">
-  <div class="education-item">
-    <div class="education-institution">KAIST</div>
-    <div class="education-degree">
-      M.S. in Computer Science 
-      <span class="education-period">(Mar. 2025 -)</span>
+<div class="news-section">
+  <div class="news-list">
+    {% assign sorted_news = site.news | sort: 'date' | reverse %}
+    {% for news in sorted_news limit:5 %}
+    <div class="news-item">
+      <div class="news-date">
+        {{ news.date | date: "%Y.%m" }}
+      </div>
+      <div class="news-content">
+        <div class="news-text">{{ news.content | strip_html | truncatewords: 20 }}</div>
+      </div>
     </div>
-    <div class="education-advisor">Advisor: Prof. <a href="https://maga33.github.io/">Seunghoon Hong</a></div>
-  </div>
-  
-  <div class="education-item">
-    <div class="education-institution">KAIST</div>
-    <div class="education-degree">
-      B.S. in Computer Science & Chemistry <em>(Double Major)</em>
-      <span class="education-period">(Mar. 2019 - Feb. 2025)</span>
-    </div>
-  </div>
-
-  <div class="education-item">
-    <div class="education-institution">Gyeonggi Science High School for Gifted</div>
-    <div class="education-degree">
-      <span class="education-period">(Mar. 2016 - Feb. 2019)</span>
-    </div>
+    {% endfor %}
   </div>
 </div>
+
+
+
+
 
 ## Publications
 
@@ -132,3 +125,57 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+## Preprints
+
+<div class="publication-list">
+  {% assign sorted_preprints = site.preprints | sort: 'date' | reverse %}
+  {% for preprint in sorted_preprints %}
+  <div class="publication-item">
+    {% if preprint.image %}
+    <div class="pub-thumbnail">
+      <img src="{{ preprint.image | relative_url }}" alt="{{ preprint.title }}">
+    </div>
+    {% endif %}
+    <div class="pub-content">
+      <div class="pub-title">{{ preprint.title }}</div>
+      <div class="pub-authors">{{ preprint.authors }}</div>
+      <div class="pub-venue">{{ preprint.venue }}</div>
+      <div class="pub-links">
+        {% if preprint.arxiv %}<a href="{{ preprint.arxiv }}">arXiv</a>{% endif %}
+        {% if preprint.code %}<a href="{{ preprint.code }}">Code</a>{% endif %}
+        {% if preprint.project %}<a href="{{ preprint.project }}">Project</a>{% endif %}
+        {% if preprint.paperurl %}<a href="{{ preprint.paperurl }}">Paper</a>{% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+## Education
+
+
+<div class="education-section">
+  <div class="education-item">
+    <div class="education-institution">KAIST</div>
+    <div class="education-degree">
+      M.S. in Computer Science 
+      <span class="education-period">(Mar. 2025 -)</span>
+    </div>
+    <div class="education-advisor">Advisor: Prof. <a href="https://maga33.github.io/">Seunghoon Hong</a></div>
+  </div>
+  
+  <div class="education-item">
+    <div class="education-institution">KAIST</div>
+    <div class="education-degree">
+      B.S. in Computer Science & Chemistry <em>(Double Major)</em>
+      <span class="education-period">(Mar. 2019 - Feb. 2025)</span>
+    </div>
+  </div>
+
+  <div class="education-item">
+    <div class="education-institution">Gyeonggi Science High School for Gifted</div>
+    <div class="education-degree">
+      <span class="education-period">(Mar. 2016 - Feb. 2019)</span>
+    </div>
+  </div>
+</div>

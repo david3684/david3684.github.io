@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+<div class="news-item">
+  <div class="news-date">
+    {{ page.date | date: "%Y.%m" }}
+  </div>
+  <div class="news-content">
+    <h3 class="news-title">{{ page.title }}</h3>
+    <div class="news-text">
+      {{ content }}
+    </div>
+  </div>
+</div>

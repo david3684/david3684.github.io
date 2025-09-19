@@ -12,8 +12,8 @@ author_profile: true
 
 
 <div class="publication-list">
-  {% assign sorted_publications = site.publications | sort: 'date' | reverse %}
-  {% for pub in sorted_publications %}
+  {% assign all_papers = site.publications | concat: site.preprints | sort: 'date' | reverse %}
+  {% for pub in all_papers %}
   <div class="publication-item">
     {% if pub.image %}
     <div class="pub-thumbnail">

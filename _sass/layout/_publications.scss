@@ -80,7 +80,7 @@
 }
 
 .pub-title {
-  font-size: 0.95em;
+  font-size: 0.85em;
   font-weight: 550;
   margin-bottom: 5px;
   line-height: 1.3;
@@ -90,12 +90,13 @@
 .pub-authors {
   margin-bottom: 5px;
   font-size: 0.8em;
+  font-weight: 350;
   color: var(--global-text-color);
 }
 
 .pub-venue {
   margin-bottom: 4px;
-  font-style: regular;
+  font-style: italic;
   font-weight: 500;
   color: var(--global-text-color);
   font-size: 0.8em;
