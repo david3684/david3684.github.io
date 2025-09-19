@@ -80,11 +80,14 @@
 }
 
 .pub-title {
-  font-size: 0.85em;
+  font-size: 0.9em;
   font-weight: 550;
   margin-bottom: 5px;
   line-height: 1.3;
   color: var(--global-text-color);
+  @media (max-width: 600px) {
+    font-size: 0.95em; // 모바일에서 조금 더 크게
+  }
 }
 
 .pub-authors {

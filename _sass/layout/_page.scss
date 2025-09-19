@@ -6,8 +6,8 @@
   @include container;
   @include clearfix;
   margin-top: 2em;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 0.5em;  // 1em → 0.5em 줄임
+  padding-right: 0.5em; // 1em → 0.5em 줄임
   animation: intro 0.3s both;
   animation-delay: 0.35s;
 
@@ -19,8 +19,8 @@
 .page {
   @include breakpoint($large) {
     @include span(10 of 12 last);
-    @include prefix(0.5 of 12);
-    @include suffix(2 of 12);
+    @include prefix(1 of 12);    // 0.5 → 1로 증가 (왼쪽 여백 늘림)
+    @include suffix(1 of 12);    // 2 → 1로 감소 (오른쪽 여백 줄임)
   }
 
   .page__inner-wrap {
