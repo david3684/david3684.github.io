@@ -1,34 +1,42 @@
 /* ==========================================================================
    PUBLICATIONS
-   ========================================================================== */
+   ===================================================================/* Education section styling */
+.education-section {
+  margin: 30px 0;
+  margin-left: 10px;
+  
+  // 모바일
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+}/
 
 .publication-list {
   list-style: none;
   padding: 0;
   margin: 20px 0;
-
-  // Mobile - reduce bottom margin (apply to smaller screens)
-  margin-bottom: 10px;
+  margin-left: 10px;
   
-  @include breakpoint($small) {
-    margin-bottom: 20px;
+  // 모바일
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-bottom: 10px;
   }
 }
 
 .publication-item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   margin-bottom: 20px;
   border-bottom: 1px solid var(--global-border-color);
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 
-  // Desktop layout
-  @include breakpoint($small) {
-    flex-direction: row;
+  // 모바일
+  @media (max-width: 768px) {
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
+    margin-bottom: 5px;
   }
 }
 
@@ -38,44 +46,44 @@
 
 .pub-thumbnail {
   flex-shrink: 0;
-  width: calc(100% - 20px);
-  max-width: none;
-  margin: 0 10px 15px 10px !important;
-  border-radius: 8px;
+  width: 230px;
+  margin-right: 10px !important;
+  margin-left: 10px !important;
+  border-radius: 4px;
 
-  // Desktop styles
-  @include breakpoint($small) {
-    width: 230px;
-    margin-right: 10px !important;
-    margin-left: 10px !important;
-    border-radius: 4px;
+  // 모바일
+  @media (max-width: 768px) {
+    width: calc(100% - 20px);
+    max-width: none;
+    margin: 0 10px 15px 10px !important;
+    border-radius: 8px;
   }
 }
 
 .pub-thumbnail img {
   width: 100%;
-  height: auto !important;
-  object-fit: contain;
-  max-height: 200px;
+  height: 100px !important;
+  object-fit: fill;
+  max-height: none;
   border-radius: 4px;
 
-  // Desktop image - fixed size
-  @include breakpoint($small) {
-    height: 100px !important;
-    object-fit: fill;
-    max-height: none;
+  // 모바일
+  @media (max-width: 768px) {
+    height: auto !important;
+    object-fit: contain;
+    max-height: 200px;
   }
 }
 
 .pub-content {
   flex: 1;
-  margin-left: 0;
-  width: 100%;
+  margin-left: 10px;
+  width: auto;
 
-  // Desktop styles
-  @include breakpoint($small) {
-    margin-left: 10px;
-    width: auto;
+  // 모바일
+  @media (max-width: 768px) {
+    margin-left: 0;
+    width: 100%;
   }
 }
 
@@ -85,16 +93,47 @@
   margin-bottom: 5px;
   line-height: 1.3;
   color: var(--global-text-color);
-  @media (max-width: 600px) {
-    font-size: 0.95em; // 모바일에서 조금 더 크게
+  
+  // 모바일
+  @media (max-width: 768px) {
+    font-size: 0.95em;
   }
+}
+
+/* 논문 번호 스타일링 */
+.pub-title::before {
+  font-weight: 550;
+  color: var(--global-link-color);
+  margin-right: 8px;
 }
 
 .pub-authors {
   margin-bottom: 5px;
-  font-size: 0.8em;
+  font-size: 0.85em;
   font-weight: 350;
   color: var(--global-text-color);
+}
+
+/* 저자 링크 스타일 */
+.pub-authors .author-link {
+  color: var(--global-link-color);
+  text-decoration: none;
+  font-weight: 400;
+  
+  &:hover {
+    color: var(--global-link-hover-color);
+    text-decoration: underline;
+  }
+}
+
+/* 내 이름 하이라이트 스타일 */
+.pub-authors .author-highlight {
+  font-weight: 500;
+  color: var(--global-text-color);
+  text-decoration: underline;
+  background-color: rgba(var(--global-link-color-rgb), 0.1);
+  padding: 1px 3px;
+  border-radius: 3px;
 }
 
 .pub-venue {
@@ -102,7 +141,7 @@
   font-style: italic;
   font-weight: 500;
   color: var(--global-text-color);
-  font-size: 0.8em;
+  font-size: 0.85em;
 }
 
 .pub-links {
@@ -134,7 +173,12 @@
 
 /* Education section styling */
 .education-section {
-  margin: 30px 0;
+  margin: 15px 0;
+  
+  // 데스크톱에서 Publications와 동일한 왼쪽 여백 추가
+  @include breakpoint($small) {
+    margin-left: 10px;
+  }
 }
 
 .education-item {
@@ -143,25 +187,26 @@
 }
 
 .education-institution {
-  font-size: 1.0em;
+  font-size: 0.9em;
   font-weight: 550;
   margin-bottom: 8px;
 }
 
 .education-degree {
-  font-size: 0.9em;
-  font-weight: 500;
+  font-size: 0.8em;
+  font-weight: 400;
   margin-bottom: 5px;
   color: var(--global-text-color);
 }
 
 .education-period {
-  font-style: italic;
+  // font-style: italic;
   margin-left: 10px;
+  // font-weight: 400;
 }
 
 .education-advisor {
-  font-size: 0.8em;
+  font-size: 0.85em;
   margin-top: 5px;
 }
 

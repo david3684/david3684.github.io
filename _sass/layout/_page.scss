@@ -53,6 +53,7 @@
   h2 {
     padding-bottom: 0.5em;
     border-bottom: 1px solid var(--global-border-color);
+    font-weight: 500;
   }
 
   p, li, dl {
@@ -62,6 +63,7 @@
   /* paragraph indents */
   p {
     margin: 0 0 $indent-var;
+    text-align: justify;  // 양쪽 정렬 추가
 
     /* sibling indentation*/
     @if $paragraph-indent == true {

@@ -12,17 +12,37 @@ author_profile: true
 
 
 <div class="publication-list">
+  {% assign conferences = site.publications | sort: 'date' %}
+  {% assign journals = site.publications | sort: 'date' %}
+  {% assign preprints = site.preprints | sort: 'date' %}
+  
   {% assign all_papers = site.publications | concat: site.preprints | sort: 'date' | reverse %}
   {% for pub in all_papers %}
   <div class="publication-item">
-    {% if pub.image %}
-    <div class="pub-thumbnail">
-      <img src="{{ site.baseurl }}/{{ pub.image }}" alt="{{ pub.title }}" />
-    </div>
-    {% endif %}
-    
     <div class="pub-content">
-      <div class="pub-title">{{ pub.title }}</div>
+      <div class="pub-title">
+        {% comment %} 카테고리별 번호 부여 {% endcomment %}
+        {% if pub.venue contains "Preprint" %}
+          {% assign preprint_index = 0 %}
+          {% for p in preprints %}
+            {% assign preprint_index = preprint_index | plus: 1 %}
+            {% if p.title == pub.title %}[P{{ preprint_index }}]{% break %}{% endif %}
+          {% endfor %}
+        {% elsif pub.venue contains "Journal" or pub.venue contains "journal" or pub.venue contains "IEEE" or pub.venue contains "ACM" %}
+          {% assign journal_index = 0 %}
+          {% for j in journals %}
+            {% assign journal_index = journal_index | plus: 1 %}
+            {% if j.title == pub.title %}[J{{ journal_index }}]{% break %}{% endif %}
+          {% endfor %}
+        {% else %}
+          {% assign conf_index = 0 %}
+          {% for c in conferences %}
+            {% assign conf_index = conf_index | plus: 1 %}
+            {% if c.title == pub.title %}[C{{ conf_index }}]{% break %}{% endif %}
+          {% endfor %}
+        {% endif %}
+        {{ pub.title }}
+      </div>
       
       {% if pub.authors %}
       <div class="pub-authors">{{ pub.authors }}</div>

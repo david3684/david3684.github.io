@@ -1,0 +1,47 @@
+/* ==========================================================================
+   INTRO SECTION
+   ========================================================================== */
+
+.intro-section {
+  font-size: 0.85em !important;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin-bottom: 2.2em;
+  color: var(--global-text-color);
+  font-weight: 350;
+  
+  p {
+    text-align: justify;
+    margin-bottom: 0.8em;
+    font-size: 0.85em !important;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  // 링크 스타일
+  a {
+    color: var(--global-link-color);
+    text-decoration: none;
+    font-weight: 500;
+    
+    &:hover {
+      text-decoration: underline;
+      color: var(--global-link-hover-color);
+    }
+  }
+  
+  // 모바일
+  @media (max-width: 768px) {
+    font-size: 0.8em !important;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    margin-bottom: 1.8em;
+    
+    p {
+      margin-bottom: 0.6em;
+      font-size: 0.8em !important;
+    }
+  }
+}
