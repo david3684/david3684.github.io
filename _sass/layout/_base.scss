@@ -357,9 +357,34 @@ b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a,
     .masthead,
     .toc,
     .page__share,
-    .page__related,
+        .page__related,
     .ads,
     .page__footer {
       display: none;
     }
   }
+
+/* ==========================================================================
+   MOBILE RESPONSIVE PADDING
+   ========================================================================== */
+
+/* 모바일에서 모든 콘텐츠에 일관된 좌우 여백 적용 - 강제 적용 */
+@media screen and (max-width: 768px) {
+  #main,
+  div[id="main"],
+  [role="main"] {
+    margin-left: 1.5em !important;
+    margin-right: 1.5em !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* 모든 직계 자식 요소들도 강제로 마진 제거 */
+  #main > *,
+  div[id="main"] > *,
+  [role="main"] > * {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}

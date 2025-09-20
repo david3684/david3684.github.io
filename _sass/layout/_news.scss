@@ -4,12 +4,7 @@
 
 .news-section {
   margin: 30px 0;
-  margin-left: 10px;
-  
-  // 모바일
-  @media (max-width: 768px) {
-    margin-left: 0;
-  }
+  margin-left: 0;
 }
 
 .news-section h2 {
@@ -31,8 +26,12 @@
   display: flex;
   align-items: center;
   margin-bottom: 15px;
+  margin-left: 10px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--global-border-color-light, #f0f0f0);
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 }
 
 .news-item:last-child {
@@ -75,7 +74,9 @@
     flex-direction: column;
     align-items: flex-start;
   }
-  
+  .news-text {
+    font-size: 0.9em;  // 0.85em에서 1.0em으로 증가
+  }
   .news-date {
     width: auto;
     margin-right: 0;

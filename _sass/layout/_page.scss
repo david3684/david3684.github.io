@@ -11,6 +11,12 @@
   animation: intro 0.3s both;
   animation-delay: 0.35s;
 
+  // 모바일에서 좌우 여백 증가
+  @media (max-width: 768px) {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
   @include breakpoint($x-large) {
     max-width: $x-large;
   }
@@ -37,6 +43,11 @@
 .page__title {
   margin-top: 0;
   line-height: 1;
+
+  // 모바일에서 페이지 제목 숨기기
+  @media (max-width: 768px) {
+    display: none;
+  }
 
   & + .page__meta {
     margin-top: -0.5em;

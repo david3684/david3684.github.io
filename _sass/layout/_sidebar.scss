@@ -94,13 +94,13 @@ div[itemtype="http://schema.org/Person"] {
 .author__avatar {
   display: table-cell;
   vertical-align: middle; // 중앙 정렬
-  width: 80px; // 모바일에서 더 크게 (36px → 80px)
+  width: 120px; // 80px에서 120px로 증가
   // set width only, for non-square avatars
   // height: 36px;
 
   @media (max-width: 768px) {
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   @include breakpoint($large) {
@@ -118,9 +118,9 @@ div[itemtype="http://schema.org/Person"] {
       border: 1px solid var(--global-border-color);
     }
     
-    // 모바일에서 더 나은 크기
+    // 모바일에서 더 큰 크기
     @media (max-width: 924px) {
-      max-width: 80px;
+      max-width: 120px;  // 80px에서 120px로 증가
       width: 100%;
     }
   }
