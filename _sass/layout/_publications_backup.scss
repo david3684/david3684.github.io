@@ -1,3 +1,7 @@
+/* ==========================================================================
+   PUBLICATIONS
+   ========================================================================== */
+
 .publication-list {
   list-style: none;
   padding: 0;
@@ -5,6 +9,11 @@
   margin-left: 10px;
   
   // 모바일
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
   @media (max-width: 768px) {
     margin-left: 0;
     margin-bottom: 10px;
@@ -115,7 +124,7 @@
 
 /* 내 이름 하이라이트 스타일 */
 .pub-authors .author-highlight {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--global-text-color);
   text-decoration: underline;
   background-color: rgba(var(--global-link-color-rgb), 0.1);
@@ -160,12 +169,11 @@
 
 /* Education section styling */
 .education-section {
-  margin: 30px 0;
-  margin-left: 10px;
+  margin: 15px 0;
   
-  // 모바일
-  @media (max-width: 768px) {
-    margin-left: 0;
+  // 데스크톱에서 Publications와 동일한 왼쪽 여백 추가
+  @include breakpoint($small) {
+    margin-left: 10px;
   }
 }
 
@@ -188,7 +196,9 @@
 }
 
 .education-period {
+  // font-style: italic;
   margin-left: 10px;
+  // font-weight: 400;
 }
 
 .education-advisor {
@@ -220,4 +230,4 @@
 .page__content > p a:hover {
   color: var(--global-link-color-hover);
   text-decoration: underline;
-}
+} 
