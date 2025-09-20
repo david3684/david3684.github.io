@@ -83,7 +83,7 @@
 
 /* 논문 번호 스타일링 */
 .pub-title::before {
-  font-weight: 550;
+  font-weight: 600;
   color: var(--global-text-color);
   margin-right: 8px;
 }
@@ -91,7 +91,7 @@
 .pub-authors {
   margin-bottom: 5px;
   font-size: 0.85em;
-  font-weight: 350;
+  font-weight: 400;
   color: var(--global-text-color);
 }
 
@@ -120,7 +120,7 @@
 .pub-venue {
   margin-bottom: 4px;
   font-style: italic;
-  font-weight: 550;
+  font-weight: 500;
   color: var(--global-text-color);
   font-size: 0.85em;
 }
@@ -171,7 +171,7 @@
 
 .education-institution {
   font-size: 0.9em;
-  font-weight: 550;
+  font-weight: 500;
   margin-bottom: 8px;
 }
 

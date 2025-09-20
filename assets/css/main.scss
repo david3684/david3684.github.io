@@ -6,6 +6,8 @@
  *
  * Note that the files are processed in the order they are imported, so they are partly
    sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
+ * 
+ * Updated: 2025-09-20 - Force CSS refresh for GitHub Pages
  */
 
 @import
@@ -42,5 +44,4 @@
     "vendor/font-awesome/fontawesome",
     "vendor/font-awesome/solid",
     "vendor/font-awesome/brands",
-    "vendor/magnific-popup/magnific-popup"
-;
+    "vendor/magnific-popup/magnific-popup";
