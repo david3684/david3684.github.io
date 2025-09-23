@@ -101,6 +101,7 @@ div[itemtype="http://schema.org/Person"] {
   @media (max-width: 768px) {
     display: block;
     margin-bottom: 10px;
+    width: auto; // 모바일에서 width 제한 제거
   }
 
   @include breakpoint($large) {
@@ -113,15 +114,16 @@ div[itemtype="http://schema.org/Person"] {
     max-width: 175px;
     border-radius: 50%;
 
+    @media (max-width: 768px) {
+      width: 200px !important; // 강제로 크기 설정
+      max-width: none !important; // max-width 제한 제거
+      margin: 0 auto;   // 중앙 정렬
+      display: block;
+    }
+
     @include breakpoint($large) {
       padding: 5px;
       border: 1px solid var(--global-border-color);
-    }
-    
-    // 모바일에서 더 큰 크기
-    @media (max-width: 924px) {
-      max-width: 120px;  // 80px에서 120px로 증가
-      width: 100%;
     }
   }
 }

@@ -117,40 +117,13 @@
   border-radius: 3px;
 }
 
-/* Equal contribution 설명 텍스트 - 강제 적용 - Updated 2025-09-23 */
-.equal-contribution-note,
-p.equal-contribution-note,
-div .equal-contribution-note {
+/* Equal contribution 설명 텍스트 */
+.equal-contribution-note {
   font-size: 0.75em !important;
   color: var(--global-text-color-light) !important;
   font-style: italic !important;
-  font-weight: 400 !important;
   margin-bottom: 20px !important;
   margin-top: 10px !important;
-  line-height: 1.2 !important;
-  display: block !important;
-}
-
-/* Strong 태그 내의 모든 내용 (별표 포함) */
-.pub-authors strong {
-  font-weight: 600;
-  color: var(--global-text-color);
-  text-decoration: underline;
-  background-color: rgba(var(--global-link-color-rgb), 0.1);
-  padding: 1px 3px;
-  border-radius: 3px;
-}
-
-/* 링크 태그 내의 모든 내용 (별표 포함) */
-.pub-authors a {
-  color: var(--global-link-color) !important;
-  text-decoration: none;
-  font-weight: 400;
-  
-  &:hover {
-    color: var(--global-link-hover-color) !important;
-    text-decoration: underline !important;
-  }
 }
 
 .pub-venue {
@@ -181,11 +154,6 @@ div .equal-contribution-note {
   font-size: 0.95em;
   line-height: 1.4;
   color: var(--global-text-color);
-}
-
-.author-highlight {
-  font-weight: bold;
-  text-decoration: underline;
 }
 
 /* Education section styling */

@@ -75,29 +75,7 @@ author_profile: true
 </div>
 
 <script>
-// 페이지별 고유 처리를 위한 플래그
-if (typeof window.authorProcessedPub === 'undefined') {
-  window.authorProcessedPub = false;
-}
-
-function processAuthorsPublications() {
-  if (window.authorProcessedPub) return;
-  
-  console.log('Processing authors on publications page');
-  
-  // 이미지 높이 조정
-  const items = document.querySelectorAll('.publication-item');
-  
-  items.forEach(function(item) {
-    const content = item.querySelector('.pub-content');
-    const thumbnail = item.querySelector('.pub-thumbnail img');
-    
-    if (content && thumbnail) {
-      const contentHeight = content.offsetHeight;
-      thumbnail.style.height = contentHeight + 'px';
-    }
-  });
-  
+document.addEventListener('DOMContentLoaded', function() {
   // 저자 이름 자동 하이라이트
   const myNames = [
     'Chanhyuk Lee',
@@ -108,11 +86,9 @@ function processAuthorsPublications() {
   ];
   
   const authorElements = document.querySelectorAll('.pub-authors');
-  console.log('Found author elements:', authorElements.length);
   
-  authorElements.forEach(function(authorElement, index) {
+  authorElements.forEach(function(authorElement) {
     let authorHtml = authorElement.innerHTML;
-    console.log(`Processing element ${index}:`, authorHtml);
     
     // 1. 내 이름 하이라이트 (별표 포함)
     myNames.forEach(function(name) {
@@ -138,20 +114,9 @@ function processAuthorsPublications() {
       return match;
     });
     
-    console.log(`After processing element ${index}:`, authorHtml);
     authorElement.innerHTML = authorHtml;
   });
-  
-  window.authorProcessedPub = true;
-}
-
-// 여러 이벤트에서 실행하여 안정성 확보
-document.addEventListener('DOMContentLoaded', processAuthorsPublications);
-window.addEventListener('load', processAuthorsPublications);
-
-// 페이지가 완전히 로드된 후 한 번 더 실행 (GitHub Pages 환경을 위해)
-setTimeout(processAuthorsPublications, 500);
-setTimeout(processAuthorsPublications, 2000);
+});
 </script>
 
 
