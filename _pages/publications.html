@@ -9,7 +9,7 @@ author_profile: true
 <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
 {% endif %}
 
-
+<p class="equal-contribution-note">* denotes equal contributions</p>
 
 <div class="publication-list">
   {% assign conferences = site.publications | sort: 'date' %}
@@ -102,19 +102,32 @@ document.addEventListener('DOMContentLoaded', function() {
   
   authorElements.forEach(function(authorElement) {
     let authorHtml = authorElement.innerHTML;
+    console.log('Before processing:', authorHtml);
     
+    // 1. 내 이름 하이라이트 (별표 포함)
     myNames.forEach(function(name) {
-      // 이미 <strong> 태그가 있는 경우 제거하고 새로운 스타일 적용
-      const strongRegex = new RegExp(`<strong>${name}</strong>`, 'gi');
-      const plainRegex = new RegExp(`\\b${name}\\b`, 'gi');
-      
       // 기존 strong 태그 제거
-      authorHtml = authorHtml.replace(strongRegex, name);
+      const strongRegex = new RegExp(`<strong>${name}\\*?</strong>`, 'gi');
+      authorHtml = authorHtml.replace(strongRegex, function(match) {
+        return match.includes('*') ? `${name}*` : name;
+      });
       
-      // 새로운 하이라이트 클래스 적용
-      authorHtml = authorHtml.replace(plainRegex, `<span class="author-highlight">${name}</span>`);
+      // 내 이름 하이라이트 (별표 포함)
+      const nameRegex = new RegExp(`\\b${name}(\\*)?\\b`, 'gi');
+      authorHtml = authorHtml.replace(nameRegex, `<span class="author-highlight">$&</span>`);
     });
     
+    // 2. 다른 모든 저자들 (별표 포함된 이름들을 링크 스타일로)
+    // 이미 처리되지 않은 "이름*" 패턴을 찾아서 링크 스타일 적용
+    authorHtml = authorHtml.replace(/\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\*)\b/g, function(match) {
+      // 이미 span으로 감싸져 있지 않은 경우만 처리
+      if (authorHtml.indexOf(`<span class="author-highlight">${match}</span>`) === -1) {
+        return `<span class="author-link">${match}</span>`;
+      }
+      return match;
+    });
+    
+    console.log('After processing:', authorHtml);
     authorElement.innerHTML = authorHtml;
   });
 });

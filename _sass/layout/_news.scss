@@ -5,6 +5,7 @@
 .news-section {
   margin: 30px 0;
   margin-left: 0;
+  margin-top: 0;
 }
 
 .news-section h2 {
@@ -24,10 +25,10 @@
 
 .news-item {
   display: flex;
-  align-items: center;
-  margin-bottom: 15px;
+  align-items: flex-start; // center에서 flex-start로 변경
+  margin-bottom: 5px;
   margin-left: 10px;
-  padding-bottom: 12px;
+  padding-bottom: 5px;
   border-bottom: 1px solid var(--global-border-color-light, #f0f0f0);
   @media (max-width: 768px) {
     margin-left: 0;
@@ -42,7 +43,7 @@
 .news-date {
   flex-shrink: 0;
   width: 80px;
-  font-size: 0.85em;
+  font-size: 0.8em;
   font-weight: 500;
   color: var(--global-text-color-light);
   margin-right: 20px;
@@ -54,7 +55,7 @@
 }
 
 .news-title {
-  font-size: 0.95em;
+  font-size: 0.8em;
   font-weight: 600;
   margin: 0 0 4px 0;
   line-height: 1.4;
@@ -62,7 +63,7 @@
 }
 
 .news-text {
-  font-size: 0.85em;
+  font-size: 0.8em;
   line-height: 1.4;
   color: var(--global-text-color);
   margin: 0;
@@ -75,7 +76,7 @@
     align-items: flex-start;
   }
   .news-text {
-    font-size: 0.9em;  // 0.85em에서 1.0em으로 증가
+    font-size: 0.8em;  // 0.85em에서 1.0em으로 증가
   }
   .news-date {
     width: auto;

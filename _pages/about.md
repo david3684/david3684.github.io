@@ -22,7 +22,7 @@ I am Chanhyuk (David) Lee, M.S student at KAIST School of Computing. I'm current
         {{ news.date | date: "%Y.%m" }}
       </div>
       <div class="news-content">
-        <div class="news-text">{{ news.content | strip_html | truncatewords: 20 }}</div>
+        <div class="news-text">{{ news.content | truncatewords: 20 }}</div>
       </div>
     </div>
     {% endfor %}
@@ -34,6 +34,8 @@ I am Chanhyuk (David) Lee, M.S student at KAIST School of Computing. I'm current
 
 
 ## Publications
+
+<p class="equal-contribution-note">* denotes equal contributions</p>
 
 <div class="publication-list">
   {% assign conferences = site.publications | sort: 'date' %}
@@ -229,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="education-item">
     <div class="education-institution">M.S. in Computer Science </div>
     <div class="education-degree">
-      KAIST
+      Korea Advanced Institue of Science and Technology (KAIST)
       <span class="education-period">(Mar. 2025 -)</span>
     </div>
     <div class="education-advisor">Advisor: Prof. <a href="https://maga33.github.io/">Seunghoon Hong</a></div>
@@ -238,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="education-item">
     <div class="education-institution">B.S. in Computer Science and Chemistry <em>(Double Major)</em></div>
     <div class="education-degree">
-      KAIST
+      Korea Advanced Institue of Science and Technology (KAIST)
       <span class="education-period">(Mar. 2019 - Feb. 2025)</span>
     </div>
   </div>
