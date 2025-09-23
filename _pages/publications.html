@@ -75,7 +75,16 @@ author_profile: true
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+// 페이지별 고유 처리를 위한 플래그
+if (typeof window.authorProcessedPub === 'undefined') {
+  window.authorProcessedPub = false;
+}
+
+function processAuthorsPublications() {
+  if (window.authorProcessedPub) return;
+  
+  console.log('Processing authors on publications page');
+  
   // 이미지 높이 조정
   const items = document.querySelectorAll('.publication-item');
   
@@ -99,38 +108,50 @@ document.addEventListener('DOMContentLoaded', function() {
   ];
   
   const authorElements = document.querySelectorAll('.pub-authors');
+  console.log('Found author elements:', authorElements.length);
   
-  authorElements.forEach(function(authorElement) {
+  authorElements.forEach(function(authorElement, index) {
     let authorHtml = authorElement.innerHTML;
-    console.log('Before processing:', authorHtml);
+    console.log(`Processing element ${index}:`, authorHtml);
     
     // 1. 내 이름 하이라이트 (별표 포함)
     myNames.forEach(function(name) {
       // 기존 strong 태그 제거
-      const strongRegex = new RegExp(`<strong>${name}\\*?</strong>`, 'gi');
+      const strongRegex = new RegExp(`<strong>${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\*)?</strong>`, 'gi');
       authorHtml = authorHtml.replace(strongRegex, function(match) {
         return match.includes('*') ? `${name}*` : name;
       });
       
       // 내 이름 하이라이트 (별표 포함)
-      const nameRegex = new RegExp(`\\b${name}(\\*)?\\b`, 'gi');
-      authorHtml = authorHtml.replace(nameRegex, `<span class="author-highlight">$&</span>`);
+      const nameRegex = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\*)?\\b`, 'gi');
+      authorHtml = authorHtml.replace(nameRegex, function(match) {
+        return `<span class="author-highlight">${match}</span>`;
+      });
     });
     
-    // 2. 다른 모든 저자들 (별표 포함된 이름들을 링크 스타일로)
-    // 이미 처리되지 않은 "이름*" 패턴을 찾아서 링크 스타일 적용
+    // 2. Equal contribution 표시된 다른 저자들을 링크 스타일로
     authorHtml = authorHtml.replace(/\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\*)\b/g, function(match) {
       // 이미 span으로 감싸져 있지 않은 경우만 처리
-      if (authorHtml.indexOf(`<span class="author-highlight">${match}</span>`) === -1) {
+      if (!authorHtml.includes(`<span class="author-highlight">${match}</span>`)) {
         return `<span class="author-link">${match}</span>`;
       }
       return match;
     });
     
-    console.log('After processing:', authorHtml);
+    console.log(`After processing element ${index}:`, authorHtml);
     authorElement.innerHTML = authorHtml;
   });
-});
+  
+  window.authorProcessedPub = true;
+}
+
+// 여러 이벤트에서 실행하여 안정성 확보
+document.addEventListener('DOMContentLoaded', processAuthorsPublications);
+window.addEventListener('load', processAuthorsPublications);
+
+// 페이지가 완전히 로드된 후 한 번 더 실행 (GitHub Pages 환경을 위해)
+setTimeout(processAuthorsPublications, 500);
+setTimeout(processAuthorsPublications, 2000);
 </script>
 
 

@@ -140,7 +140,16 @@ I am Chanhyuk (David) Lee, M.S student at KAIST School of Computing. I'm current
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+// 페이지별 고유 처리를 위한 플래그
+if (typeof window.authorProcessedAbout === 'undefined') {
+  window.authorProcessedAbout = false;
+}
+
+function processAuthorsAbout() {
+  if (window.authorProcessedAbout) return;
+  
+  console.log('Processing authors on about page');
+  
   // 이미지 높이 조정
   const items = document.querySelectorAll('.publication-item');
   
@@ -153,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
       thumbnail.style.height = contentHeight + 'px';
     }
   });
-  
+
   // 저자 이름과 홈페이지 링크 매칭 데이터베이스
   const authorLinks = {
     'Seunghoon Hong': 'https://maga33.github.io/',
@@ -176,7 +185,6 @@ document.addEventListener('DOMContentLoaded', function() {
     'Kiet T. Nguyen': 'https://sites.google.com/view/kietngt/home',
     'Jiho Choi': 'https://www.linkedin.com/in/jiho-choi-883197234',
     'Chanryeol Lee': 'https://github.com/cusasak'
-    // 필요에 따라 더 많은 저자들을 추가할 수 있습니다
   };
   
   // 내 이름 하이라이트용
@@ -189,39 +197,64 @@ document.addEventListener('DOMContentLoaded', function() {
   ];
   
   const authorElements = document.querySelectorAll('.pub-authors');
+  console.log('Found author elements:', authorElements.length);
   
-  authorElements.forEach(function(authorElement) {
+  authorElements.forEach(function(authorElement, index) {
     let authorHtml = authorElement.innerHTML;
+    console.log(`Processing element ${index}:`, authorHtml);
     
-    // 먼저 저자 링크들을 적용
+    // 1. 내 이름 하이라이트 (별표 포함) - 먼저 처리
+    myNames.forEach(function(name) {
+      // 기존 strong 태그 제거
+      const strongRegex = new RegExp(`<strong>${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\*)?</strong>`, 'gi');
+      authorHtml = authorHtml.replace(strongRegex, function(match) {
+        return match.includes('*') ? `${name}*` : name;
+      });
+      
+      // 내 이름 하이라이트 (별표 포함)
+      const nameRegex = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\*)?\\b`, 'gi');
+      authorHtml = authorHtml.replace(nameRegex, function(match) {
+        return `<span class="author-highlight">${match}</span>`;
+      });
+    });
+    
+    // 2. 다른 저자들에게 링크 적용
     Object.keys(authorLinks).forEach(function(authorName) {
       const authorUrl = authorLinks[authorName];
-      const regex = new RegExp(`\\b${authorName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+      const regex = new RegExp(`\\b${authorName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\*)?\\b`, 'gi');
       
-      // 이미 링크가 걸려있지 않은 경우만 링크 추가
-      if (!authorHtml.includes(`href="${authorUrl}"`)) {
-        authorHtml = authorHtml.replace(regex, `<a href="${authorUrl}" target="_blank" class="author-link">${authorName}</a>`);
+      // 이미 링크가 걸려있지 않고 하이라이트도 되어있지 않은 경우만 링크 추가
+      if (!authorHtml.includes(`href="${authorUrl}"`) && !authorHtml.includes(`class="author-highlight">${authorName}`)) {
+        authorHtml = authorHtml.replace(regex, function(match) {
+          return `<a href="${authorUrl}" target="_blank" class="author-link">${match}</a>`;
+        });
       }
     });
     
-    // 그 다음 내 이름 하이라이트 적용
-    myNames.forEach(function(name) {
-      // 이미 <strong> 태그가 있는 경우 제거하고 새로운 스타일 적용
-      const strongRegex = new RegExp(`<strong>${name}</strong>`, 'gi');
-      const plainRegex = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
-      
-      // 기존 strong 태그 제거
-      authorHtml = authorHtml.replace(strongRegex, name);
-      
-      // 새로운 하이라이트 클래스 적용 (해당 이름이 링크로 감싸져 있지 않은 경우만)
-      if (!authorHtml.includes(`<a href=`) || !authorHtml.match(new RegExp(`<a[^>]*>${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</a>`, 'i'))) {
-        authorHtml = authorHtml.replace(plainRegex, `<span class="author-highlight">${name}</span>`);
+    // 3. Equal contribution 표시된 다른 저자들을 링크 스타일로
+    authorHtml = authorHtml.replace(/\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\*)\b/g, function(match) {
+      // 이미 처리된 경우 제외
+      if (authorHtml.includes(`<span class="author-highlight">${match}</span>`) || 
+          authorHtml.includes(`<a href=`) && authorHtml.includes(match)) {
+        return match;
       }
+      return `<span class="author-link">${match}</span>`;
     });
     
+    console.log(`After processing element ${index}:`, authorHtml);
     authorElement.innerHTML = authorHtml;
   });
-});
+  
+  window.authorProcessedAbout = true;
+}
+
+// 여러 이벤트에서 실행하여 안정성 확보
+document.addEventListener('DOMContentLoaded', processAuthorsAbout);
+window.addEventListener('load', processAuthorsAbout);
+
+// 페이지가 완전히 로드된 후 한 번 더 실행 (GitHub Pages 환경을 위해)
+setTimeout(processAuthorsAbout, 500);
+setTimeout(processAuthorsAbout, 2000);
 </script>
 
 ## Education
