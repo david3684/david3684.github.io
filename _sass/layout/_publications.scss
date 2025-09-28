@@ -109,12 +109,11 @@
 
 /* 내 이름 하이라이트 스타일 */
 .pub-authors .author-highlight {
-  font-weight: 500;
-  color: var(--global-text-color);
-  text-decoration: underline;
-  background-color: rgba(var(--global-link-color-rgb), 0.1);
-  padding: 1px 3px;
-  border-radius: 3px;
+  font-weight: 500 !important;
+  color: var(--global-text-color) !important;
+  text-decoration: underline !important;
+  // padding: 1px 3px !important;
+  border-radius: 3px !important;
 }
 
 /* Equal contribution 설명 텍스트 */

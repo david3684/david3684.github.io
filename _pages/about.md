@@ -157,13 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 1. 내 이름 하이라이트 (별표 포함)
     myNames.forEach(function(name) {
-      // 기존 strong 태그 제거
-      const strongRegex = new RegExp(`<strong>${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\*)?</strong>`, 'gi');
-      authorHtml = authorHtml.replace(strongRegex, function(match) {
-        return match.includes('*') ? `${name}*` : name;
-      });
-      
-      // 내 이름 하이라이트 (별표 포함)
+      // 내 이름을 찾아서 span으로 감싸기 (별표 포함)
       const nameRegex = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\*)?\\b`, 'gi');
       authorHtml = authorHtml.replace(nameRegex, function(match) {
         return `<span class="author-highlight">${match}</span>`;
