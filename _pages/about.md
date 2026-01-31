@@ -65,9 +65,9 @@ I am Chanhyuk (David) Lee, M.S student at KAIST School of Computing. I'm current
       </div>
       {% endif %}
       
-      {% if pub.venue or pub.date %}
+      {% if pub.venue or pub.venue_full or pub.venue_abbr or pub.date %}
       <div class="pub-venue">
-        {% if pub.venue %}{{ pub.venue }}{% endif %}{% assign show_year = true %}{% if pub.venue contains "under review" or pub.venue contains "Under Review" or pub.venue contains "Preprint"%}{% assign show_year = false %}{% endif %}{% if pub.venue and pub.date and show_year %}, {% endif %}{% if pub.date and show_year %}{{ pub.date | date: "%Y" }}{% endif %}
+        {% capture venue_text %}{% if pub.venue_full or pub.venue_abbr %}{% if pub.venue_full %}{{ pub.venue_full }}{% endif %}{% if pub.venue_abbr %} (<span class="pub-venue-abbr">{{ pub.venue_abbr }}</span>){% endif %}{% elsif pub.venue %}{{ pub.venue }}{% endif %}{% endcapture %}{{ venue_text | strip }}{% assign show_year = true %}{% if pub.venue contains "under review" or pub.venue contains "Under Review" or pub.venue contains "Preprint"%}{% assign show_year = false %}{% endif %}{% if pub.date and show_year %}, {{ pub.date | date: "%Y" }}{% endif %}
       </div>
       {% endif %}
       
@@ -108,9 +108,9 @@ I am Chanhyuk (David) Lee, M.S student at KAIST School of Computing. I'm current
       </div>
       {% endif %}
       
-      {% if pub.venue or pub.date %}
+      {% if pub.venue or pub.venue_full or pub.venue_abbr or pub.date %}
       <div class="pub-venue">
-        {% if pub.venue %}{{ pub.venue }}{% endif %}
+        {% capture venue_text %}{% if pub.venue_full or pub.venue_abbr %}{% if pub.venue_full %}{{ pub.venue_full }}{% endif %}{% if pub.venue_abbr %} (<span class="pub-venue-abbr">{{ pub.venue_abbr }}</span>){% endif %}{% elsif pub.venue %}{{ pub.venue }}{% endif %}{% endcapture %}{{ venue_text | strip }}
       </div>
       {% endif %}
       
