@@ -35,39 +35,39 @@ I am Chanhyuk (David) Lee, M.S student at KAIST School of Computing. I'm current
 
 ## Publications
 
-<p class="equal-contribution-note">* denotes equal contributions</p>
 
 <div class="publication-list">
   {% assign conferences = site.publications | sort: 'date' %}
   {% assign journals = site.publications | sort: 'date' %}
   {% assign preprints = site.preprints | sort: 'date' %}
   
-  {% comment %} Preprints를 맨 위에, 그 다음 Publications 순으로 정렬 {% endcomment %}
+  {% comment %} Publications 먼저, 그 다음 Preprints 순으로 정렬 {% endcomment %}
   {% assign sorted_preprints = site.preprints | sort: 'date' | reverse %}
   {% assign sorted_publications = site.publications | sort: 'date' | reverse %}
   
-  {% comment %} Preprints 먼저 표시 {% endcomment %}
-  {% for pub in sorted_preprints %}
+  {% comment %} Publications 먼저 표시 {% endcomment %}
+  {% for pub in sorted_publications %}
   <div class="publication-item">
     <div class="pub-content">
       <div class="pub-title">
-        {% assign preprint_index = 0 %}
-        {% for p in preprints %}
-          {% assign preprint_index = preprint_index | plus: 1 %}
-          {% if p.title == pub.title %}[P{{ preprint_index }}]{% break %}{% endif %}
-        {% endfor %}
         {{ pub.title }}
       </div>
       
       {% if pub.authors %}
-      <div class="pub-authors">{{ pub.authors }}</div>
+      <div class="pub-authors">{{ pub.authors | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</div>
       {% elsif pub.author %}
-      <div class="pub-authors">{{ pub.author }}</div>
+      <div class="pub-authors">{{ pub.author | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</div>
+      {% endif %}
+
+      {% if pub.note or pub.collaboration %}
+      <div class="pub-note">
+        {{ pub.note | default: pub.collaboration }}
+      </div>
       {% endif %}
       
       {% if pub.venue or pub.date %}
       <div class="pub-venue">
-        {% if pub.venue %}{{ pub.venue }}{% endif %}
+        {% if pub.venue %}{{ pub.venue }}{% endif %}{% assign show_year = true %}{% if pub.venue contains "under review" or pub.venue contains "Under Review" or pub.venue contains "Preprint"%}{% assign show_year = false %}{% endif %}{% if pub.venue and pub.date and show_year %}, {% endif %}{% if pub.date and show_year %}{{ pub.date | date: "%Y" }}{% endif %}
       </div>
       {% endif %}
       
@@ -87,37 +87,30 @@ I am Chanhyuk (David) Lee, M.S student at KAIST School of Computing. I'm current
     </div>
   </div>
   {% endfor %}
-  
-  {% comment %} Publications 다음에 표시 {% endcomment %}
-  {% for pub in sorted_publications %}
+
+  {% comment %} Preprints 다음에 표시 {% endcomment %}
+  {% for pub in sorted_preprints %}
   <div class="publication-item">
     <div class="pub-content">
       <div class="pub-title">
-        {% if pub.venue contains "Journal" or pub.venue contains "journal" or pub.venue contains "IEEE" or pub.venue contains "ACM" %}
-          {% assign journal_index = 0 %}
-          {% for j in journals %}
-            {% assign journal_index = journal_index | plus: 1 %}
-            {% if j.title == pub.title %}[J{{ journal_index }}]{% break %}{% endif %}
-          {% endfor %}
-        {% else %}
-          {% assign conf_index = 0 %}
-          {% for c in conferences %}
-            {% assign conf_index = conf_index | plus: 1 %}
-            {% if c.title == pub.title %}[C{{ conf_index }}]{% break %}{% endif %}
-          {% endfor %}
-        {% endif %}
         {{ pub.title }}
       </div>
       
       {% if pub.authors %}
-      <div class="pub-authors">{{ pub.authors }}</div>
+      <div class="pub-authors">{{ pub.authors | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</div>
       {% elsif pub.author %}
-      <div class="pub-authors">{{ pub.author }}</div>
+      <div class="pub-authors">{{ pub.author | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</div>
+      {% endif %}
+
+      {% if pub.note or pub.collaboration %}
+      <div class="pub-note">
+        {{ pub.note | default: pub.collaboration }}
+      </div>
       {% endif %}
       
       {% if pub.venue or pub.date %}
       <div class="pub-venue">
-        {% if pub.venue %}{{ pub.venue }}{% endif %}{% assign show_year = true %}{% if pub.venue contains "under review" or pub.venue contains "Under Review" or pub.venue contains "Preprint"%}{% assign show_year = false %}{% endif %}{% if pub.venue and pub.date and show_year %}, {% endif %}{% if pub.date and show_year %}{{ pub.date | date: "%Y" }}{% endif %}
+        {% if pub.venue %}{{ pub.venue }}{% endif %}
       </div>
       {% endif %}
       

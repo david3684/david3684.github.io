@@ -11,7 +11,7 @@
 .news-section h2 {
   font-size: 1.4em;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: var(--global-text-color);
   border-bottom: 2px solid var(--global-border-color);
   padding-bottom: 8px;
@@ -26,10 +26,11 @@
 .news-item {
   display: flex;
   align-items: flex-start; // center에서 flex-start로 변경
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   margin-left: 10px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid var(--global-border-color-light, #f0f0f0);
+  margin-top: 0;
+  padding-bottom: 2px;
+  border-bottom: none;
   @media (max-width: 768px) {
     margin-left: 0;
   }
@@ -66,6 +67,10 @@
   font-size: 0.8em;
   line-height: 1.4;
   color: var(--global-text-color);
+  margin: 0;
+}
+
+.news-text p {
   margin: 0;
 }
 

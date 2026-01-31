@@ -90,12 +90,18 @@
 
 .pub-authors {
   margin-bottom: 5px;
-  font-size: 0.85em;
+  font-size: 0.80em;
   font-weight: 400;
   color: var(--global-text-color);
 }
 
-/* 저자 링크 스타일 */
+.pub-note {
+  margin-bottom: 4px;
+  font-size: 0.8em;
+  color: var(--global-text-color-light);
+}
+
+
 .pub-authors .author-link {
   color: var(--global-link-color);
   text-decoration: none;
@@ -121,8 +127,8 @@
   font-size: 0.75em !important;
   color: var(--global-text-color-light) !important;
   font-style: italic !important;
-  margin-bottom: 20px !important;
-  margin-top: 10px !important;
+  margin-bottom: 6px !important;
+  margin-top: 6px !important;
 }
 
 .pub-venue {
