@@ -6,7 +6,7 @@ date: 2025-06-06 22:21:59 +00:00
 image: images/ufc.png
 categories: research
 author: "Chanhyuk Lee"
-authors: "Kiet T. Nguyen, <strong><u>Chanhyuk Lee</u></strong>, Donggyun Kim, Donghoon Lee, Seunghoon Hong"
+authors: "Kiet T. Nguyen, <u>Chanhyuk Lee</u>, Donggyun Kim, Donghoon Lee, Seunghoon Hong"
 venue_full: "Conference on Neural Information Processing Systems"
 venue_abbr: "NeurIPS"
 arxiv: http://arxiv.org/abs/2509.07530
