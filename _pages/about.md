@@ -148,7 +148,6 @@ document.addEventListener('DOMContentLoaded', function() {
   authorElements.forEach(function(authorElement) {
     let authorHtml = authorElement.innerHTML;
     
-    // 1. 내 이름 하이라이트 (별표 포함)
     myNames.forEach(function(name) {
       // 내 이름을 찾아서 span으로 감싸기 (별표 포함)
       const nameRegex = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\*)?\\b`, 'gi');
