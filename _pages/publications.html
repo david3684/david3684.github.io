@@ -6,10 +6,10 @@ author_profile: true
 ---
 
 {% if site.author.googlescholar %}
-<div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
+<div class="wordwrap pub-scholar-note">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
 {% endif %}
 
-<p class="equal-contribution-note">* denotes equal contributions</p>
+<p class="equal-contribution-note">*: equal contribution, †: equal advising</p>
 
 <div class="publication-list">
   {% assign conferences = site.publications | sort: 'date' %}
@@ -21,33 +21,13 @@ author_profile: true
   <div class="publication-item">
     <div class="pub-content">
       <div class="pub-title">
-        {% comment %} 카테고리별 번호 부여 {% endcomment %}
-        {% if pub.venue contains "Preprint" %}
-          {% assign preprint_index = 0 %}
-          {% for p in preprints %}
-            {% assign preprint_index = preprint_index | plus: 1 %}
-            {% if p.title == pub.title %}[P{{ preprint_index }}]{% break %}{% endif %}
-          {% endfor %}
-        {% elsif pub.venue contains "Journal" or pub.venue contains "journal" or pub.venue contains "IEEE" or pub.venue contains "ACM" %}
-          {% assign journal_index = 0 %}
-          {% for j in journals %}
-            {% assign journal_index = journal_index | plus: 1 %}
-            {% if j.title == pub.title %}[J{{ journal_index }}]{% break %}{% endif %}
-          {% endfor %}
-        {% else %}
-          {% assign conf_index = 0 %}
-          {% for c in conferences %}
-            {% assign conf_index = conf_index | plus: 1 %}
-            {% if c.title == pub.title %}[C{{ conf_index }}]{% break %}{% endif %}
-          {% endfor %}
-        {% endif %}
         {{ pub.title }}
       </div>
       
       {% if pub.authors %}
-      <div class="pub-authors">{{ pub.authors }}</div>
+      <div class="pub-authors">{{ pub.authors | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</div>
       {% elsif pub.author %}
-      <div class="pub-authors">{{ pub.author }}</div>
+      <div class="pub-authors">{{ pub.author | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</div>
       {% endif %}
       
       {% if pub.venue or pub.date %}
