@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Curriculum Vitae"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -9,56 +9,67 @@ redirect_from:
 
 {% include base_path %}
 
-Education
-======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+## Education
 
-Work experience
-======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+**M.S. in Computer Science**
+Korea Advanced Institute of Science and Technology (KAIST)
+*Mar. 2025 - Present*
+Advisor: Prof. [Seunghoon Hong](https://maga33.github.io/)
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+**B.S. in Computer Science and Chemistry** (Double Major)
+Korea Advanced Institute of Science and Technology (KAIST)
+*Mar. 2019 - Feb. 2025*
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+**Gyeonggi Science High School for Gifted**
+*Mar. 2016 - Feb. 2019*
 
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+---
+
+## Research Interests
+
+- Neural network scaling
+- Model fusion and parameter alignment
+- Efficient approaches to build large models with limited resources
+
+---
+
+## Publications
+
+### Conference Papers
+
+**AdaRank: Adaptive Rank Pruning for Enhanced Model Merging**
+<u>Chanhyuk Lee</u>, Jiho Choi, Chanryeol Lee, Donggyun Kim, Seunghoon Hong
+*International Conference on Learning Representations (ICLR), 2026*
+[[arXiv]](https://arxiv.org/abs/2503.22178) [[Code]](https://github.com/david3684/AdaRank)
+
+### Preprints
+
+**One-step Language Modeling via Continuous Denoising**
+<u>Chanhyuk Lee</u>, Jaehoon Yoo, Manan Agarawal, Sheel Shah, Jerry Huang, Aditi Raghunathan, Seunghoon Hong, Nicholas M. Boffi, Jinwoo Kim
+*Preprint*
+[[arXiv]](https://arxiv.org/abs/2602.16813) [[Code]](https://github.com/david3684/flm) [[Project]](https://one-step-lm.github.io/)
+
+**Infinite Mask Diffusion for Few-Step Distillation**
+Jaehoon Yoo, Wonjung Kim, <u>Chanhyuk Lee</u>, Seunghoon Hong
+*Under Review*
+
+**Revisiting Weight Averaging for Model Merging**
+Jiho Choi\*, Donggyun Kim\*, <u>Chanhyuk Lee</u>, Seunghoon Hong
+*Preprint*
+[[arXiv]](https://arxiv.org/abs/2412.12153) [[Code]](https://github.com/JH-GEECS/CART)
+
+---
+
+## Skills
+
+- **Programming Languages:** Python, C/C++
+- **Deep Learning Frameworks:** PyTorch
+- **Research Areas:** Model merging, diffusion models, language models
+
+---
+
+## Contact
+
+- **Email:** chan3684@kaist.ac.kr
+- **GitHub:** [david3684](https://github.com/david3684)
+- **Google Scholar:** [Profile](https://scholar.google.com/citations?user=mpSpDHcAAAAJ&hl=ko)

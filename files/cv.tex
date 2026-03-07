@@ -1,0 +1,155 @@
+%------------------------
+% Curriculum Vitae - Chanhyuk Lee
+%------------------------
+
+% Document class and font size
+\documentclass[a4paper,9pt]{extarticle}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{changepage}
+\usepackage[sfdefault]{inter}
+\setlength{\parindent}{0pt}
+
+% Formatting
+\setlist{noitemsep}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{\baselineskip}{0.5\baselineskip}
+
+% Publication label/ref commands
+\newcommand{\publabel}[1]{\textbf{#1.}\phantomsection\label{pub:#1}}
+\newcommand{\pubref}[1]{\hyperref[pub:#1]{\textbf{[#1]}}}
+
+%-------------------------------------------------------------------------------
+\begin{document}
+
+\pagestyle{empty}
+
+% Header
+\begin{center}
+    \textbf{\Large Chanhyuk Lee}\\[3pt]
+    \textbf{Curriculum Vitae}\\[1pt]
+    Seoul/Daejeon, South Korea | \href{mailto:chan3684@kaist.ac.kr}{chan3684@kaist.ac.kr} | \href{https://david3684.github.io}{david3684.github.io}
+\end{center}
+
+%------------------------
+\section*{EDUCATION}
+\textbf{M.S. in Computer Science} \hfill Mar. 2025 -- Present \\
+Korea Advanced Institute of Science and Technology (KAIST) \\
+School of Computing \\
+Advisor: Prof. Seunghoon Hong \\
+
+\textbf{B.S. in Computer Science and Chemistry} (Double Major) \hfill Mar. 2019 -- Feb. 2025 \\
+Korea Advanced Institute of Science and Technology (KAIST) \\
+
+\textbf{Gyeonggi Science High School for Gifted} \hfill Mar. 2016 -- Feb. 2019 \\
+
+%------------------------
+\section*{PUBLICATIONS}
+
+\textbf{Infinite Mask Diffusion for Few-Step Distillation} \\
+Jaehoon Yoo, Wonjung Kim, \textbf{Chanhyuk Lee}, Seunghoon Hong. \\
+\textit{Under Review}, 2026.
+
+{\setlength{\parskip}{10pt}
+\publabel{P2} \href{https://arxiv.org/abs/2602.16813}{\textbf{One-step Language Modeling via Continuous Denoising}} \\
+\textbf{Chanhyuk Lee}, Jaehoon Yoo, Manan Agarawal, Sheel Shah, Jerry Huang, \\
+Aditi Raghunathan, Seunghoon Hong, Nicholas M. Boffi, Jinwoo Kim. \\
+\textit{arXiv Preprint}, 2026.
+
+\publabel{C2} \href{https://arxiv.org/abs/2503.22178}{\textbf{AdaRank: Adaptive Rank Pruning for Enhanced Model Merging}} \\
+\textbf{Chanhyuk Lee}, Jiho Choi, Chanryeol Lee, Donggyun Kim, Seunghoon Hong. \\
+\textit{International Conference on Learning Representations (\textbf{ICLR})}, 2026.
+
+\publabel{C1} \href{http://arxiv.org/abs/2509.07530}{\textbf{Universal Few-Shot Spatial Control for Diffusion Models}} \\
+Kiet T. Nguyen, \textbf{Chanhyuk Lee}, Donggyun Kim, Donghoon Lee, Seunghoon Hong. \\
+\textit{Conference on Neural Information Processing Systems (\textbf{NeurIPS})}, 2025.
+
+\publabel{P1} \href{https://arxiv.org/abs/2412.12153}{\textbf{Revisiting Weight Averaging for Model Merging}} \\
+Jiho Choi*, Donggyun Kim*, \textbf{Chanhyuk Lee}, Seunghoon Hong. \\
+\textit{arXiv Preprint}, 2024.
+
+}
+
+%------------------------
+\section*{EXPERIENCE}
+\textbf{Graduate Research Assistant} \hfill Mar. 2025 -- Present \\
+Vision and Learning Lab, KAIST CS\\
+Advisor: Prof. Seunghoon Hong \\
+Research on diffusion language models, model merging, parameter alignement.
+
+{\setlength{\parskip}{10pt}
+
+\textbf{Undergraduuate Researcher} \hfill July. 2024 -- Feb. 2025 \\
+Vision and Learning Lab, KAIST CS\\
+Advisor: Prof. Seunghoon Hong \\
+Research on model merging and few-shot learning.
+
+\textbf{Undergraduuate Researcher} \hfill Jan. 2024 -- June. 2024 \\
+CVML Lab, KAIST AI\\
+Advisor: Prof. Hyunjung Shim \\
+Research on efficient neural network via weight quantization.
+
+\textbf{Military Service}, Republic of Korea Army \hfill Jan. 2022 -- July. 2023 
+
+\textbf{Undergraduuate Researcher} \hfill Jan. 2020 -- June. 2021 \\
+M-Design Lab, KAIST Chem\\
+Advisor: Prof. Hyungjun Kim \\
+Research on simulating acid-base proton transfer via DFT.
+
+}
+
+%------------------------
+% \section*{ACADEMIC SERVICES}
+% \textbf{Conference Reviewer:} % add any you've reviewed for
+
+% \textbf{Journal Reviewer:} % add any you've reviewed for
+
+%------------------------
+\section*{TEACHING}
+\textbf{Teaching Assistant, KAIST School of Computing}
+
+Introduction to Deep Learning (CS371) \hfill Fall 2025
+
+Elements of AI (CS103) \hfill Spring 2025 \\
+
+\textbf{Teaching Assistant, Samsung Electronics}
+
+Samsung Research AI Expert Program \hfill 2025 \\
+
+\textbf{Student Mentoring}
+
+Yeonwoo Choi, B.S Student @ KAIST \hfill 2026-
+
+Chanryeol Lee, B.S Student @ KAIST \pubref{C2} $\rightarrow$ M.S Student @ KAIST \hfill 2024-2025
+
+%------------------------
+\section*{HONORS}
+\textbf{Awards}
+
+KAIST School of Computing Best TA Award \hfill 2025
+
+Samsung Humantech Paper Awards (Highschool Track) \hfill 2018
+
+%------------------------
+\section*{SKILLS}
+\textbf{Programming Languages:} Python, C/C++ \\
+\textbf{Languages:} Korean (Native), English (Fluent, IBT TOEFL: 108)
+
+%------------------------
+\section*{LINKS}
+\textbf{GitHub:} \href{https://github.com/david3684}{github.com/david3684} \\
+\textbf{Google Scholar:} \href{https://scholar.google.com/citations?user=mpSpDHcAAAAJ}{scholar.google.com/citations?user=mpSpDHcAAAAJ} \\
+\textbf{LinkedIn:} \href{https://www.linkedin.com/in/chanhyuk-lee-18b01528b}{linkedin.com/in/chanhyuk-lee-18b01528b}
+
+%------------------------
+\section*{REFERENCES}
+\textbf{Seunghoon Hong}, Associate Professor at KAIST \\
+\href{mailto:seunghoon.hong@kaist.ac.kr}{seunghoon.hong@kaist.ac.kr}
+
+\end{document}
