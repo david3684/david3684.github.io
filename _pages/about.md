@@ -82,10 +82,13 @@ which make various techniques from the image domain, such as flow map distillati
         {% if pub.bibtexurl %}<a href="{{ pub.bibtexurl }}">BibTeX</a>{% endif %}
         {% if pub.abstract %}<button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false">Abstract</button>{% endif %}
         {% if pub.arxiv_id %}
-        <span class="citation-badge" data-arxiv-id="{{ pub.arxiv_id }}" title="Citations (Semantic Scholar)">
-          <svg class="cite-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          <span class="cite-count">—</span>
-        </span>
+          {% assign cite_count = site.data.citations.citations[pub.arxiv_id] %}
+          {% if cite_count %}
+          <span class="citation-badge {% if cite_count == 0 %}cite-zero{% endif %}" title="{{ cite_count }} citations (Semantic Scholar)">
+            <svg class="cite-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <span class="cite-count">{{ cite_count }}</span>
+          </span>
+          {% endif %}
         {% endif %}
       </div>
 
@@ -130,10 +133,13 @@ which make various techniques from the image domain, such as flow map distillati
         {% if pub.bibtexurl %}<a href="{{ pub.bibtexurl }}">BibTeX</a>{% endif %}
         {% if pub.abstract %}<button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false">Abstract</button>{% endif %}
         {% if pub.arxiv_id %}
-        <span class="citation-badge" data-arxiv-id="{{ pub.arxiv_id }}" title="Citations (Semantic Scholar)">
-          <svg class="cite-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          <span class="cite-count">—</span>
-        </span>
+          {% assign cite_count = site.data.citations.citations[pub.arxiv_id] %}
+          {% if cite_count %}
+          <span class="citation-badge {% if cite_count == 0 %}cite-zero{% endif %}" title="{{ cite_count }} citations (Semantic Scholar)">
+            <svg class="cite-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <span class="cite-count">{{ cite_count }}</span>
+          </span>
+          {% endif %}
         {% endif %}
       </div>
 
@@ -181,39 +187,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     el.innerHTML = html;
   });
-
-  // Batch fetch citation counts
-  var badges = document.querySelectorAll('.citation-badge[data-arxiv-id]');
-  if (badges.length === 0) return;
-  var idMap = {};
-  badges.forEach(function(badge) {
-    idMap['arXiv:' + badge.getAttribute('data-arxiv-id')] = badge;
-  });
-  var ids = Object.keys(idMap);
-  fetch('https://api.semanticscholar.org/graph/v1/paper/batch?fields=citationCount', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ids: ids })
-  })
-    .then(function(res) { return res.json(); })
-    .then(function(results) {
-      if (!Array.isArray(results)) return;
-      results.forEach(function(data, i) {
-        var badge = idMap[ids[i]];
-        if (!badge) return;
-        var countEl = badge.querySelector('.cite-count');
-        if (data && typeof data.citationCount === 'number') {
-          countEl.textContent = data.citationCount;
-          badge.title = data.citationCount + ' citations (Semantic Scholar)';
-          if (data.citationCount === 0) badge.classList.add('cite-zero');
-        } else {
-          badge.style.display = 'none';
-        }
-      });
-    })
-    .catch(function() {
-      badges.forEach(function(b) { b.style.display = 'none'; });
-    });
 });
 </script>
 

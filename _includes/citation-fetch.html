@@ -1,0 +1,64 @@
+<script>
+(function() {
+  var badges = document.querySelectorAll('.citation-badge[data-arxiv-id]');
+  if (badges.length === 0) return;
+
+  var CACHE_KEY = 'citations_cache';
+  var CACHE_TTL = 24 * 60 * 60 * 1000; // 24시간
+
+  function applyToPage(data) {
+    badges.forEach(function(badge) {
+      var id = 'arXiv:' + badge.getAttribute('data-arxiv-id');
+      var countEl = badge.querySelector('.cite-count');
+      if (data[id] !== undefined) {
+        countEl.textContent = data[id];
+        badge.title = data[id] + ' citations (Semantic Scholar)';
+        if (data[id] === 0) badge.classList.add('cite-zero');
+      } else {
+        badge.style.display = 'none';
+      }
+    });
+  }
+
+  // 캐시 확인
+  try {
+    var cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+    if (cached && (Date.now() - cached.timestamp < CACHE_TTL)) {
+      applyToPage(cached.data);
+      return;
+    }
+  } catch(e) {}
+
+  // 모든 페이지의 arXiv ID 수집 (중복 제거)
+  var allBadges = document.querySelectorAll('.citation-badge[data-arxiv-id]');
+  var idMap = {};
+  allBadges.forEach(function(b) {
+    idMap['arXiv:' + b.getAttribute('data-arxiv-id')] = true;
+  });
+  var ids = Object.keys(idMap);
+
+  fetch('https://api.semanticscholar.org/graph/v1/paper/batch?fields=citationCount', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ids: ids })
+  })
+    .then(function(res) { return res.json(); })
+    .then(function(results) {
+      if (!Array.isArray(results)) return;
+      var data = {};
+      results.forEach(function(item, i) {
+        if (item && typeof item.citationCount === 'number') {
+          data[ids[i]] = item.citationCount;
+        }
+      });
+      // 캐시 저장
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), data: data }));
+      } catch(e) {}
+      applyToPage(data);
+    })
+    .catch(function() {
+      badges.forEach(function(b) { b.style.display = 'none'; });
+    });
+})();
+</script>
