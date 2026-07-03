@@ -11,87 +11,113 @@ author_profile: true
 
 <p class="equal-contribution-note">*: equal contribution, †: equal advising</p>
 
+{% assign all_papers = site.publications | concat: site.preprints | sort: 'date' | reverse %}
+{% assign prev_year = "" %}
+
+{% for pub in all_papers %}
+  {% assign pub_year = pub.date | date: "%Y" %}
+  {% if pub_year != prev_year %}
+    {% if prev_year != "" %}</div>{% endif %}
+<h2 class="pub-year-header">{{ pub_year }}</h2>
 <div class="publication-list">
-  {% assign conferences = site.publications | sort: 'date' %}
-  {% assign journals = site.publications | sort: 'date' %}
-  {% assign preprints = site.preprints | sort: 'date' %}
-  
-  {% assign all_papers = site.publications | concat: site.preprints | sort: 'date' | reverse %}
-  {% for pub in all_papers %}
-  <div class="publication-item">
+    {% assign prev_year = pub_year %}
+  {% endif %}
+
+  <div class="publication-item" {% if pub.arxiv_id %}data-arxiv-id="{{ pub.arxiv_id }}"{% endif %}>
     <div class="pub-content">
-      <div class="pub-title">
-        {{ pub.title }}
-      </div>
-      
+      <div class="pub-title">{{ pub.title }}</div>
+
       {% if pub.authors %}
       <div class="pub-authors">{{ pub.authors | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</div>
       {% elsif pub.author %}
       <div class="pub-authors">{{ pub.author | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</div>
       {% endif %}
-      
-      {% if pub.venue or pub.venue_full or pub.venue_abbr or pub.date %}
+
+      {% if pub.venue or pub.venue_full or pub.venue_abbr %}
       <div class="pub-venue">
-        {% capture venue_text %}{% if pub.venue_full or pub.venue_abbr %}{% if pub.venue_full %}{{ pub.venue_full }}{% endif %}{% if pub.venue_abbr %} (<span class="pub-venue-abbr">{{ pub.venue_abbr }}</span>){% endif %}{% elsif pub.venue %}{{ pub.venue }}{% endif %}{% endcapture %}{{ venue_text | strip }}{% assign show_year = true %}{% if pub.venue contains "under review" or pub.venue contains "Under Review" or pub.venue contains "Preprint"%}{% assign show_year = false %}{% endif %}{% if pub.date and show_year %}, {{ pub.date | date: "%Y" }}{% endif %}
+        {% capture venue_text %}{% if pub.venue_full or pub.venue_abbr %}{% if pub.venue_full %}{{ pub.venue_full }}{% endif %}{% if pub.venue_abbr %} (<span class="pub-venue-abbr">{{ pub.venue_abbr }}</span>){% endif %}{% elsif pub.venue %}{{ pub.venue }}{% endif %}{% endcapture %}{{ venue_text | strip }}{% assign show_year = true %}{% if pub.venue contains "under review" or pub.venue contains "Under Review" or pub.venue contains "Preprint" %}{% assign show_year = false %}{% endif %}{% if pub.date and show_year %}, {{ pub.date | date: "%Y" }}{% endif %}
       </div>
       {% endif %}
-      
-      {% if pub.arxiv or pub.code or pub.project or pub.paperurl or pub.bibtexurl %}
+
       <div class="pub-links">
         {% if pub.arxiv %}<a href="{{ pub.arxiv }}">arXiv</a>{% endif %}
         {% if pub.code %}<a href="{{ pub.code }}">Code</a>{% endif %}
         {% if pub.project %}<a href="{{ pub.project }}">Project</a>{% endif %}
         {% if pub.paperurl %}<a href="{{ pub.paperurl }}">Paper</a>{% endif %}
         {% if pub.bibtexurl %}<a href="{{ pub.bibtexurl }}">BibTeX</a>{% endif %}
+        {% if pub.arxiv_id %}
+        <span class="citation-badge" data-arxiv-id="{{ pub.arxiv_id }}" title="Citations (Semantic Scholar)">
+          <svg class="cite-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+          <span class="cite-count">—</span>
+        </span>
+        {% endif %}
+      </div>
+
+      {% if pub.abstract %}
+      <div class="pub-abstract">
+        <p>{{ pub.abstract }}</p>
       </div>
       {% endif %}
-      
+
       {% if pub.content and pub.content != "" %}
       <div class="pub-description">{{ pub.content }}</div>
       {% endif %}
     </div>
   </div>
-  {% endfor %}
-</div>
+{% endfor %}
+{% if prev_year != "" %}</div>{% endif %}
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 저자 이름 자동 하이라이트
-  const myNames = [
-    'Chanhyuk Lee',
-    'Chanhyuk David Lee', 
-    'David Lee',
-    'C. Lee',
-    'C.H. Lee'
-  ];
-  
-  const authorElements = document.querySelectorAll('.pub-authors');
-  
-  authorElements.forEach(function(authorElement) {
-    let authorHtml = authorElement.innerHTML;
-    
-    // 1. 내 이름 하이라이트 (별표 포함)
+  var myNames = ['Chanhyuk Lee', 'Chanhyuk David Lee', 'David Lee', 'C. Lee', 'C.H. Lee'];
+  document.querySelectorAll('.pub-authors').forEach(function(el) {
+    var html = el.innerHTML;
     myNames.forEach(function(name) {
-      // 내 이름을 찾아서 span으로 감싸기 (별표 포함)
-      const nameRegex = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\*)?\\b`, 'gi');
-      authorHtml = authorHtml.replace(nameRegex, function(match) {
-        return `<span class="author-highlight">${match}</span>`;
-      });
+      var re = new RegExp('\\b' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(\\*)?\\b', 'gi');
+      html = html.replace(re, function(m) { return '<span class="author-highlight">' + m + '</span>'; });
     });
-    
-    // 2. Equal contribution 표시된 다른 저자들을 링크 스타일로
-    authorHtml = authorHtml.replace(/\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\*)\b/g, function(match) {
-      // 이미 span으로 감싸져 있지 않은 경우만 처리
-      if (!authorHtml.includes(`<span class="author-highlight">${match}</span>`)) {
-        return `<span class="author-link">${match}</span>`;
+    html = html.replace(/\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\*)\b/g, function(m) {
+      if (!html.includes('<span class="author-highlight">' + m + '</span>')) {
+        return '<span class="author-link">' + m + '</span>';
       }
-      return match;
+      return m;
     });
-    
-    authorElement.innerHTML = authorHtml;
+    el.innerHTML = html;
   });
+
+  var badges = document.querySelectorAll('.citation-badge[data-arxiv-id]');
+  if (badges.length === 0) return;
+  var idMap = {};
+  badges.forEach(function(badge) {
+    idMap['arXiv:' + badge.getAttribute('data-arxiv-id')] = badge;
+  });
+  var ids = Object.keys(idMap);
+  fetch('https://api.semanticscholar.org/graph/v1/paper/batch?fields=citationCount', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ids: ids })
+  })
+    .then(function(res) { return res.json(); })
+    .then(function(results) {
+      if (!Array.isArray(results)) return;
+      results.forEach(function(data, i) {
+        var badge = idMap[ids[i]];
+        if (!badge) return;
+        var countEl = badge.querySelector('.cite-count');
+        if (data && typeof data.citationCount === 'number') {
+          countEl.textContent = data.citationCount;
+          badge.title = data.citationCount + ' citations (Semantic Scholar)';
+          if (data.citationCount === 0) badge.classList.add('cite-zero');
+        } else {
+          badge.style.display = 'none';
+        }
+      });
+    })
+    .catch(function() {
+      badges.forEach(function(b) { b.style.display = 'none'; });
+    });
 });
 </script>
-
-
-

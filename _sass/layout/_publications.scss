@@ -1,7 +1,20 @@
+.pub-year-header {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: var(--global-text-color);
+  margin: 32px 0 12px 0;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--global-border-color, #e0e0e0);
+
+  &:first-of-type {
+    margin-top: 16px;
+  }
+}
+
 .publication-list {
   list-style: none;
   padding: 0;
-  margin: 20px 0;
+  margin: 0 0 8px 0;
   margin-left: 0;
 }
 
@@ -176,6 +189,72 @@
   font-size: 0.95em;
   line-height: 1.4;
   color: var(--global-text-color);
+}
+
+/* Abstract toggle button */
+.abstract-toggle {
+  display: inline-block;
+  background: none;
+  border: 1px solid var(--global-link-color);
+  color: var(--global-link-color);
+  border-radius: 3px;
+  padding: 1px 7px;
+  font-size: 0.78em;
+  cursor: pointer;
+  margin-right: 10px;
+  line-height: 1.6;
+  transition: background 0.15s, color 0.15s;
+  vertical-align: middle;
+
+  &:hover {
+    background: var(--global-link-color);
+    color: #fff;
+  }
+
+  &.active {
+    background: var(--global-link-color);
+    color: #fff;
+  }
+}
+
+/* Abstract content block */
+.pub-abstract {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-left: 3px solid var(--global-border-color, #e0e0e0);
+
+  p {
+    margin: 0;
+    font-size: 0.78em;
+    line-height: 1.65;
+    color: var(--global-text-color-light);
+  }
+}
+
+/* Citation badge */
+.citation-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.78em;
+  color: var(--global-text-color-light);
+  vertical-align: middle;
+  cursor: default;
+
+  .cite-icon {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+  }
+
+  .cite-count {
+    font-variant-numeric: tabular-nums;
+    min-width: 1ch;
+  }
+
+  &.cite-zero {
+    opacity: 0.45;
+  }
 }
 
 /* Education section styling */
