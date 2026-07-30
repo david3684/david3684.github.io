@@ -46,8 +46,18 @@ Korea Advanced Institute of Science and Technology (KAIST)
 
 **One-step Language Modeling via Continuous Denoising**
 <u>Chanhyuk Lee</u>, Jaehoon Yoo, Manan Agarawal, Sheel Shah, Jerry Huang, Aditi Raghunathan, Seunghoon Hong, Nicholas M. Boffi, Jinwoo Kim
-*Preprint*
+*Conference on Language Modeling (COLM), 2026, Workshop on Non-Autoregressive Language Modeling*
 [[arXiv]](https://arxiv.org/abs/2602.16813) [[Code]](https://github.com/david3684/flm) [[Project]](https://one-step-lm.github.io/)
+
+**Self-conditioned Flow Map Language Models via Fixed-point Flows**
+Jaehoon Yoo, Wonjung Kim, Floor Eijkelboom, <u>Chanhyuk Lee</u>, Nicholas M. Boffi, Seunghoon Hong†, Jinwoo Kim†
+*Conference on Language Modeling (COLM), 2026, Workshop on Non-Autoregressive Language Modeling*
+[[arXiv]](https://arxiv.org/abs/2607.00714) [[Code]](https://github.com/Ugness/self-conditioned-fmlm)
+
+**Posterior Refinement: Fast Language Generation via Any-Order Flow Maps**
+Manan Agarwal, Sheel Shah, <u>Chanhyuk Lee</u>, Jaehoon Yoo, Jerry Huang, Seunghoon Hong, Aditi Raghunathan, Jinwoo Kim†, Nicholas M. Boffi†
+*Conference on Language Modeling (COLM), 2026, Workshop on Non-Autoregressive Language Modeling*
+[[arXiv]](https://arxiv.org/pdf/2606.24773) [[Code]](https://github.com/MananAg007/posterior-refinement) [[Project]](https://posterior-refinement.github.io/)
 
 **Infinite Mask Diffusion for Few-Step Distillation**
 Jaehoon Yoo, Wonjung Kim, <u>Chanhyuk Lee</u>, Seunghoon Hong

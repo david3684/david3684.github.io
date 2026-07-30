@@ -42,8 +42,8 @@ layout: default
         
         {% if page.collection == 'teaching' %}
           <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif page.venue and page.date %}
-          <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+        {% elsif page.venue_full or page.venue_abbr or page.venue %}
+          <p><i>{% if page.venue_full %}{{ page.venue_full }}{% endif %}{% if page.venue_abbr %} (<strong>{{ page.venue_abbr }}</strong>){% endif %}{% unless page.venue_full or page.venue_abbr %}{{ page.venue }}{% endunless %}{% assign show_year = true %}{% if page.venue contains "Preprint" or page.venue contains "Under Review" %}{% assign show_year = false %}{% endif %}{% if page.date and show_year or page.venue_full or page.venue_abbr %}, {{ page.date | date: "%Y" }}{% endif %}{% if page.workshop %}, <span class="pub-workshop-label">{{ page.workshop }}</span>{% endif %}</i></p>
         {% elsif page.date %}
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}    

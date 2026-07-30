@@ -42,7 +42,7 @@
   flex-shrink: 0;
   width: 230px;
   margin-right: 10px !important;
-  margin-left: 0 !important;  // 10px에서 0으로 변경하여 Education과 맞춤
+  margin-left: 0 !important;
   border-radius: 4px;
 
   // 모바일
@@ -87,7 +87,7 @@
   margin-bottom: 5px;
   line-height: 1.3;
   color: var(--global-text-color);
-  
+
   // 모바일
   @media (max-width: 768px) {
     font-size: 0.95em;
@@ -105,7 +105,7 @@
   margin-bottom: 5px;
   font-size: 0.75em;
   font-weight: 400;
-  color: var(--global-text-color);
+  color: var(--global-text-color-light);
 }
 
 .pub-note {
@@ -119,7 +119,7 @@
   color: var(--global-link-color);
   text-decoration: none;
   font-weight: 400;
-  
+
   &:hover {
     color: var(--global-link-hover-color);
     text-decoration: underline;
@@ -131,7 +131,6 @@
   font-weight: 500 !important;
   color: var(--global-text-color) !important;
   text-decoration: none !important;
-  // padding: 1px 3px !important;
   border-radius: 3px !important;
 }
 
@@ -157,11 +156,15 @@
 }
 
 .pub-venue-abbr {
-  font-weight: 550 !important;
+  font-weight: 700 !important;
 }
 
 .pub-venue strong {
   font-weight: inherit;
+}
+
+.pub-workshop-label {
+  color: var(--global-text-color-light);
 }
 
 .pub-scholar-note {
@@ -267,7 +270,7 @@
   margin-bottom: 20px;
   margin-left: 0px;
   border-radius: 0 5px 5px 0;
-  
+
   // 모바일
   @media (max-width: 768px) {
     margin-left: 0;

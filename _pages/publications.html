@@ -35,7 +35,7 @@ author_profile: true
 
       {% if pub.venue or pub.venue_full or pub.venue_abbr %}
       <div class="pub-venue">
-        {% capture venue_text %}{% if pub.venue_full or pub.venue_abbr %}{% if pub.venue_full %}{{ pub.venue_full }}{% endif %}{% if pub.venue_abbr %} (<span class="pub-venue-abbr">{{ pub.venue_abbr }}</span>){% endif %}{% elsif pub.venue %}{{ pub.venue }}{% endif %}{% endcapture %}{{ venue_text | strip }}{% assign show_year = true %}{% if pub.venue contains "under review" or pub.venue contains "Under Review" or pub.venue contains "Preprint" %}{% assign show_year = false %}{% endif %}{% if pub.date and show_year %}, {{ pub.date | date: "%Y" }}{% endif %}
+        {% capture venue_text %}{% if pub.venue_full or pub.venue_abbr %}{% if pub.venue_full %}{{ pub.venue_full }}{% endif %}{% if pub.venue_abbr %} (<span class="pub-venue-abbr">{{ pub.venue_abbr }}</span>){% endif %}{% elsif pub.venue %}{{ pub.venue }}{% endif %}{% endcapture %}{{ venue_text | strip }}{% assign show_year = true %}{% if pub.venue contains "under review" or pub.venue contains "Under Review" or pub.venue contains "Preprint" %}{% assign show_year = false %}{% endif %}{% if pub.date and show_year %}, {{ pub.date | date: "%Y" }}{% endif %}{% if pub.workshop %}, <span class="pub-workshop-label">{{ pub.workshop }}</span>{% endif %}
       </div>
       {% endif %}
 
