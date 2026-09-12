@@ -50,7 +50,11 @@ which make various techniques from the image domain, such as flow map distillati
   
   {% comment %} Publications 먼저, 그 다음 Preprints 순으로 정렬 {% endcomment %}
   {% assign sorted_preprints = site.preprints | sort: 'date' | reverse %}
-  {% assign sorted_publications = site.publications | sort: 'date' | reverse %}
+  {% assign dated_publications = site.publications | sort: 'date' | reverse %}
+  {% comment %} Papers marked `under_review: true` are pinned to the top of the list {% endcomment %}
+  {% assign pinned_publications = dated_publications | where_exp: "p", "p.under_review == true" %}
+  {% assign rest_publications = dated_publications | where_exp: "p", "p.under_review != true" %}
+  {% assign sorted_publications = pinned_publications | concat: rest_publications %}
   
   {% comment %} Publications 먼저 표시 {% endcomment %}
   {% for pub in sorted_publications %}
