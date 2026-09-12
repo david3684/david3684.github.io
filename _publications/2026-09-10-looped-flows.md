@@ -7,7 +7,6 @@ categories: research
 author: "Chanhyuk Lee"
 authors: "Ayhan Suleymanzade, <u>Chanhyuk Lee</u>, Floor Eijkelboom, Nicholas M. Boffi, İsmail İlkan Ceylan†, Jinwoo Kim†"
 venue: "Preprint"
-under_review: true
 arxiv: https://arxiv.org/abs/2609.11801
 arxiv_id: "2609.11801"
 code:
