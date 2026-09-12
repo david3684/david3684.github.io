@@ -2,7 +2,7 @@ name: Update Citation Counts
 
 on:
   schedule:
-    - cron: '0 3 * * *'  # 매일 UTC 03:00 (한국시간 12:00)
+    - cron: '0 3 * * 1'  # 매주 월요일 UTC 03:00 (한국시간 월요일 12:00)
   workflow_dispatch:       # 수동 실행 버튼
 
 jobs:
