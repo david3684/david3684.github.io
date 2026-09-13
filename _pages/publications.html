@@ -12,20 +12,15 @@ author_profile: true
 <p class="equal-contribution-note">*: equal contribution, †: equal advising</p>
 
 {% assign all_papers = site.publications | concat: site.preprints | sort: 'date' | reverse %}
+{% assign prev_year = "" %}
 
-{% comment %} Papers marked `under_review: true` are pinned above the year-grouped list {% endcomment %}
-{% assign under_review = all_papers | where_exp: "p", "p.under_review == true" %}
-{% assign reviewed = all_papers | where_exp: "p", "p.under_review != true" %}
-{% assign ordered_papers = under_review | concat: reviewed %}
-{% assign prev_group = "" %}
-
-{% for pub in ordered_papers %}
-  {% if pub.under_review %}{% assign pub_group = "Under Review" %}{% else %}{% assign pub_group = pub.date | date: "%Y" %}{% endif %}
-  {% if pub_group != prev_group %}
-    {% if prev_group != "" %}</div>{% endif %}
-<h2 class="pub-year-header">{{ pub_group }}</h2>
+{% for pub in all_papers %}
+  {% assign pub_year = pub.date | date: "%Y" %}
+  {% if pub_year != prev_year %}
+    {% if prev_year != "" %}</div>{% endif %}
+<h2 class="pub-year-header">{{ pub_year }}</h2>
 <div class="publication-list">
-    {% assign prev_group = pub_group %}
+    {% assign prev_year = pub_year %}
   {% endif %}
 
   <div class="publication-item" {% if pub.arxiv_id %}data-arxiv-id="{{ pub.arxiv_id }}"{% endif %}>
@@ -76,7 +71,7 @@ author_profile: true
     </div>
   </div>
 {% endfor %}
-{% if prev_group != "" %}</div>{% endif %}
+{% if prev_year != "" %}</div>{% endif %}
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
