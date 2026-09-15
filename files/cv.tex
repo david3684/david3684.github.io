@@ -11,9 +11,11 @@
 \geometry{a4paper, margin=1in}
 \usepackage{titlesec}
 \usepackage{enumitem}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{changepage}
-\usepackage[sfdefault]{inter}
+% Times (Nimbus Roman via mathptmx): the classic, compact academic-CV serif.
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
 \setlength{\parindent}{0pt}
 
 % Formatting
@@ -21,12 +23,16 @@
 \titleformat{\section}{\large\bfseries}{\thesection}{1em}{}[\titlerule]
 \titlespacing*{\section}{0pt}{\baselineskip}{0.5\baselineskip}
 
-% Publication label/ref commands
-\newcommand{\publabel}[1]{\textbf{#1.}\phantomsection\label{pub:#1}}
-\newcommand{\pubref}[1]{\hyperref[pub:#1]{\textbf{[#1]}}}
+% Consistent inter-entry spacing
+\newcommand{\entryskip}{\medskip}
+\newcommand{\venue}[1]{\textbf{#1}}
+
+% Manual label formatting for inline references (e.g., [C1])
+\newcommand{\pubref}[1]{\textbf{[#1]}}
 
 %-------------------------------------------------------------------------------
 \begin{document}
+\fontsize{9.5}{11.4}\selectfont
 
 \pagestyle{empty}
 
@@ -34,118 +40,179 @@
 \begin{center}
     \textbf{\Large Chanhyuk Lee}\\[3pt]
     \textbf{Curriculum Vitae}\\[1pt]
-    Seoul/Daejeon, South Korea | \href{mailto:chan3684@kaist.ac.kr}{chan3684@kaist.ac.kr} | \href{https://david3684.github.io}{david3684.github.io}
+    Seoul/Daejeon, South Korea | \href{mailto:chan3684@kaist.ac.kr}{chan3684@kaist.ac.kr} | \href{https://david3684.github.io}{Homepage} | \href{https://github.com/david3684}{GitHub} | \href{https://scholar.google.com/citations?user=mpSpDHcAAAAJ}{Google Scholar}
 \end{center}
+
+\section*{RESEARCH INTERESTS}
+My research focuses on efficient generative modeling, particularly non-autoregressive
+language generation with continuous diffusion and flow models. I study representations
+and distillation methods that enable high-quality parallel decoding in one or few steps.
+My broader interests include model merging, few-shot learning, and the geometry of
+neural-network parameter spaces.
 
 %------------------------
 \section*{EDUCATION}
 \textbf{M.S. in Computer Science} \hfill Mar. 2025 -- Present \\
 Korea Advanced Institute of Science and Technology (KAIST) \\
 School of Computing \\
-Advisor: Prof. Seunghoon Hong \\
+Advisor: Prof. Seunghoon Hong
 
+\entryskip
 \textbf{B.S. in Computer Science and Chemistry} (Double Major) \hfill Mar. 2019 -- Feb. 2025 \\
-Korea Advanced Institute of Science and Technology (KAIST) \\
+Korea Advanced Institute of Science and Technology (KAIST)
 
-\textbf{Gyeonggi Science High School for Gifted} \hfill Mar. 2016 -- Feb. 2019 \\
+\entryskip
+\textbf{Gyeonggi Science High School for Gifted} \hfill Mar. 2016 -- Feb. 2019
 
 %------------------------
 \section*{PUBLICATIONS}
+{\small \textbf{C}: Conference \quad \textbf{W}: Workshop \quad \textbf{P}: Preprint \quad \textsuperscript{*}Equal contribution \quad \textsuperscript{\ensuremath{\dagger}}Equal advising}
 
-\textbf{Infinite Mask Diffusion for Few-Step Distillation} \\
-Jaehoon Yoo, Wonjung Kim, \textbf{Chanhyuk Lee}, Seunghoon Hong. \\
-\textit{Under Review}, 2026.
+\smallskip
+\noindent\begin{minipage}[t]{\linewidth}
+\hangindent=1.4em\hangafter=1
+P3. \href{https://arxiv.org/abs/2609.11801}{\textbf{Thinking with Looped Flows}} \\[1pt]
+Ayhan Suleymanzade, \underline{Chanhyuk Lee}, Floor Eijkelboom, Nicholas M. Boffi, \.Ismail \.Ilkan Ceylan\textsuperscript{\ensuremath{\dagger}}, Jinwoo Kim\textsuperscript{\ensuremath{\dagger}}. \\[3pt]
+\venue{arXiv Preprint, 2026}
 
-{\setlength{\parskip}{10pt}
-\publabel{P2} \href{https://arxiv.org/abs/2602.16813}{\textbf{One-step Language Modeling via Continuous Denoising}} \\
-\textbf{Chanhyuk Lee}, Jaehoon Yoo, Manan Agarawal, Sheel Shah, Jerry Huang, \\
-Aditi Raghunathan, Seunghoon Hong, Nicholas M. Boffi, Jinwoo Kim. \\
-\textit{arXiv Preprint}, 2026.
+\vspace{8pt}
+\end{minipage}
+% Temporarily hidden until public -- uncomment to restore.
+% \noindent\begin{minipage}[t]{\linewidth}
+% \hangindent=1.4em\hangafter=1
+% P2. \textbf{PatchKV: Weight-Space Compensation of KV Cache} \\[1pt]
+% Chanryeol Lee, \underline{Chanhyuk Lee}, Yeonwoo Choi, Donggyun Kim\textsuperscript{\ensuremath{\dagger}}, Seunghoon Hong\textsuperscript{\ensuremath{\dagger}}\\[3pt]
+% \venue{Under Review, 2026}
+%
+% \vspace{8pt}
+% \end{minipage}
+\noindent\begin{minipage}[t]{\linewidth}
+\hangindent=1.4em\hangafter=1
+W3. \href{https://arxiv.org/abs/2607.00714}{\textbf{Self-conditioned Flow Map Language Models via Fixed-point Flows}} \\[1pt]
+Jaehoon Yoo, Wonjung Kim, Floor Eijkelboom, \underline{Chanhyuk Lee}, Nicholas M. Boffi, Seunghoon Hong\textsuperscript{\ensuremath{\dagger}}, Jinwoo Kim\textsuperscript{\ensuremath{\dagger}}.\\[3pt]
+\venue{COLM 2026 NonAR-LM Workshop}
 
-\publabel{C2} \href{https://arxiv.org/abs/2503.22178}{\textbf{AdaRank: Adaptive Rank Pruning for Enhanced Model Merging}} \\
-\textbf{Chanhyuk Lee}, Jiho Choi, Chanryeol Lee, Donggyun Kim, Seunghoon Hong. \\
-\textit{International Conference on Learning Representations (\textbf{ICLR})}, 2026.
+\vspace{8pt}
+\end{minipage}
+\noindent\begin{minipage}[t]{\linewidth}
+\hangindent=1.4em\hangafter=1
+W2. \href{https://arxiv.org/abs/2606.24773}{\textbf{Posterior Refinement:
+Fast Language Generation via Any-Order Flow Maps}} \\[1pt]
+Manan Agarwal, Sheel Shah, \underline{Chanhyuk Lee}, Jaehoon Yoo, Jerry Huang, Seunghoon Hong, Aditi Raghunathan, Jinwoo Kim\textsuperscript{\ensuremath{\dagger}}, Nicholas M. Boffi\textsuperscript{\ensuremath{\dagger}}. \\[3pt]
+\venue{COLM 2026 NonAR-LM Workshop}
 
-\publabel{C1} \href{http://arxiv.org/abs/2509.07530}{\textbf{Universal Few-Shot Spatial Control for Diffusion Models}} \\
-Kiet T. Nguyen, \textbf{Chanhyuk Lee}, Donggyun Kim, Donghoon Lee, Seunghoon Hong. \\
-\textit{Conference on Neural Information Processing Systems (\textbf{NeurIPS})}, 2025.
+\vspace{8pt}
+\end{minipage}
+\noindent\begin{minipage}[t]{\linewidth}
+\hangindent=1.4em\hangafter=1
+W1. \href{https://arxiv.org/abs/2602.16813}{\textbf{Flow Map Language Models: One-step Language Modeling via Continuous Denoising}} \\[1pt]
+\underline{Chanhyuk Lee}, Jaehoon Yoo, Manan Agarawal, Sheel Shah, Jerry Huang, Aditi Raghunathan, Seunghoon Hong, Nicholas M. Boffi\textsuperscript{\ensuremath{\dagger}}, Jinwoo Kim\textsuperscript{\ensuremath{\dagger}}. \\[3pt]
+\venue{COLM 2026 NonAR-LM Workshop}
 
-\publabel{P1} \href{https://arxiv.org/abs/2412.12153}{\textbf{Revisiting Weight Averaging for Model Merging}} \\
-Jiho Choi*, Donggyun Kim*, \textbf{Chanhyuk Lee}, Seunghoon Hong. \\
-\textit{arXiv Preprint}, 2024.
+\vspace{8pt}
+\end{minipage}
+\noindent\begin{minipage}[t]{\linewidth}
+\hangindent=1.4em\hangafter=1
+C3. \href{https://arxiv.org/abs/2605.10518}{\textbf{Infinite Mask Diffusion for Few-Step Distillation}} \\[1pt]
+Jaehoon Yoo, Wonjung Kim, \underline{Chanhyuk Lee}, Seunghoon Hong. \\[3pt]
+\venue{ICML, 2026}
 
-}
+\vspace{8pt}
+\end{minipage}
+\noindent\begin{minipage}[t]{\linewidth}
+\hangindent=1.4em\hangafter=1
+C2. \href{https://arxiv.org/abs/2503.22178}{\textbf{AdaRank: Adaptive Rank Pruning for Enhanced Model Merging}} \\[1pt]
+\underline{Chanhyuk Lee}, Jiho Choi, Chanryeol Lee, Donggyun Kim, Seunghoon Hong. \\[3pt]
+\venue{ICLR, 2026}
+
+\vspace{8pt}
+\end{minipage}
+\noindent\begin{minipage}[t]{\linewidth}
+\hangindent=1.4em\hangafter=1
+C1. \href{http://arxiv.org/abs/2509.07530}{\textbf{Universal Few-Shot Spatial Control for Diffusion Models}} \\[1pt]
+Kiet T. Nguyen, \underline{Chanhyuk Lee}, Donggyun Kim, Donghoon Lee, Seunghoon Hong. \\[3pt]
+\venue{NeurIPS, 2025}
+
+\vspace{8pt}
+\end{minipage}
+\noindent\begin{minipage}[t]{\linewidth}
+\hangindent=1.4em\hangafter=1
+P1. \href{https://arxiv.org/abs/2412.12153}{\textbf{Revisiting Weight Averaging for Model Merging}} \\[1pt]
+Jiho Choi\textsuperscript{*}, Donggyun Kim\textsuperscript{*}, \underline{Chanhyuk Lee}, Seunghoon Hong. \\[3pt]
+\venue{arXiv Preprint, 2024.}
+\end{minipage}
 
 %------------------------
 \section*{EXPERIENCE}
 \textbf{Graduate Research Assistant} \hfill Mar. 2025 -- Present \\
-Vision and Learning Lab, KAIST CS\\
+Vision and Learning Lab, KAIST CS \\
 Advisor: Prof. Seunghoon Hong \\
-Research on diffusion language models, model merging, parameter alignement.
+Research on diffusion language models, model merging, parameter alignment.
 
-{\setlength{\parskip}{10pt}
-
-\textbf{Undergraduuate Researcher} \hfill July. 2024 -- Feb. 2025 \\
-Vision and Learning Lab, KAIST CS\\
+\entryskip
+\textbf{Undergraduate Researcher} \hfill Jul. 2024 -- Feb. 2025 \\
+Vision and Learning Lab, KAIST CS \\
 Advisor: Prof. Seunghoon Hong \\
 Research on model merging and few-shot learning.
 
-\textbf{Undergraduuate Researcher} \hfill Jan. 2024 -- June. 2024 \\
-CVML Lab, KAIST AI\\
+\entryskip
+\textbf{Undergraduate Researcher} \hfill Jan. 2024 -- Jun. 2024 \\
+CVML Lab, KAIST AI \\
 Advisor: Prof. Hyunjung Shim \\
-Research on efficient neural network via weight quantization.
+Research on efficient neural networks via weight quantization.
 
-\textbf{Military Service}, Republic of Korea Army \hfill Jan. 2022 -- July. 2023 
+\entryskip
+\textbf{Military Service}, Republic of Korea Army \hfill Jan. 2022 -- Jul. 2023
 
-\textbf{Undergraduuate Researcher} \hfill Jan. 2020 -- June. 2021 \\
-M-Design Lab, KAIST Chem\\
+\entryskip
+\textbf{Undergraduate Researcher} \hfill Jan. 2020 -- Jun. 2021 \\
+M-Design Lab, KAIST Chemistry \\
 Advisor: Prof. Hyungjun Kim \\
 Research on simulating acid-base proton transfer via DFT.
 
-}
+%------------------------
+\section*{ACADEMIC SERVICES}
+\textbf{Conference Reviewer:} NeurIPS (2026--), ICLR (2026--) \\
+\textbf{Workshop Reviewer:} COLM 2026 NonAR-LM
 
 %------------------------
-% \section*{ACADEMIC SERVICES}
-% \textbf{Conference Reviewer:} % add any you've reviewed for
+\section*{INVITED TALKS}
+Flow Map Language Models: One-step Language Modeling via Continuous Denoising
 
-% \textbf{Journal Reviewer:} % add any you've reviewed for
+\quad -- \textbf{KAIST-Mila Prefrontal AI Workshop} (host: \href{https://sungsoo-ahn.github.io/}{Sungsoo Ahn}, \href{https://mlml.kaist.ac.kr/sungjinahn}{Sungjin Ahn}, \href{https://maga33.github.io/}{Seunghoon Hong})
 
-%------------------------
+\quad -- \textbf{NVIDIA} (host: \href{https://scholar.google.com/citations?user=7BRYaGcAAAAJ&hl=en}{Boris Ginsburg})
+
+\quad -- \href{https://d-llms.com/}{\textbf{Discrete Diffusion Reading Group}} (host: \href{https://s-sahoo.com/}{Subham Sahoo}, \href{https://zhihanyang2022.github.io/}{Zhihan Yang}, \href{https://jdeschena.com/}{Justin Deschenaux})
+
 \section*{TEACHING}
 \textbf{Teaching Assistant, KAIST School of Computing}
 
-Introduction to Deep Learning (CS371) \hfill Fall 2025
+Introduction to Deep Learning (CS371) \hfill Fall 2025 \\
+Elements of AI (CS103) \hfill Spring 2025
 
-Elements of AI (CS103) \hfill Spring 2025 \\
-
+\entryskip
 \textbf{Teaching Assistant, Samsung Electronics}
 
-Samsung Research AI Expert Program \hfill 2025 \\
+Samsung Research AI Expert Program \hfill 2025-2026
 
+\entryskip
 \textbf{Student Mentoring}
 
-Yeonwoo Choi, B.S Student @ KAIST \hfill 2026-
-
-Chanryeol Lee, B.S Student @ KAIST \pubref{C2} $\rightarrow$ M.S Student @ KAIST \hfill 2024-2025
+Yeonwoo Choi, B.S. Student @ KAIST \hfill 2026-- \\
+Chanryeol Lee, B.S. Student @ KAIST \pubref{C2} $\rightarrow$ M.S. Student @ KAIST \hfill 2024--2025
 
 %------------------------
 \section*{HONORS}
 \textbf{Awards}
 
-KAIST School of Computing Best TA Award \hfill 2025
-
-Samsung Humantech Paper Awards (Highschool Track) \hfill 2018
+KAIST School of Computing Best TA Award \hfill 2025 \\
+Samsung Humantech Paper Awards (High School Track) \hfill 2018
 
 %------------------------
 \section*{SKILLS}
 \textbf{Programming Languages:} Python, C/C++ \\
-\textbf{Languages:} Korean (Native), English (Fluent, IBT TOEFL: 108)
-
-%------------------------
-\section*{LINKS}
-\textbf{GitHub:} \href{https://github.com/david3684}{github.com/david3684} \\
-\textbf{Google Scholar:} \href{https://scholar.google.com/citations?user=mpSpDHcAAAAJ}{scholar.google.com/citations?user=mpSpDHcAAAAJ} \\
-\textbf{LinkedIn:} \href{https://www.linkedin.com/in/chanhyuk-lee-18b01528b}{linkedin.com/in/chanhyuk-lee-18b01528b}
+\textbf{Languages:} Korean (Native), English (Fluent, TOEFL iBT: 110)
 
 %------------------------
 \section*{REFERENCES}
