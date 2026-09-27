@@ -59,9 +59,9 @@ which make various techniques from the image domain, such as flow map distillati
       <div class="pub-title">{{ pub.title }}</div>
 
       {% if pub.authors %}
-      <div class="pub-authors">{{ pub.authors | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</div>
+      <div class="pub-authors">{% assign author_names = pub.authors | split: ", " %}{% for author_name in author_names %}<span class="author-name">{{ author_name | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</span>{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
       {% elsif pub.author %}
-      <div class="pub-authors">{{ pub.author | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</div>
+      <div class="pub-authors"><span class="author-name">{{ pub.author | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</span></div>
       {% endif %}
 
       {% if pub.note or pub.collaboration %}
@@ -70,7 +70,12 @@ which make various techniques from the image domain, such as flow map distillati
 
       {% if pub.venue or pub.venue_full or pub.venue_abbr or pub.date %}
       <div class="pub-venue">
-        {% if pub.venue_full or pub.venue_abbr %}{% if pub.venue_full %}{{ pub.venue_full }}{% endif %}{% if pub.venue_abbr %} (<span class="pub-venue-abbr">{{ pub.venue_abbr }}</span>){% endif %}, {{ pub.date | date: "%Y" }}{% if pub.workshop %}, <span class="pub-workshop-label">{{ pub.workshop }}</span>{% endif %}{% elsif pub.venue %}{{ pub.venue }}{% endif %}
+        {% if pub.venue_full or pub.venue_abbr %}<span class="pub-venue-abbr">{{ pub.venue_abbr | default: pub.venue_full }}</span> {{ pub.date | date: "%Y" }}{% if pub.workshop and pub.workshop_venue_abbr == nil %}, <span class="pub-workshop-label">{{ pub.workshop }}</span>{% endif %}{% if pub.award and pub.workshop_venue_abbr == nil %} <span class="pub-award-label">{{ pub.award }}</span>{% endif %}{% elsif pub.venue %}{{ pub.venue }}{% endif %}
+      </div>
+      {% endif %}
+      {% if pub.workshop_venue_abbr %}
+      <div class="pub-venue pub-venue-secondary">
+        <span class="pub-venue-abbr">{{ pub.workshop_venue_abbr }}</span> {{ pub.workshop_venue_year }}{% if pub.workshop %}, <span class="pub-workshop-label">{{ pub.workshop }}</span>{% endif %}{% if pub.award %} <span class="pub-award-label">{{ pub.award }}</span>{% endif %}
       </div>
       {% endif %}
 
@@ -110,9 +115,9 @@ which make various techniques from the image domain, such as flow map distillati
       <div class="pub-title">{{ pub.title }}</div>
 
       {% if pub.authors %}
-      <div class="pub-authors">{{ pub.authors | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</div>
+      <div class="pub-authors">{% assign author_names = pub.authors | split: ", " %}{% for author_name in author_names %}<span class="author-name">{{ author_name | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</span>{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
       {% elsif pub.author %}
-      <div class="pub-authors">{{ pub.author | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</div>
+      <div class="pub-authors"><span class="author-name">{{ pub.author | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</span></div>
       {% endif %}
 
       {% if pub.note or pub.collaboration %}
@@ -121,7 +126,12 @@ which make various techniques from the image domain, such as flow map distillati
 
       {% if pub.venue or pub.venue_full or pub.venue_abbr or pub.date %}
       <div class="pub-venue">
-        {% if pub.venue_full or pub.venue_abbr %}{% if pub.venue_full %}{{ pub.venue_full }}{% endif %}{% if pub.venue_abbr %} (<span class="pub-venue-abbr">{{ pub.venue_abbr }}</span>){% endif %}, {{ pub.date | date: "%Y" }}{% if pub.workshop %}, <span class="pub-workshop-label">{{ pub.workshop }}</span>{% endif %}{% elsif pub.venue %}{{ pub.venue }}{% endif %}
+        {% if pub.venue_full or pub.venue_abbr %}<span class="pub-venue-abbr">{{ pub.venue_abbr | default: pub.venue_full }}</span> {{ pub.date | date: "%Y" }}{% if pub.workshop and pub.workshop_venue_abbr == nil %}, <span class="pub-workshop-label">{{ pub.workshop }}</span>{% endif %}{% if pub.award and pub.workshop_venue_abbr == nil %} <span class="pub-award-label">{{ pub.award }}</span>{% endif %}{% elsif pub.venue %}{{ pub.venue }}{% endif %}
+      </div>
+      {% endif %}
+      {% if pub.workshop_venue_abbr %}
+      <div class="pub-venue pub-venue-secondary">
+        <span class="pub-venue-abbr">{{ pub.workshop_venue_abbr }}</span> {{ pub.workshop_venue_year }}{% if pub.workshop %}, <span class="pub-workshop-label">{{ pub.workshop }}</span>{% endif %}{% if pub.award %} <span class="pub-award-label">{{ pub.award }}</span>{% endif %}
       </div>
       {% endif %}
 

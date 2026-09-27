@@ -108,6 +108,10 @@
   color: var(--global-text-color-light);
 }
 
+.author-name {
+  white-space: nowrap;
+}
+
 .pub-note {
   margin-bottom: 4px;
   font-size: 0.8em;
@@ -149,14 +153,14 @@
 
 .pub-venue {
   margin-bottom: 4px;
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   color: var(--global-text-color);
   font-size: 0.85em;
 }
 
 .pub-venue-abbr {
-  font-weight: 700 !important;
+  font-weight: 400;
 }
 
 .pub-venue strong {
@@ -165,6 +169,20 @@
 
 .pub-workshop-label {
   color: var(--global-text-color-light);
+}
+
+.pub-award-label {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  margin-left: 2px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.82em;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #e8b463;
+  background: rgba(232, 180, 99, 0.14);
 }
 
 .pub-scholar-note {

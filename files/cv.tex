@@ -3,7 +3,7 @@
 %------------------------
 
 % Document class and font size
-\documentclass[a4paper,9pt]{extarticle}
+\documentclass[a4paper,10pt]{extarticle}
 
 % Packages
 \usepackage[utf8]{inputenc}
@@ -15,6 +15,7 @@
 \usepackage{changepage}
 % Times (Nimbus Roman via mathptmx): the classic, compact academic-CV serif.
 \usepackage[T1]{fontenc}
+\usepackage{xcolor}
 \usepackage{mathptmx}
 \setlength{\parindent}{0pt}
 
@@ -24,7 +25,7 @@
 \titlespacing*{\section}{0pt}{\baselineskip}{0.5\baselineskip}
 
 % Consistent inter-entry spacing
-\newcommand{\entryskip}{\medskip}
+\newcommand{\entryskip}{\smallskip}
 \newcommand{\venue}[1]{\textbf{#1}}
 
 % Manual label formatting for inline references (e.g., [C1])
@@ -32,27 +33,22 @@
 
 %-------------------------------------------------------------------------------
 \begin{document}
-\fontsize{9.5}{11.4}\selectfont
+\fontsize{9.7}{11.6}\selectfont
 
 \pagestyle{empty}
 
 % Header
 \begin{center}
     \textbf{\Large Chanhyuk Lee}\\[3pt]
-    \textbf{Curriculum Vitae}\\[1pt]
-    Seoul/Daejeon, South Korea | \href{mailto:chan3684@kaist.ac.kr}{chan3684@kaist.ac.kr} | \href{https://david3684.github.io}{Homepage} | \href{https://github.com/david3684}{GitHub} | \href{https://scholar.google.com/citations?user=mpSpDHcAAAAJ}{Google Scholar}
+    Seoul/Daejeon, South Korea | \href{mailto:chan3684@kaist.ac.kr}{chanhyuk-lee@kaist.ac.kr} | \href{https://david3684.github.io}{Homepage} | \href{https://github.com/david3684}{GitHub} | \href{https://scholar.google.com/citations?user=mpSpDHcAAAAJ}{Google Scholar}
 \end{center}
 
-\section*{RESEARCH INTERESTS}
-My research focuses on efficient generative modeling, particularly non-autoregressive
-language generation with continuous diffusion and flow models. I study representations
-and distillation methods that enable high-quality parallel decoding in one or few steps.
-My broader interests include model merging, few-shot learning, and the geometry of
-neural-network parameter spaces.
+\section*{RESEARCH INTEREST}
+I am interested in developing new methods for generative intelligence beyond autoregressive modeling. My current research focuses on language generation using continuous diffusion and flow models, and reasoning in continuous latent spaces. My broader interests include model merging, few-shot learning, and the geometry of neural network parameter spaces. My previous work explored generalist models that solve multiple vision tasks with a single set of model parameters.
 
 %------------------------
 \section*{EDUCATION}
-\textbf{M.S. in Computer Science} \hfill Mar. 2025 -- Present \\
+\textbf{M.S. in Computer Science} \hfill Mar. 2025 -- Feb. 2027 (Expected) \\
 Korea Advanced Institute of Science and Technology (KAIST) \\
 School of Computing \\
 Advisor: Prof. Seunghoon Hong
@@ -60,9 +56,9 @@ Advisor: Prof. Seunghoon Hong
 \entryskip
 \textbf{B.S. in Computer Science and Chemistry} (Double Major) \hfill Mar. 2019 -- Feb. 2025 \\
 Korea Advanced Institute of Science and Technology (KAIST)
-
-\entryskip
-\textbf{Gyeonggi Science High School for Gifted} \hfill Mar. 2016 -- Feb. 2019
+% \entryskip
+% \textbf{High School Diploma} \hfill Mar. 2016 -- Feb. 2019 \\
+% Gyeonggi Science High School for Gifted
 
 %------------------------
 \section*{PUBLICATIONS}
@@ -73,73 +69,72 @@ Korea Advanced Institute of Science and Technology (KAIST)
 \hangindent=1.4em\hangafter=1
 P3. \href{https://arxiv.org/abs/2609.11801}{\textbf{Thinking with Looped Flows}} \\[1pt]
 Ayhan Suleymanzade, \underline{Chanhyuk Lee}, Floor Eijkelboom, Nicholas M. Boffi, \.Ismail \.Ilkan Ceylan\textsuperscript{\ensuremath{\dagger}}, Jinwoo Kim\textsuperscript{\ensuremath{\dagger}}. \\[3pt]
-\venue{arXiv Preprint, 2026}
+\venue{arXiv preprint, 2026}
 
-\vspace{8pt}
+\vspace{6pt}
 \end{minipage}
-% Temporarily hidden until public -- uncomment to restore.
-% \noindent\begin{minipage}[t]{\linewidth}
-% \hangindent=1.4em\hangafter=1
-% P2. \textbf{PatchKV: Weight-Space Compensation of KV Cache} \\[1pt]
-% Chanryeol Lee, \underline{Chanhyuk Lee}, Yeonwoo Choi, Donggyun Kim\textsuperscript{\ensuremath{\dagger}}, Seunghoon Hong\textsuperscript{\ensuremath{\dagger}}\\[3pt]
-% \venue{Under Review, 2026}
-%
-% \vspace{8pt}
-% \end{minipage}
+\noindent\begin{minipage}[t]{\linewidth}
+\hangindent=1.4em\hangafter=1
+C5. \textbf{PatchKV: Weight-Space Compensation of KV Cache} \\[1pt]
+Chanryeol Lee, \underline{Chanhyuk Lee}, Yeonwoo Choi, Donggyun Kim\textsuperscript{\ensuremath{\dagger}}, Seunghoon Hong\textsuperscript{\ensuremath{\dagger}}\\[3pt]
+\venue{NeurIPS, 2026}
+
+\vspace{6pt}
+\end{minipage}
+\noindent\begin{minipage}[t]{\linewidth}
+\hangindent=1.4em\hangafter=1
+C4. \href{https://arxiv.org/abs/2602.16813}{\textbf{Flow Map Language Models: One-step Language Modeling via Continuous Denoising}} \\[1pt]
+\underline{Chanhyuk Lee}, Jaehoon Yoo, Manan Agarwal, Sheel Shah, Jerry Huang, Aditi Raghunathan, Seunghoon Hong, Nicholas M. Boffi\textsuperscript{\ensuremath{\dagger}}, Jinwoo Kim\textsuperscript{\ensuremath{\dagger}}. \\[3pt]
+\venue{NeurIPS, 2026; COLM 2026 NonAR-LM Workshop \textcolor{red}{Spotlight}}
+
+\vspace{6pt}
+\end{minipage}
 \noindent\begin{minipage}[t]{\linewidth}
 \hangindent=1.4em\hangafter=1
 W3. \href{https://arxiv.org/abs/2607.00714}{\textbf{Self-conditioned Flow Map Language Models via Fixed-point Flows}} \\[1pt]
 Jaehoon Yoo, Wonjung Kim, Floor Eijkelboom, \underline{Chanhyuk Lee}, Nicholas M. Boffi, Seunghoon Hong\textsuperscript{\ensuremath{\dagger}}, Jinwoo Kim\textsuperscript{\ensuremath{\dagger}}.\\[3pt]
-\venue{COLM 2026 NonAR-LM Workshop}
+\venue{COLM 2026 NonAR-LM Workshop \textcolor{red}{Oral}}
 
-\vspace{8pt}
+\vspace{6pt}
 \end{minipage}
 \noindent\begin{minipage}[t]{\linewidth}
 \hangindent=1.4em\hangafter=1
 W2. \href{https://arxiv.org/abs/2606.24773}{\textbf{Posterior Refinement:
 Fast Language Generation via Any-Order Flow Maps}} \\[1pt]
-Manan Agarwal, Sheel Shah, \underline{Chanhyuk Lee}, Jaehoon Yoo, Jerry Huang, Seunghoon Hong, Aditi Raghunathan, Jinwoo Kim\textsuperscript{\ensuremath{\dagger}}, Nicholas M. Boffi\textsuperscript{\ensuremath{\dagger}}. \\[3pt]
-\venue{COLM 2026 NonAR-LM Workshop}
+Manan Agarwal\textsuperscript{*}, Sheel Shah\textsuperscript{*}, \underline{Chanhyuk Lee}, Jaehoon Yoo, Jerry Huang, Seunghoon Hong, Aditi Raghunathan, Jinwoo Kim\textsuperscript{\ensuremath{\dagger}}, Nicholas M. Boffi\textsuperscript{\ensuremath{\dagger}}. \\[3pt]
+\venue{COLM 2026 NonAR-LM Workshop \textcolor{red}{Spotlight}}
 
-\vspace{8pt}
-\end{minipage}
-\noindent\begin{minipage}[t]{\linewidth}
-\hangindent=1.4em\hangafter=1
-W1. \href{https://arxiv.org/abs/2602.16813}{\textbf{Flow Map Language Models: One-step Language Modeling via Continuous Denoising}} \\[1pt]
-\underline{Chanhyuk Lee}, Jaehoon Yoo, Manan Agarawal, Sheel Shah, Jerry Huang, Aditi Raghunathan, Seunghoon Hong, Nicholas M. Boffi\textsuperscript{\ensuremath{\dagger}}, Jinwoo Kim\textsuperscript{\ensuremath{\dagger}}. \\[3pt]
-\venue{COLM 2026 NonAR-LM Workshop}
-
-\vspace{8pt}
+\vspace{6pt}
 \end{minipage}
 \noindent\begin{minipage}[t]{\linewidth}
 \hangindent=1.4em\hangafter=1
 C3. \href{https://arxiv.org/abs/2605.10518}{\textbf{Infinite Mask Diffusion for Few-Step Distillation}} \\[1pt]
 Jaehoon Yoo, Wonjung Kim, \underline{Chanhyuk Lee}, Seunghoon Hong. \\[3pt]
-\venue{ICML, 2026}
+\venue{ICML 2026}
 
-\vspace{8pt}
+\vspace{6pt}
 \end{minipage}
 \noindent\begin{minipage}[t]{\linewidth}
 \hangindent=1.4em\hangafter=1
 C2. \href{https://arxiv.org/abs/2503.22178}{\textbf{AdaRank: Adaptive Rank Pruning for Enhanced Model Merging}} \\[1pt]
 \underline{Chanhyuk Lee}, Jiho Choi, Chanryeol Lee, Donggyun Kim, Seunghoon Hong. \\[3pt]
-\venue{ICLR, 2026}
+\venue{ICLR 2026}
 
-\vspace{8pt}
+\vspace{6pt}
 \end{minipage}
 \noindent\begin{minipage}[t]{\linewidth}
 \hangindent=1.4em\hangafter=1
 C1. \href{http://arxiv.org/abs/2509.07530}{\textbf{Universal Few-Shot Spatial Control for Diffusion Models}} \\[1pt]
 Kiet T. Nguyen, \underline{Chanhyuk Lee}, Donggyun Kim, Donghoon Lee, Seunghoon Hong. \\[3pt]
-\venue{NeurIPS, 2025}
+\venue{NeurIPS 2025}
 
-\vspace{8pt}
+\vspace{6pt}
 \end{minipage}
 \noindent\begin{minipage}[t]{\linewidth}
 \hangindent=1.4em\hangafter=1
 P1. \href{https://arxiv.org/abs/2412.12153}{\textbf{Revisiting Weight Averaging for Model Merging}} \\[1pt]
 Jiho Choi\textsuperscript{*}, Donggyun Kim\textsuperscript{*}, \underline{Chanhyuk Lee}, Seunghoon Hong. \\[3pt]
-\venue{arXiv Preprint, 2024.}
+\venue{arXiv preprint, 2024.}
 \end{minipage}
 
 %------------------------
@@ -171,7 +166,7 @@ Advisor: Prof. Hyungjun Kim \\
 Research on simulating acid-base proton transfer via DFT.
 
 %------------------------
-\section*{ACADEMIC SERVICES}
+\section*{ACADEMIC SERVICE}
 \textbf{Conference Reviewer:} NeurIPS (2026--), ICLR (2026--) \\
 \textbf{Workshop Reviewer:} COLM 2026 NonAR-LM
 
@@ -199,13 +194,11 @@ Samsung Research AI Expert Program \hfill 2025-2026
 \entryskip
 \textbf{Student Mentoring}
 
-Yeonwoo Choi, B.S. Student @ KAIST \hfill 2026-- \\
-Chanryeol Lee, B.S. Student @ KAIST \pubref{C2} $\rightarrow$ M.S. Student @ KAIST \hfill 2024--2025
+Yeonwoo Choi, Undergraduate Student @ KAIST \hfill 2026 \\
+Chanryeol Lee, Undergraduate Student @ KAIST \pubref{C2} $\rightarrow$ M.S. Student @ KAIST \hfill 2024--2025
 
 %------------------------
 \section*{HONORS}
-\textbf{Awards}
-
 KAIST School of Computing Best TA Award \hfill 2025 \\
 Samsung Humantech Paper Awards (High School Track) \hfill 2018
 
