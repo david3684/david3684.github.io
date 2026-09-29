@@ -14,7 +14,7 @@ Broadly, my work spans model merging and few-shot learning for generative models
 Currently, I am working on non-autoregressive text generation through diffusion models,
 enabling parallel decoding of language. In particular, I am interested in
 continuous representations of text for diffusion language models,
-which make various techniques from the image domain, such as flow map distillation, directly transferable. I also worked on model merging ans few-shot learning, including studies on the parameter space geometries of neural networks.
+which make various techniques from the image domain, such as flow map distillation, directly transferable. I also worked on model merging and few-shot learning, including studies on the parameter space geometries of neural networks.
 <!-- For these practical approaches, I am deeply interested in theoretical developments such as infinite-size network frameworks like Neural Tangent Kernel and loss landscape theories like mode connectivity. -->
 {: .intro-section}
 
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="education-item">
     <div class="education-institution">M.S. in Computer Science </div>
     <div class="education-degree">
-      Korea Advanced Institue of Science and Technology (KAIST)
+      Korea Advanced Institute of Science and Technology (KAIST)
       <span class="education-period">(Mar. 2025 -)</span>
     </div>
     <div class="education-advisor">Advisor: Prof. <a href="https://maga33.github.io/">Seunghoon Hong</a></div>
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="education-item">
     <div class="education-institution">B.S. in Computer Science and Chemistry <em>(Double Major)</em></div>
     <div class="education-degree">
-      Korea Advanced Institue of Science and Technology (KAIST)
+      Korea Advanced Institute of Science and Technology (KAIST)
       <span class="education-period">(Mar. 2019 - Feb. 2025)</span>
     </div>
   </div>
