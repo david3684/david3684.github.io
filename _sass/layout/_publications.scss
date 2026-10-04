@@ -342,3 +342,18 @@
   color: var(--global-link-color-hover);
   text-decoration: underline;
 }
+
+
+.intro-note {
+  margin: -1.2em 0 2.2em;
+  font-size: 0.9em !important;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  text-align: left !important;
+  color: var(--global-text-color);
+
+  strong {
+    font-weight: 600;
+  }
+}
