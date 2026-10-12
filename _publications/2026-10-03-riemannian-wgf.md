@@ -1,12 +1,14 @@
 ---
 layout: single
 title: "One-Step Generation via Riemannian Wasserstein Gradient Flows"
-collection: preprints
+collection: publications
 date: 2026-10-03 22:21:59 +00:00
 categories: research
 author: "Chanhyuk Lee"
 authors: "David Li, <u>Chanhyuk Lee</u>, Jaehoon Yoo, Nikita Gushchin, Floor Eijkelboom, Eric Moulines, Maxim Panov, Alexander Korotin, Seunghoon Hong, Jinwoo Kim"
-venue: "Preprint"
+venue_full: "Conference on Neural Information Processing Systems"
+venue_abbr: "NeurIPS"
+workshop: "DiffuLM Workshop"
 arxiv: https://arxiv.org/abs/2610.04454
 arxiv_id: "2610.04454"
 code:
