@@ -8,7 +8,7 @@
 % Packages
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
-\geometry{a4paper, margin=1in}
+\geometry{a4paper, margin=1in, top=0.9in, bottom=0.8in}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
@@ -33,7 +33,7 @@
 
 %-------------------------------------------------------------------------------
 \begin{document}
-\fontsize{9.7}{11.6}\selectfont
+\fontsize{9.5}{11.4}\selectfont
 
 \pagestyle{empty}
 
@@ -43,8 +43,14 @@
     Seoul/Daejeon, South Korea | \href{mailto:chanhyuk-lee@kaist.ac.kr}{chanhyuk-lee@kaist.ac.kr} | \href{https://david3684.github.io}{Homepage} | \href{https://github.com/david3684}{GitHub} | \href{https://scholar.google.com/citations?user=mpSpDHcAAAAJ}{Google Scholar}
 \end{center}
 
-\section*{RESEARCH INTEREST}
-I am interested in developing new methods for generative intelligence beyond autoregressive modeling. My current research focuses on language generation using continuous diffusion and flow models, and reasoning in continuous latent spaces. My broader interests include model merging, few-shot learning, and the geometry of neural network parameter spaces. My previous work explored generalist models that solve multiple vision tasks with a single set of model parameters.
+\section*{RESEARCH INTERESTS}
+I am interested in developing new methods for generative intelligence beyond
+autoregressive modeling. My current research focuses on modeling discrete data
+with continuous diffusion and flow models, with an emphasis on efficient
+language generation and reasoning in continuous latent spaces.
+My broader interests include exploring neural network parameter spaces,
+particularly for model merging to build generalist models and for weight-space
+memories in LLMs.
 
 %------------------------
 \section*{EDUCATION}
@@ -67,7 +73,23 @@ Korea Advanced Institute of Science and Technology (KAIST)
 \smallskip
 \noindent\begin{minipage}[t]{\linewidth}
 \hangindent=1.4em\hangafter=1
-P3. \href{https://arxiv.org/abs/2609.11801}{\textbf{Thinking with Looped Flows}} \\[1pt]
+P3. \href{https://arxiv.org/abs/2610.28559}{\textbf{Large Flow Language Models}} \\[1pt]
+Arnav Chavan\textsuperscript{*}, \underline{Chanhyuk Lee}\textsuperscript{*}, Udbhav Bamba\textsuperscript{*}, Jaehoon Yoo, Seunghoon Hong, Aditi Raghunathan, Jinwoo Kim. \\[3pt]
+\venue{arXiv preprint, 2026}
+
+\vspace{6pt}
+\end{minipage}
+\noindent\begin{minipage}[t]{\linewidth}
+\hangindent=1.4em\hangafter=1
+W3. \href{https://arxiv.org/abs/2610.04454}{\textbf{One-Step Generation via Riemannian Wasserstein Gradient Flows}} \\[1pt]
+David Li, \underline{Chanhyuk Lee}, Jaehoon Yoo, Nikita Gushchin, Floor Eijkelboom, Eric Moulines, Maxim Panov, Alexander Korotin, Seunghoon Hong, Jinwoo Kim. \\[3pt]
+\venue{NeurIPS 2026 DiffuLM Workshop}
+
+\vspace{6pt}
+\end{minipage}
+\noindent\begin{minipage}[t]{\linewidth}
+\hangindent=1.4em\hangafter=1
+P2. \href{https://arxiv.org/abs/2609.11801}{\textbf{Thinking with Looped Flows}} \\[1pt]
 Ayhan Suleymanzade, \underline{Chanhyuk Lee}, Floor Eijkelboom, Nicholas M. Boffi, \.Ismail \.Ilkan Ceylan\textsuperscript{\ensuremath{\dagger}}, Jinwoo Kim\textsuperscript{\ensuremath{\dagger}}. \\[3pt]
 \venue{arXiv preprint, 2026}
 
@@ -75,7 +97,7 @@ Ayhan Suleymanzade, \underline{Chanhyuk Lee}, Floor Eijkelboom, Nicholas M. Boff
 \end{minipage}
 \noindent\begin{minipage}[t]{\linewidth}
 \hangindent=1.4em\hangafter=1
-C5. \textbf{PatchKV: Weight-Space Compensation of KV Cache} \\[1pt]
+C5. \href{https://arxiv.org/abs/2609.39329}{\textbf{PatchKV: Weight-Space Compensation of KV Cache}} \\[1pt]
 Chanryeol Lee, \underline{Chanhyuk Lee}, Yeonwoo Choi, Donggyun Kim\textsuperscript{\ensuremath{\dagger}}, Seunghoon Hong\textsuperscript{\ensuremath{\dagger}}\\[3pt]
 \venue{NeurIPS, 2026}
 
@@ -91,7 +113,7 @@ C4. \href{https://arxiv.org/abs/2602.16813}{\textbf{Flow Map Language Models: On
 \end{minipage}
 \noindent\begin{minipage}[t]{\linewidth}
 \hangindent=1.4em\hangafter=1
-W3. \href{https://arxiv.org/abs/2607.00714}{\textbf{Self-conditioned Flow Map Language Models via Fixed-point Flows}} \\[1pt]
+W2. \href{https://arxiv.org/abs/2607.00714}{\textbf{Self-conditioned Flow Map Language Models via Fixed-point Flows}} \\[1pt]
 Jaehoon Yoo, Wonjung Kim, Floor Eijkelboom, \underline{Chanhyuk Lee}, Nicholas M. Boffi, Seunghoon Hong\textsuperscript{\ensuremath{\dagger}}, Jinwoo Kim\textsuperscript{\ensuremath{\dagger}}.\\[3pt]
 \venue{COLM 2026 NonAR-LM Workshop \textcolor{red}{Oral}}
 
@@ -99,7 +121,7 @@ Jaehoon Yoo, Wonjung Kim, Floor Eijkelboom, \underline{Chanhyuk Lee}, Nicholas M
 \end{minipage}
 \noindent\begin{minipage}[t]{\linewidth}
 \hangindent=1.4em\hangafter=1
-W2. \href{https://arxiv.org/abs/2606.24773}{\textbf{Posterior Refinement:
+W1. \href{https://arxiv.org/abs/2606.24773}{\textbf{Posterior Refinement:
 Fast Language Generation via Any-Order Flow Maps}} \\[1pt]
 Manan Agarwal\textsuperscript{*}, Sheel Shah\textsuperscript{*}, \underline{Chanhyuk Lee}, Jaehoon Yoo, Jerry Huang, Seunghoon Hong, Aditi Raghunathan, Jinwoo Kim\textsuperscript{\ensuremath{\dagger}}, Nicholas M. Boffi\textsuperscript{\ensuremath{\dagger}}. \\[3pt]
 \venue{COLM 2026 NonAR-LM Workshop \textcolor{red}{Spotlight}}
