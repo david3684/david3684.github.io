@@ -11,9 +11,9 @@ redirect_from:
 <div class="hero">
 <div class="hero__text" markdown="1">
 
-I am Chanhyuk (David) Lee, M.S. student at KAIST School of Computing. I'm currently working in [VL Lab](http://vllab.kaist.ac.kr), which is led by Prof. [Seunghoon Hong](https://maga33.github.io/). Before joining the lab, I received my Bachelor's degree from KAIST in a double major of Computer Science and Chemistry.
+I am Chanhyuk (David) Lee, an M.S. student at KAIST School of Computing, supervised by Prof. [Seunghoon Hong](https://maga33.github.io/). Before my graduate studies, I received my Bachelor's degree from KAIST with a double major in Computer Science and Chemistry.
 
-I am interested in developing new methods for generative intelligence beyond autoregressive modeling. My current research focuses on modeling discrete data with continuous diffusion and flow models, with an emphasis on efficient language generation and reasoning in continuous latent spaces. My broader interests include exploring neural network parameter spaces, particularly for model merging to build generalist models and for weight-space memories in LLMs.
+I am broadly interested in generative modeling, including diffusion and flow-based models. I currently work on the foundations of **continuous diffusion language models**, with an emphasis on efficient language generation and reasoning in continuous latent spaces. In particular, I have been developing flow and flow map language models. I am also interested in exploring neural network parameter spaces, particularly for model merging to build generalist models and for weight-space memories in LLMs.
 
 <p class="intro-note"><strong>Note:</strong> I'm applying to PhD programs for Fall 2027.</p>
 
@@ -24,7 +24,8 @@ I am interested in developing new methods for generative intelligence beyond aut
     <li class="hero__links-email"><a href="mailto:{{ site.author.email }}" title="Email" aria-label="Email"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i></a></li>
     <li><a href="{{ site.author.googlescholar }}" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar ai-fw" aria-hidden="true"></i></a></li>
     <li><a href="https://github.com/{{ site.author.github }}" title="GitHub" aria-label="GitHub"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
-    <li><a href="/files/cv.pdf" title="CV" aria-label="CV"><i class="ai ai-cv ai-fw" aria-hidden="true"></i></a></li>
+    <li><a href="https://x.com/{{ site.author.twitter }}" title="X (Twitter)" aria-label="X (Twitter)"><i class="fab fa-fw fa-x-twitter" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>
   </ul>
 </div>
 </div>

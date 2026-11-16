@@ -6,9 +6,10 @@
   {% comment %} margin column: where it appeared {% endcomment %}
   <div class="pub-meta">
     {% if pub.venue_full or pub.venue_abbr %}
-    <span class="pub-meta-line pub-meta-line--venue">{{ pub.venue_abbr | default: pub.venue_full }} {{ pub.date | date: "%Y" }}</span>
-    {% comment %} a paper that appeared only at a workshop of this venue {% endcomment %}
-    {% if pub.workshop and pub.workshop_venue_abbr == nil %}<span class="pub-meta-line">Workshop</span>{% endif %}
+    {% comment %} a workshop-only paper names the workshop right after the venue; a second venue goes on its own line {% endcomment %}
+    <span class="pub-meta-line pub-meta-line--venue">{{ pub.venue_abbr | default: pub.venue_full }} {{ pub.date | date: "%Y" }}{% if pub.workshop and pub.workshop_venue_abbr == nil %} {{ pub.workshop | remove: " Workshop" }}{% endif %}</span>
+    {% if pub.workshop_venue_abbr %}<br><span class="pub-meta-line pub-meta-line--venue">{{ pub.workshop_venue_abbr }} {{ pub.workshop_venue_year }} {{ pub.workshop | remove: " Workshop" }}</span>{% endif %}
+    {% if pub.award %}<span class="pub-award-label">{{ pub.award }}</span>{% endif %}
     {% elsif pub.venue %}
     <span class="pub-meta-line pub-meta-line--venue">{{ pub.venue }}</span>
     {% endif %}
@@ -23,11 +24,6 @@
 
     {% if pub.note %}
     <div class="pub-note">{{ pub.note }}</div>
-    {% endif %}
-
-    {% comment %} workshop track and award; a second venue is spelled out in full {% endcomment %}
-    {% if pub.workshop or pub.award %}
-    <div class="pub-track">{% if pub.workshop_venue_abbr %}Also at {{ pub.workshop_venue_abbr }} {{ pub.workshop_venue_year }} {% endif %}{{ pub.workshop }}{% if pub.award %}<span class="pub-award-label">{{ pub.award }}</span>{% endif %}</div>
     {% endif %}
 
     <div class="pub-links">

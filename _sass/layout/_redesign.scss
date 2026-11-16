@@ -416,16 +416,27 @@ body {
 }
 
 .publication-item {
-  @include rd-row;
-  margin: 0 0 1.7rem;
-  padding: 0;
+  /* venue sits on its own line above the title */
+  display: block;
+  margin: 0;
+  padding: 1.25rem 0;
+
+  /* hairline between neighbouring papers */
+  & + & {
+    border-top: 1px solid var(--global-border-color);
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
 }
 
 .pub-meta {
   @include rd-meta;
+  margin-bottom: 0.15rem;
 
   .pub-meta-line {
-    display: block;
+    display: inline;
     white-space: nowrap;
   }
 
@@ -434,18 +445,6 @@ body {
     font-size: 0.8rem;
     font-weight: 500;
     color: var(--global-text-color);
-  }
-
-  @media (max-width: $rd-narrow) {
-    margin-bottom: 0.15rem;
-
-    .pub-meta-line {
-      display: inline;
-
-      & + .pub-meta-line::before {
-        content: " \00b7  ";
-      }
-    }
   }
 }
 
@@ -577,12 +576,8 @@ body {
 }
 
 .more-link {
-  margin: 0 0 0 calc(#{$rd-gutter} + #{$rd-gutter-gap}) !important;
+  margin: 0 !important;
   font-size: 0.95rem !important;
-
-  @media (max-width: $rd-narrow) {
-    margin-left: 0 !important;
-  }
 }
 
 /* Publication detail page: the heading already shows the title,
@@ -596,14 +591,10 @@ body {
 }
 
 .pub-page-abstract {
-  margin: 0 0 0 calc(#{$rd-gutter} + #{$rd-gutter-gap});
+  margin: 0;
   font-size: 0.95rem;
   line-height: 1.65;
   color: var(--global-text-color);
-
-  @media (max-width: $rd-narrow) {
-    margin-left: 0;
-  }
 }
 
 /* Education
