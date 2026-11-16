@@ -1,0 +1,10 @@
+<script>
+function toggleAbstract(btn) {
+  var abstract = btn.closest('.pub-links').nextElementSibling;
+  if (!abstract || !abstract.classList.contains('pub-abstract')) return;
+  var expanded = btn.getAttribute('aria-expanded') === 'true';
+  abstract.hidden = expanded;
+  btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+  btn.classList.toggle('active', !expanded);
+}
+</script>

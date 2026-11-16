@@ -38,37 +38,6 @@
   border-bottom: none;
 }
 
-.pub-thumbnail {
-  flex-shrink: 0;
-  width: 230px;
-  margin-right: 10px !important;
-  margin-left: 0 !important;
-  border-radius: 4px;
-
-  // 모바일
-  @media (max-width: 768px) {
-    width: calc(100% - 20px);
-    max-width: none;
-    margin: 0 10px 15px 10px !important;
-    border-radius: 8px;
-  }
-}
-
-.pub-thumbnail img {
-  width: 100%;
-  height: 100px !important;
-  object-fit: fill;
-  max-height: none;
-  border-radius: 4px;
-
-  // 모바일
-  @media (max-width: 768px) {
-    height: auto !important;
-    object-fit: contain;
-    max-height: 200px;
-  }
-}
-
 .pub-content {
   flex: 1;
   margin-left: 0px;
@@ -118,29 +87,6 @@
   color: var(--global-text-color-light);
 }
 
-
-.pub-authors .author-link {
-  color: var(--global-link-color);
-  text-decoration: none;
-  font-weight: 400;
-
-  &:hover {
-    color: var(--global-link-hover-color);
-    text-decoration: underline;
-  }
-}
-
-/* 내 이름 하이라이트 스타일 */
-.pub-authors .author-highlight {
-  font-weight: 500 !important;
-  color: var(--global-text-color) !important;
-  text-decoration: none !important;
-  border-radius: 3px !important;
-}
-
-.pub-authors u {
-  text-decoration: none !important;
-}
 
 /* Equal contribution 설명 텍스트 */
 .equal-contribution-note {
@@ -204,12 +150,6 @@
 .pub-links a:hover {
   text-decoration: underline;
   color: var(--global-link-color-hover);
-}
-
-.pub-description {
-  font-size: 0.95em;
-  line-height: 1.4;
-  color: var(--global-text-color);
 }
 
 /* Abstract toggle button */
@@ -327,33 +267,3 @@
   text-decoration: underline;
 }
 
-/* Introduction text styling */
-.page__content > p {
-  font-size: 0.95em;
-  line-height: 1.6;
-}
-
-.page__content > p a {
-  color: var(--global-link-color);
-  text-decoration: none;
-}
-
-.page__content > p a:hover {
-  color: var(--global-link-color-hover);
-  text-decoration: underline;
-}
-
-
-.intro-note {
-  margin: -1.2em 0 2.2em;
-  font-size: 0.9em !important;
-  line-height: 1.6;
-  letter-spacing: -0.01em;
-  font-weight: 400;
-  text-align: left !important;
-  color: var(--global-text-color);
-
-  strong {
-    font-weight: 600;
-  }
-}

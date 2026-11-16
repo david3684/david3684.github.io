@@ -1,20 +1,33 @@
 ---
 permalink: /
 title: "Chanhyuk Lee"
-author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-I am Chanhyuk (David) Lee, M.S student at KAIST School of Computing. I'm currently working in [VL Lab](http://vllab.kaist.ac.kr), which is led by Prof. [Seunghoon Hong](https://maga33.github.io/). Before joining the lab, I received my Bachelor's degree from KAIST in a double major of Computer Science and Chemistry.
-{: .intro-section}
+<p class="hero__email"><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+
+<div class="hero">
+<div class="hero__text" markdown="1">
+
+I am Chanhyuk (David) Lee, M.S. student at KAIST School of Computing. I'm currently working in [VL Lab](http://vllab.kaist.ac.kr), which is led by Prof. [Seunghoon Hong](https://maga33.github.io/). Before joining the lab, I received my Bachelor's degree from KAIST in a double major of Computer Science and Chemistry.
 
 I am interested in developing new methods for generative intelligence beyond autoregressive modeling. My current research focuses on modeling discrete data with continuous diffusion and flow models, with an emphasis on efficient language generation and reasoning in continuous latent spaces. My broader interests include exploring neural network parameter spaces, particularly for model merging to build generalist models and for weight-space memories in LLMs.
-<!-- For these practical approaches, I am deeply interested in theoretical developments such as infinite-size network frameworks like Neural Tangent Kernel and loss landscape theories like mode connectivity. -->
-{: .intro-section}
 
 <p class="intro-note"><strong>Note:</strong> I'm applying to PhD programs for Fall 2027.</p>
+
+</div>
+<div class="hero__side">
+  <img class="hero__photo" src="/images/profile.jpg" alt="Chanhyuk Lee">
+  <ul class="hero__links">
+    <li class="hero__links-email"><a href="mailto:{{ site.author.email }}" title="Email" aria-label="Email"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i></a></li>
+    <li><a href="{{ site.author.googlescholar }}" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar ai-fw" aria-hidden="true"></i></a></li>
+    <li><a href="https://github.com/{{ site.author.github }}" title="GitHub" aria-label="GitHub"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a></li>
+    <li><a href="/files/cv.pdf" title="CV" aria-label="CV"><i class="ai ai-cv ai-fw" aria-hidden="true"></i></a></li>
+  </ul>
+</div>
+</div>
 
 ## News
 
@@ -34,195 +47,47 @@ I am interested in developing new methods for generative intelligence beyond aut
   </div>
 </div>
 
+{% assign all_publications = site.publications | sort: 'date' | reverse %}
+{% assign selected_publications = all_publications | where: "selected", true %}
 
-
-
-
-## Publications
-
+<h2 class="section-with-link">Selected Publications <a class="section-link" href="/publications/">All publications &rarr;</a></h2>
 
 <div class="publication-list">
-  {% assign conferences = site.publications | sort: 'date' %}
-  {% assign journals = site.publications | sort: 'date' %}
-  {% assign preprints = site.preprints | sort: 'date' %}
-  
-  {% comment %} Publications 먼저, 그 다음 Preprints 순으로 정렬 {% endcomment %}
-  {% assign sorted_preprints = site.preprints | sort: 'date' | reverse %}
-  {% assign sorted_publications = site.publications | sort: 'date' | reverse %}
-  
-  {% comment %} Publications 먼저 표시 {% endcomment %}
-  {% for pub in sorted_publications %}
-  <div class="publication-item" {% if pub.arxiv_id %}data-arxiv-id="{{ pub.arxiv_id }}"{% endif %}>
-    <div class="pub-content">
-      <div class="pub-title">{{ pub.title }}</div>
-
-      {% if pub.authors %}
-      <div class="pub-authors">{% assign author_names = pub.authors | split: ", " %}{% for author_name in author_names %}<span class="author-name">{{ author_name | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</span>{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
-      {% elsif pub.author %}
-      <div class="pub-authors"><span class="author-name">{{ pub.author | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</span></div>
-      {% endif %}
-
-      {% if pub.note or pub.collaboration %}
-      <div class="pub-note">{{ pub.note | default: pub.collaboration }}</div>
-      {% endif %}
-
-      {% if pub.venue or pub.venue_full or pub.venue_abbr or pub.date %}
-      <div class="pub-venue">
-        {% if pub.venue_full or pub.venue_abbr %}<span class="pub-venue-abbr">{{ pub.venue_abbr | default: pub.venue_full }}</span> {{ pub.date | date: "%Y" }}{% if pub.workshop and pub.workshop_venue_abbr == nil %}, <span class="pub-workshop-label">{{ pub.workshop }}</span>{% endif %}{% if pub.award and pub.workshop_venue_abbr == nil %} <span class="pub-award-label">{{ pub.award }}</span>{% endif %}{% elsif pub.venue %}{{ pub.venue }}{% endif %}
-      </div>
-      {% endif %}
-      {% if pub.workshop_venue_abbr %}
-      <div class="pub-venue pub-venue-secondary">
-        <span class="pub-venue-abbr">{{ pub.workshop_venue_abbr }}</span> {{ pub.workshop_venue_year }}{% if pub.workshop %}, <span class="pub-workshop-label">{{ pub.workshop }}</span>{% endif %}{% if pub.award %} <span class="pub-award-label">{{ pub.award }}</span>{% endif %}
-      </div>
-      {% endif %}
-
-      <div class="pub-links">
-        {% if pub.arxiv %}<a href="{{ pub.arxiv }}">arXiv</a>{% endif %}
-        {% if pub.code %}<a href="{{ pub.code }}">Code</a>{% endif %}
-        {% if pub.project %}<a href="{{ pub.project }}">Project</a>{% endif %}
-        {% if pub.paperurl %}<a href="{{ pub.paperurl }}">Paper</a>{% endif %}
-        {% if pub.bibtexurl %}<a href="{{ pub.bibtexurl }}">BibTeX</a>{% endif %}
-        {% if pub.abstract %}<button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false">Abstract</button>{% endif %}
-        {% if pub.arxiv_id %}
-          {% assign cite_count = site.data.citations.citations[pub.arxiv_id] %}
-          {% if cite_count %}
-          <span class="citation-badge {% if cite_count == 0 %}cite-zero{% endif %}" title="{{ cite_count }} citations (Semantic Scholar)">
-            <svg class="cite-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            <span class="cite-count">{{ cite_count }}</span>
-          </span>
-          {% endif %}
-        {% endif %}
-      </div>
-
-      {% if pub.abstract %}
-      <div class="pub-abstract" hidden><p>{{ pub.abstract }}</p></div>
-      {% endif %}
-
-      {% if pub.content and pub.content != "" %}
-      <div class="pub-description">{{ pub.content }}</div>
-      {% endif %}
-    </div>
-  </div>
-  {% endfor %}
-
-  {% comment %} Preprints 다음에 표시 {% endcomment %}
-  {% for pub in sorted_preprints %}
-  <div class="publication-item" {% if pub.arxiv_id %}data-arxiv-id="{{ pub.arxiv_id }}"{% endif %}>
-    <div class="pub-content">
-      <div class="pub-title">{{ pub.title }}</div>
-
-      {% if pub.authors %}
-      <div class="pub-authors">{% assign author_names = pub.authors | split: ", " %}{% for author_name in author_names %}<span class="author-name">{{ author_name | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</span>{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
-      {% elsif pub.author %}
-      <div class="pub-authors"><span class="author-name">{{ pub.author | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</span></div>
-      {% endif %}
-
-      {% if pub.note or pub.collaboration %}
-      <div class="pub-note">{{ pub.note | default: pub.collaboration }}</div>
-      {% endif %}
-
-      {% if pub.venue or pub.venue_full or pub.venue_abbr or pub.date %}
-      <div class="pub-venue">
-        {% if pub.venue_full or pub.venue_abbr %}<span class="pub-venue-abbr">{{ pub.venue_abbr | default: pub.venue_full }}</span> {{ pub.date | date: "%Y" }}{% if pub.workshop and pub.workshop_venue_abbr == nil %}, <span class="pub-workshop-label">{{ pub.workshop }}</span>{% endif %}{% if pub.award and pub.workshop_venue_abbr == nil %} <span class="pub-award-label">{{ pub.award }}</span>{% endif %}{% elsif pub.venue %}{{ pub.venue }}{% endif %}
-      </div>
-      {% endif %}
-      {% if pub.workshop_venue_abbr %}
-      <div class="pub-venue pub-venue-secondary">
-        <span class="pub-venue-abbr">{{ pub.workshop_venue_abbr }}</span> {{ pub.workshop_venue_year }}{% if pub.workshop %}, <span class="pub-workshop-label">{{ pub.workshop }}</span>{% endif %}{% if pub.award %} <span class="pub-award-label">{{ pub.award }}</span>{% endif %}
-      </div>
-      {% endif %}
-
-      <div class="pub-links">
-        {% if pub.arxiv %}<a href="{{ pub.arxiv }}">arXiv</a>{% endif %}
-        {% if pub.code %}<a href="{{ pub.code }}">Code</a>{% endif %}
-        {% if pub.project %}<a href="{{ pub.project }}">Project</a>{% endif %}
-        {% if pub.paperurl %}<a href="{{ pub.paperurl }}">Paper</a>{% endif %}
-        {% if pub.bibtexurl %}<a href="{{ pub.bibtexurl }}">BibTeX</a>{% endif %}
-        {% if pub.abstract %}<button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false">Abstract</button>{% endif %}
-        {% if pub.arxiv_id %}
-          {% assign cite_count = site.data.citations.citations[pub.arxiv_id] %}
-          {% if cite_count %}
-          <span class="citation-badge {% if cite_count == 0 %}cite-zero{% endif %}" title="{{ cite_count }} citations (Semantic Scholar)">
-            <svg class="cite-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            <span class="cite-count">{{ cite_count }}</span>
-          </span>
-          {% endif %}
-        {% endif %}
-      </div>
-
-      {% if pub.abstract %}
-      <div class="pub-abstract" hidden><p>{{ pub.abstract }}</p></div>
-      {% endif %}
-
-      {% if pub.content and pub.content != "" %}
-      <div class="pub-description">{{ pub.content }}</div>
-      {% endif %}
-    </div>
-  </div>
+  {% for pub in selected_publications %}
+    {% include pub-item.html pub=pub %}
   {% endfor %}
 </div>
 
-<script>
-function toggleAbstract(btn) {
-  var abstract = btn.closest('.pub-links').nextElementSibling;
-  if (!abstract || !abstract.classList.contains('pub-abstract')) return;
-  var expanded = btn.getAttribute('aria-expanded') === 'true';
-  if (expanded) {
-    abstract.hidden = true;
-    btn.setAttribute('aria-expanded', 'false');
-    btn.classList.remove('active');
-  } else {
-    abstract.hidden = false;
-    btn.setAttribute('aria-expanded', 'true');
-    btn.classList.add('active');
-  }
-}
+<p class="more-link"><a href="/publications/">See all publications &rarr;</a></p>
 
-document.addEventListener('DOMContentLoaded', function() {
-  var myNames = ['Chanhyuk Lee', 'Chanhyuk David Lee', 'David Lee', 'C. Lee', 'C.H. Lee'];
-  document.querySelectorAll('.pub-authors').forEach(function(el) {
-    var html = el.innerHTML;
-    myNames.forEach(function(name) {
-      var re = new RegExp('\\b' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(\\*)?\\b', 'gi');
-      html = html.replace(re, function(m) { return '<span class="author-highlight">' + m + '</span>'; });
-    });
-    html = html.replace(/\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\*)\b/g, function(m) {
-      if (!html.includes('<span class="author-highlight">' + m + '</span>')) {
-        return '<span class="author-link">' + m + '</span>';
-      }
-      return m;
-    });
-    el.innerHTML = html;
-  });
-});
-</script>
+{% include pub-scripts.html %}
 
 ## Education
 
 
 <div class="education-section">
   <div class="education-item">
-    <div class="education-institution">M.S. in Computer Science </div>
-    <div class="education-degree">
-      Korea Advanced Institute of Science and Technology (KAIST)
-      <span class="education-period">(Mar. 2025 -)</span>
-    </div>
-    <div class="education-advisor">Advisor: Prof. <a href="https://maga33.github.io/">Seunghoon Hong</a></div>
-  </div>
-  
-  <div class="education-item">
-    <div class="education-institution">B.S. in Computer Science and Chemistry <em>(Double Major)</em></div>
-    <div class="education-degree">
-      Korea Advanced Institute of Science and Technology (KAIST)
-      <span class="education-period">(Mar. 2019 - Feb. 2025)</span>
+    <div class="education-period">2025 &ndash;</div>
+    <div>
+      <div class="education-degree">M.S. in Computer Science</div>
+      <div class="education-detail">Korea Advanced Institute of Science and Technology (KAIST)</div>
+      <div class="education-detail">Advisor: Prof. <a href="https://maga33.github.io/">Seunghoon Hong</a></div>
     </div>
   </div>
 
   <div class="education-item">
-    <div class="education-institution">Gyeonggi Science High School for Gifted</div>
-    <div class="education-degree">
-      <span class="education-period">(Mar. 2016 - Feb. 2019)</span>
+    <div class="education-period">2019 &ndash; 2025</div>
+    <div>
+      <div class="education-degree">B.S. in Computer Science and Chemistry <em>(Double Major)</em></div>
+      <div class="education-detail">Korea Advanced Institute of Science and Technology (KAIST)</div>
+    </div>
+  </div>
+
+  <div class="education-item">
+    <div class="education-period">2016 &ndash; 2019</div>
+    <div>
+      <div class="education-degree">High School Diploma</div>
+      <div class="education-detail">Gyeonggi Science High School for Gifted</div>
     </div>
   </div>
 </div>

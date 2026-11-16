@@ -1,0 +1,660 @@
+/* ==========================================================================
+   REDESIGN
+   Loaded last so it overrides the academicpages defaults.
+
+   One centered column. Every list section (news, publications, education)
+   sits on the same two-column grid: a narrow margin column for metadata
+   and a main column for content.
+
+   Typeface roles
+     serif  - entry titles (paper titles, degrees) and the name
+     sans   - prose (intro, authors, news text)
+     mono   - metadata (dates, venues, links, labels)
+
+   Sections are separated by space, not rules. One accent color.
+   ========================================================================== */
+
+$rd-serif: "Source Serif 4", Charter, Georgia, "Times New Roman", serif;
+$rd-sans: "Inter", $sans-serif;
+$rd-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+$rd-width: 780px;
+$rd-gutter: 7.6rem;      // margin column width
+$rd-gutter-gap: 1.4rem;  // space between margin column and content
+$rd-narrow: 600px;       // below this the margin column stacks above content
+
+:root {
+  --global-bg-color: #fbfaf7;
+  --global-footer-bg-color: #fbfaf7;
+  --global-text-color: #1c1b1a;
+  --global-text-color-light: #8a8580;
+  --global-border-color: #e6e2dd;
+  --global-masthead-link-color: #55504b;
+  --global-masthead-link-color-hover: #1c1b1a;
+  --rd-muted: #6b6661;
+  --rd-accent: #b4532a;
+  --rd-underline: #d9b7a6;
+}
+
+html[data-theme="dark"] {
+  --global-border-color: #3a3835;
+  --global-masthead-link-color: #b8b3ad;
+  --global-masthead-link-color-hover: #e8e3de;
+  --rd-muted: #a8a39e;
+  --rd-accent: #e0956f;
+  --rd-underline: #7a5646;
+}
+
+/* Typography
+   ========================================================================== */
+
+html {
+  font-size: 16px !important;
+}
+
+body,
+h1, h2, h3, h4, h5, h6,
+p, li, button,
+.masthead__inner-wrap,
+.page__footer,
+.archive {
+  font-family: $rd-sans;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.011em;
+  font-feature-settings: "cv11", "ss03";
+  color: var(--global-text-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* shared look of every piece of metadata */
+@mixin rd-meta {
+  font-family: $rd-mono;
+  font-size: 0.74rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.6;
+  color: var(--global-text-color-light);
+}
+
+/* Layout
+   ========================================================================== */
+
+#main {
+  max-width: $rd-width !important;
+  margin-top: 3.2em;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.page,
+.archive {
+  float: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* a row on the shared grid: metadata in the margin, content beside it */
+@mixin rd-row {
+  display: grid;
+  grid-template-columns: $rd-gutter minmax(0, 1fr);
+  column-gap: $rd-gutter-gap;
+  align-items: baseline;
+
+  @media (max-width: $rd-narrow) {
+    display: block;
+  }
+}
+
+/* Masthead
+   ========================================================================== */
+
+.masthead {
+  &::after {
+    background: var(--global-border-color);
+  }
+
+  &__inner-wrap {
+    max-width: $rd-width !important;
+    margin: 0 auto;
+    padding: 0.6rem 1.5rem;
+    font-family: $rd-sans;
+  }
+}
+
+.rd-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+
+  ul {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    color: var(--global-masthead-link-color);
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--global-masthead-link-color-hover);
+    }
+  }
+
+  &__brand {
+    font-family: $rd-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    white-space: nowrap;
+    color: var(--global-text-color) !important;
+  }
+
+  &__links {
+    gap: 1.4rem;
+    font-size: 0.95rem;
+  }
+
+  &__icons {
+    margin-left: auto !important;
+    font-size: 0.98rem;
+  }
+
+  @media (max-width: $rd-narrow) {
+    gap: 0.9rem;
+
+    &__brand {
+      font-size: 1.02rem;
+    }
+
+    &__links {
+      gap: 0.8rem;
+      font-size: 0.92rem;
+    }
+  }
+}
+
+/* Page title and section labels
+   ========================================================================== */
+
+.page__title {
+  display: block !important;
+  font-family: $rd-serif;
+  font-size: 2.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin: 0 0 1.3rem;
+}
+
+.page__content h2,
+.archive h2,
+.pub-year-header {
+  @include rd-meta;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--global-text-color);
+  margin: 4rem 0 1.5rem;
+  padding: 0;
+  border: none;
+}
+
+/* Links in running text
+   ========================================================================== */
+
+.page__content,
+.archive {
+  p, li, .education-detail, .news-text, .pub-scholar-note {
+    a {
+      color: var(--global-text-color) !important;
+      text-decoration: underline;
+      text-decoration-color: var(--rd-underline);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      font-weight: inherit;
+
+      &:hover {
+        color: var(--rd-accent) !important;
+        text-decoration-color: var(--rd-accent);
+      }
+    }
+  }
+
+  p {
+    text-align: left;
+  }
+}
+
+/* Home: intro, photo and contact links
+   ========================================================================== */
+
+.hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.2rem;
+
+  &__text {
+    flex: 1;
+    min-width: 0;
+
+    p {
+      font-size: 1rem !important;
+      line-height: 1.65;
+      text-align: left !important;
+      margin: 0 0 1em;
+      color: var(--global-text-color);
+    }
+  }
+
+  &__side {
+    flex-shrink: 0;
+    width: 150px;
+    margin-top: 0.35rem;
+  }
+
+  &__photo {
+    display: block;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.7rem 0 0;
+    padding: 0 0.35rem;
+    list-style: none;
+    font-size: 1.05rem;
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      color: var(--global-masthead-link-color) !important;
+      text-decoration: none !important;
+
+      &:hover {
+        color: var(--rd-accent) !important;
+      }
+    }
+  }
+
+  @media (max-width: $rd-narrow) {
+    &__text p {
+      font-size: 0.94rem !important;
+      line-height: 1.6;
+    }
+
+    /* on phones: a centered header - name, affiliation, photo,
+       round contact buttons - and then the intro */
+    flex-direction: column-reverse;
+    gap: 1.8rem;
+
+    &__side {
+      align-self: center;
+      width: auto;
+      margin-top: 0;
+    }
+
+    &__photo {
+      width: 168px;
+      height: 168px;
+      margin: 0 auto;
+      border: 1px solid var(--global-border-color);
+    }
+
+    &__links {
+      justify-content: center;
+      gap: 0.8rem;
+      margin: 1.4rem 0 0;
+      padding: 0;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.7rem;
+        height: 2.7rem;
+        border: 1px solid var(--global-border-color);
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+/* email address under the name; only the phone header shows it */
+.hero__email {
+  display: none;
+}
+
+@media (max-width: $rd-narrow) {
+  .page__inner-wrap:has(.hero) .page__title {
+    margin: 1.2rem 0 0.9rem;
+    font-size: 2.3rem;
+    text-align: center;
+  }
+
+  .hero__email {
+    display: block;
+    margin: 0 0 1.6rem !important;
+    text-align: center !important;
+
+    a {
+      @include rd-meta;
+      font-size: 0.82rem;
+      color: var(--rd-muted) !important;
+      text-decoration: none !important;
+    }
+  }
+
+  /* the address is written out above, so the email button is not needed */
+  .hero__links-email {
+    display: none;
+  }
+}
+
+.intro-note {
+  margin: 0.4em 0 0 !important;
+  padding: 0.1em 0 0.1em 0.9em;
+  font-size: 0.95rem !important;
+  border-left: 2px solid var(--rd-accent);
+  color: var(--global-text-color);
+}
+
+/* News
+   ========================================================================== */
+
+.news-section,
+.news-list {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.news-item {
+  @include rd-row;
+  margin: 0 0 0.55rem;
+  padding: 0;
+}
+
+.news-date {
+  @include rd-meta;
+  position: static;
+  width: auto;
+  margin: 0;
+}
+
+.news-text,
+.news-text p {
+  font-size: 0.95rem !important;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Publications
+   ========================================================================== */
+
+.publication-list {
+  margin: 0;
+}
+
+.publication-item {
+  @include rd-row;
+  margin: 0 0 1.7rem;
+  padding: 0;
+}
+
+.pub-meta {
+  @include rd-meta;
+
+  .pub-meta-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  /* venue label: darker and heavier than the other metadata */
+  .pub-meta-line--venue {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--global-text-color);
+  }
+
+  @media (max-width: $rd-narrow) {
+    margin-bottom: 0.15rem;
+
+    .pub-meta-line {
+      display: inline;
+
+      & + .pub-meta-line::before {
+        content: " \00b7  ";
+      }
+    }
+  }
+}
+
+.pub-title {
+  font-family: $rd-serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.35;
+  margin-bottom: 0.25rem;
+  color: var(--global-text-color);
+}
+
+.pub-authors {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin-bottom: 0.25rem;
+  color: var(--rd-muted);
+
+  /* my own name is wrapped in <u> in the front matter: bold, no underline */
+  u {
+    font-weight: 600;
+    color: var(--global-text-color);
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* the * or † after my own name takes the same color as the name */
+  .author-name:has(u) sup {
+    font-weight: 600;
+    color: var(--global-text-color);
+  }
+}
+
+/* workshop name and award, under the authors */
+.pub-track {
+  font-size: 0.88rem;
+  margin-bottom: 0.25rem;
+  color: var(--rd-muted);
+}
+
+.pub-award-label {
+  @include rd-meta;
+  margin-left: 0.3em;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rd-accent);
+}
+
+.pub-links {
+  margin: 0;
+  line-height: 1.5;
+
+  a,
+  .abstract-toggle {
+    @include rd-meta;
+    display: inline;
+    margin: 0 0.9em 0 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    color: var(--rd-muted) !important;
+    text-decoration: underline !important;
+    text-decoration-color: var(--rd-underline) !important;
+    text-decoration-thickness: 1px !important;
+    text-underline-offset: 3px;
+    cursor: pointer;
+
+    &:hover,
+    &.active {
+      background: none;
+      color: var(--rd-accent) !important;
+      text-decoration-color: var(--rd-accent) !important;
+    }
+  }
+}
+
+.citation-badge {
+  @include rd-meta;
+}
+
+.pub-abstract {
+  margin-top: 0.6rem;
+  padding: 0;
+  border: none;
+
+  p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--rd-muted);
+  }
+}
+
+.pub-scholar-note,
+.equal-contribution-note {
+  font-size: 0.9rem !important;
+  font-style: normal !important;
+  color: var(--rd-muted) !important;
+}
+
+/* Home: heading with a link to the full list */
+.section-with-link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.section-link {
+  @include rd-meta;
+  text-transform: none;
+  white-space: nowrap;
+  color: var(--rd-muted) !important;
+  text-decoration: none !important;
+
+  &:hover {
+    color: var(--rd-accent) !important;
+  }
+
+  /* on phones the heading needs the full row; the link below the list remains */
+  @media (max-width: $rd-narrow) {
+    display: none;
+  }
+}
+
+.more-link {
+  margin: 0 0 0 calc(#{$rd-gutter} + #{$rd-gutter-gap}) !important;
+  font-size: 0.95rem !important;
+
+  @media (max-width: $rd-narrow) {
+    margin-left: 0 !important;
+  }
+}
+
+/* Publication detail page: the heading already shows the title,
+   and the abstract is printed in full below */
+.pub-detail {
+  .pub-title,
+  .abstract-toggle,
+  .pub-abstract {
+    display: none;
+  }
+}
+
+.pub-page-abstract {
+  margin: 0 0 0 calc(#{$rd-gutter} + #{$rd-gutter-gap});
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--global-text-color);
+
+  @media (max-width: $rd-narrow) {
+    margin-left: 0;
+  }
+}
+
+/* Education
+   ========================================================================== */
+
+.education-section {
+  margin: 0;
+}
+
+.education-item {
+  @include rd-row;
+  margin: 0 0 1rem;
+}
+
+.education-period {
+  @include rd-meta;
+  margin: 0;
+}
+
+.education-degree {
+  font-family: $rd-serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.35;
+  margin: 0;
+  color: var(--global-text-color);
+}
+
+.education-detail {
+  font-size: 0.92rem;
+  margin: 0;
+  color: var(--rd-muted);
+}
+
+/* Footer
+   ========================================================================== */
+
+.page__footer {
+  background: var(--global-bg-color);
+  border: none;
+  margin-top: 4.5rem;
+  color: var(--global-text-color-light);
+
+  footer {
+    @include rd-meta;
+    max-width: $rd-width;
+    padding: 0 1.5rem 2rem;
+  }
+
+  a {
+    color: inherit;
+  }
+}

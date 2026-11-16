@@ -1,0 +1,53 @@
+{% comment %}
+  One publication entry. Usage: {% include pub-item.html pub=pub %}
+{% endcomment %}
+{% assign pub = include.pub %}
+<div class="publication-item"{% if pub.arxiv_id %} data-arxiv-id="{{ pub.arxiv_id }}"{% endif %}>
+  {% comment %} margin column: where it appeared {% endcomment %}
+  <div class="pub-meta">
+    {% if pub.venue_full or pub.venue_abbr %}
+    <span class="pub-meta-line pub-meta-line--venue">{{ pub.venue_abbr | default: pub.venue_full }} {{ pub.date | date: "%Y" }}</span>
+    {% elsif pub.venue %}
+    <span class="pub-meta-line pub-meta-line--venue">{{ pub.venue }}</span>
+    {% endif %}
+  </div>
+
+  <div class="pub-content">
+    <div class="pub-title">{{ pub.title }}</div>
+
+    {% if pub.authors %}
+    <div class="pub-authors">{% assign author_names = pub.authors | split: ", " %}{% for author_name in author_names %}<span class="author-name">{{ author_name | replace: '†', '<sup>†</sup>' | replace: '*', '<sup>*</sup>' }}</span>{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
+    {% endif %}
+
+    {% if pub.note %}
+    <div class="pub-note">{{ pub.note }}</div>
+    {% endif %}
+
+    {% comment %} workshop track and award; a second venue is spelled out in full {% endcomment %}
+    {% if pub.workshop or pub.award %}
+    <div class="pub-track">{% if pub.workshop_venue_abbr %}{{ pub.workshop_venue_abbr }} {{ pub.workshop_venue_year }} {% endif %}{{ pub.workshop }}{% if pub.award %}<span class="pub-award-label">{{ pub.award }}</span>{% endif %}</div>
+    {% endif %}
+
+    <div class="pub-links">
+      {% if pub.arxiv %}<a href="{{ pub.arxiv }}">arXiv</a>{% endif %}
+      {% if pub.code %}<a href="{{ pub.code }}">Code</a>{% endif %}
+      {% if pub.project %}<a href="{{ pub.project }}">Project</a>{% endif %}
+      {% if pub.paperurl %}<a href="{{ pub.paperurl }}">Paper</a>{% endif %}
+      {% if pub.bibtexurl %}<a href="{{ pub.bibtexurl }}">BibTeX</a>{% endif %}
+      {% if pub.abstract %}<button class="abstract-toggle" onclick="toggleAbstract(this)" aria-expanded="false">Abstract</button>{% endif %}
+      {% if pub.arxiv_id %}
+        {% assign cite_count = site.data.citations.citations[pub.arxiv_id] %}
+        {% if cite_count %}
+        <span class="citation-badge{% if cite_count == 0 %} cite-zero{% endif %}" title="{{ cite_count }} citations (Semantic Scholar)">
+          <svg class="cite-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <span class="cite-count">{{ cite_count }}</span>
+        </span>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    {% if pub.abstract %}
+    <div class="pub-abstract" hidden><p>{{ pub.abstract }}</p></div>
+    {% endif %}
+  </div>
+</div>

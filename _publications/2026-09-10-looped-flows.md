@@ -1,9 +1,10 @@
 ---
 layout: single
 title: "Thinking with Looped Flows"
-collection: preprints
+collection: publications
 date: 2026-09-25 23:59:59 +00:00
 categories: research
+selected: true
 author: "Chanhyuk Lee"
 authors: "Ayhan Suleymanzade, <u>Chanhyuk Lee</u>, Floor Eijkelboom, Nicholas M. Boffi, İsmail İlkan Ceylan†, Jinwoo Kim†"
 venue: "Preprint"
