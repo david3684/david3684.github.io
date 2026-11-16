@@ -7,6 +7,8 @@
   <div class="pub-meta">
     {% if pub.venue_full or pub.venue_abbr %}
     <span class="pub-meta-line pub-meta-line--venue">{{ pub.venue_abbr | default: pub.venue_full }} {{ pub.date | date: "%Y" }}</span>
+    {% comment %} a paper that appeared only at a workshop of this venue {% endcomment %}
+    {% if pub.workshop and pub.workshop_venue_abbr == nil %}<span class="pub-meta-line">Workshop</span>{% endif %}
     {% elsif pub.venue %}
     <span class="pub-meta-line pub-meta-line--venue">{{ pub.venue }}</span>
     {% endif %}
@@ -25,7 +27,7 @@
 
     {% comment %} workshop track and award; a second venue is spelled out in full {% endcomment %}
     {% if pub.workshop or pub.award %}
-    <div class="pub-track">{% if pub.workshop_venue_abbr %}{{ pub.workshop_venue_abbr }} {{ pub.workshop_venue_year }} {% endif %}{{ pub.workshop }}{% if pub.award %}<span class="pub-award-label">{{ pub.award }}</span>{% endif %}</div>
+    <div class="pub-track">{% if pub.workshop_venue_abbr %}Also at {{ pub.workshop_venue_abbr }} {{ pub.workshop_venue_year }} {% endif %}{{ pub.workshop }}{% if pub.award %}<span class="pub-award-label">{{ pub.award }}</span>{% endif %}</div>
     {% endif %}
 
     <div class="pub-links">
