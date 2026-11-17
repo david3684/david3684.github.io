@@ -14,8 +14,8 @@
    Sections are separated by space, not rules. One accent color.
    ========================================================================== */
 
-$rd-serif: "Source Serif 4", Charter, Georgia, "Times New Roman", serif;
-$rd-sans: "Inter", $sans-serif;
+$rd-serif: "Lora", Charter, Georgia, "Times New Roman", serif;
+$rd-sans: "Figtree", $sans-serif;
 $rd-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 $rd-width: 780px;
 $rd-gutter: 7.6rem;      // margin column width
@@ -31,15 +31,22 @@ $rd-narrow: 600px;       // below this the margin column stacks above content
   --global-masthead-link-color: #55504b;
   --global-masthead-link-color-hover: #1c1b1a;
   --rd-muted: #6b6661;
+  --rd-author: #57524d;
   --rd-accent: #b4532a;
   --rd-underline: #d9b7a6;
 }
 
 html[data-theme="dark"] {
-  --global-border-color: #3a3835;
+  --global-base-color: #131211;
+  --global-bg-color: #131211;
+  --global-footer-bg-color: #131211;
+  --global-text-color: #ece8e3;
+  --global-text-color-light: #8f8a85;
+  --global-border-color: #2b2927;
   --global-masthead-link-color: #b8b3ad;
-  --global-masthead-link-color-hover: #e8e3de;
-  --rd-muted: #a8a39e;
+  --global-masthead-link-color-hover: #ece8e3;
+  --rd-muted: #a5a09b;
+  --rd-author: #bab5b0;
   --rd-accent: #e0956f;
   --rd-underline: #7a5646;
 }
@@ -416,7 +423,7 @@ body {
 }
 
 .publication-item {
-  /* venue sits on its own line above the title */
+  /* one full-width block: title, authors, venue, links */
   display: block;
   margin: 0;
   padding: 1.25rem 0;
@@ -433,7 +440,7 @@ body {
 
 .pub-meta {
   @include rd-meta;
-  margin-bottom: 0.15rem;
+  margin: 0.1rem 0 0.3rem;
 
   .pub-meta-line {
     display: inline;
@@ -462,13 +469,15 @@ body {
   font-size: 0.82rem;
   line-height: 1.5;
   margin-bottom: 0.25rem;
-  color: var(--rd-muted);
+  color: var(--rd-author);
 
-  /* my own name is wrapped in <u> in the front matter: bold, no underline */
+  /* my own name is wrapped in <u> in the front matter: bold and underlined */
   u {
     font-weight: 600;
     color: var(--global-text-color);
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
     border-bottom: none;
   }
 

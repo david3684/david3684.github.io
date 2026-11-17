@@ -3,18 +3,6 @@
 {% endcomment %}
 {% assign pub = include.pub %}
 <div class="publication-item"{% if pub.arxiv_id %} data-arxiv-id="{{ pub.arxiv_id }}"{% endif %}>
-  {% comment %} margin column: where it appeared {% endcomment %}
-  <div class="pub-meta">
-    {% if pub.venue_full or pub.venue_abbr %}
-    {% comment %} a workshop-only paper names the workshop right after the venue; a second venue goes on its own line {% endcomment %}
-    <span class="pub-meta-line pub-meta-line--venue">{{ pub.venue_abbr | default: pub.venue_full }} {{ pub.date | date: "%Y" }}{% if pub.workshop and pub.workshop_venue_abbr == nil %} {{ pub.workshop | remove: " Workshop" }}{% endif %}</span>
-    {% if pub.workshop_venue_abbr %}<br><span class="pub-meta-line pub-meta-line--venue">{{ pub.workshop_venue_abbr }} {{ pub.workshop_venue_year }} {{ pub.workshop | remove: " Workshop" }}</span>{% endif %}
-    {% if pub.award %}<span class="pub-award-label">{{ pub.award }}</span>{% endif %}
-    {% elsif pub.venue %}
-    <span class="pub-meta-line pub-meta-line--venue">{{ pub.venue }}</span>
-    {% endif %}
-  </div>
-
   <div class="pub-content">
     <div class="pub-title">{{ pub.title }}</div>
 
@@ -25,6 +13,18 @@
     {% if pub.note %}
     <div class="pub-note">{{ pub.note }}</div>
     {% endif %}
+
+    {% comment %} where it appeared, under the authors {% endcomment %}
+    <div class="pub-meta">
+      {% if pub.venue_full or pub.venue_abbr %}
+      {% comment %} a workshop-only paper names the workshop right after the venue; a second venue goes on its own line {% endcomment %}
+      <span class="pub-meta-line pub-meta-line--venue">{{ pub.venue_abbr | default: pub.venue_full }} {{ pub.date | date: "%Y" }}{% if pub.workshop and pub.workshop_venue_abbr == nil %} {{ pub.workshop | remove: " Workshop" }}{% endif %}</span>
+      {% if pub.workshop_venue_abbr %}<br><span class="pub-meta-line pub-meta-line--venue">{{ pub.workshop_venue_abbr }} {{ pub.workshop_venue_year }} {{ pub.workshop | remove: " Workshop" }}</span>{% endif %}
+      {% if pub.award %}<span class="pub-award-label">{{ pub.award }}</span>{% endif %}
+      {% elsif pub.venue %}
+      <span class="pub-meta-line pub-meta-line--venue">{{ pub.venue }}</span>
+      {% endif %}
+    </div>
 
     <div class="pub-links">
       {% if pub.arxiv %}<a href="{{ pub.arxiv }}">arXiv</a>{% endif %}
